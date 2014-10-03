@@ -1,28 +1,16 @@
-== README
+== FarmWorker Application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This program is a tool to help FarmWorker practioners collect patient data.
 
-Things you may want to cover:
+Set up:
 
-* Ruby version
+* Clone this repository
+* Run <tt>bundle install</tt>
+* Run <tt>rake db:migrate</tt>
+* Run <tt>rake db:seed</tt>
 
-* System dependencies
+First run:
 
-* Configuration
+* Run <tt>rails server</tt>
+* Log in with username: admin and password: password
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
