@@ -7,6 +7,7 @@ FarmWorker::Application.routes.draw do
   root 'home#index'
   get 'admin/dashboard' => 'admin#dashboard'
   get 'faculty/dashboard' => 'faculty#dashboard'
+  get 'student/dashboard' => 'student#dashboard'
   post 'admin/register' => 'admin#register'
 
   # Example of regular route:
