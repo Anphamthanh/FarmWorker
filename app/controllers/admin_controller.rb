@@ -6,8 +6,12 @@ class AdminController < ApplicationController
   end
 
   def register
-    @user = User.create(admin_params)
-    flash[:notice] = "The user #{@user.username} was successfully created"
+    @user = User.new(admin_params)
+    if @user.save
+      flash[:notice] = "The user #{@user.username} was successfully created"
+    else
+      flash[:alert] = "Failed to create user: " + @user.errors.full_messages.join('. ')
+    end
     redirect_to :admin_dashboard
   end
 

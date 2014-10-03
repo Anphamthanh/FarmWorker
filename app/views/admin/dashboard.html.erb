@@ -2,7 +2,7 @@
 <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
 <h2>Create new user</h2>
 
-<%= form_for(:user, url: admin_register_path) do |f| %>
+<%= form_for(:user, url: admin_register_path, :validate => true) do |f| %>
   
   <div>
     <%= f.label :username %><br />
