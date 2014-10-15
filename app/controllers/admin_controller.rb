@@ -3,6 +3,7 @@ class AdminController < ApplicationController
   before_action :authenticate_admin
 
   def dashboard
+    @all_users = User.all
   end
 
   def register
