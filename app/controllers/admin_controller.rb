@@ -22,6 +22,7 @@ class AdminController < ApplicationController
   end
 
   def authenticate_admin
+    authenticate_user!
     if current_user.role.downcase != 'admin'
       flash[:alert] = "Access denied! Please log in as an administrator."
       redirect_to root_path

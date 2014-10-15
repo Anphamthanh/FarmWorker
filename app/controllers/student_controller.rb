@@ -7,6 +7,7 @@ class StudentController < ApplicationController
   private
 
   def authenticate_student
+    authenticate_user!
     if current_user.role.downcase == 'admin' 
       flash[:alert] = "Access denied! This page is for practitioners only."
       redirect_to root_path
