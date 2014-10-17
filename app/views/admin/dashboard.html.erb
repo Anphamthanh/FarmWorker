@@ -31,31 +31,70 @@
 
 <h2>Create new user</h2>
 
-<%= form_for(:user, url: admin_register_path, :validate => true) do |f| %>
-  
-  <div>
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
-  </div>
+<div class="container">
+  <%= form_for(:user, url: admin_register_path, :validate => true, :class => 'form-horizontal') do |f| %>
+    
+    <div class="form-group row col-md-8">
+      <div class="col-md-5">
+        <%= f.label :first_name %>
+      </div>
+      <div class="col-md-7">
+        <%= f.text_field :first_name, :class => "form-control", :placeholder => "First Name" %>
+      </div>
+    </div>
+    <div class="form-group row col-md-8">
+      <div class="col-md-5">
+        <%= f.label :last_name %>
+      </div>
+      <div class="col-md-7">
+        <%= f.text_field :last_name, :class => "form-control", :placeholder => "Last Name" %>
+      </div>
+    </div>
+    <div class="form-group row col-md-8">
+      <div class="col-md-5">
+        <%= f.label :username %>
+      </div>
+      <div class="col-md-7">
+        <%= f.text_field :username, :class => "form-control", :placeholder => "Username" %>
+      </div>
+    </div>
+    <div class="form-group row col-md-8">
+      <div class="col-md-5">
+        <%= f.label :email %>
+      </div>
+      <div class="col-md-7">
+        <%= f.text_field :email, :class => "form-control", :placeholder => "Email" %>
+      </div>
+    </div>
+    <div class="form-group row col-md-8">
+      <div class="col-md-5">
+        <%= f.label :password %>
+      </div>
+      <div class="col-md-7">
+        <%= f.password_field :password, :class => "form-control", :placeholder => "Password" %>
+      </div>
+    </div>
+    <div class="form-group row col-md-8">
+      <div class="col-md-5">
+        <%= f.label :password_confirmation %>
+      </div>
+      <div class="col-md-7">
+        <%= f.password_field :password_confirmation, :class => "form-control", :placeholder => "Password confirmation" %>
+      </div>
+    </div>
+    <div class="form-group row col-md-8">
+      <div class="col-md-5">
+        <%= f.label :user_role %>
+      </div>
+      <div class="col-md-7">
+        <%= f.select :role, options_for_select(["Student","Faculty","Admin"]) %>
+      </div>
+    </div>
+    <div class="form-group row col-md-8">
+      <div class="col-md-12"> 
+        <button type="submit" class="btn btn-primary">Create</button>
+      </div>
+    </div>
 
-  <div>
-    <%= f.label :email %><br />
-    <%= f.email_field :email %>
-  </div>
-
-  <div>
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </div>
-
-  <div>
-    <%= f.label :password_confirmation, "Password confirmation" %><br />
-    <%= f.password_field :password_confirmation %>
-  </div>
-
-  <div>
-    <%= f.select :role, options_for_select(["Student","Faculty","Admin"]) %>
-  </div>
-
-  <div><%= f.submit "Create" %></div>
-<% end %>
+  <% end %>
+</div>
