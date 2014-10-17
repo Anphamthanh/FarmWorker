@@ -9,6 +9,7 @@
     <table class="table">
     <tr>
       <th>User ID</th>
+      <th>Role</th>
       <th>Username</th>
       <th>Firstname</th>
       <th>Lastname</th>
@@ -17,6 +18,7 @@
     <% @all_users.each do |user| %>
       <tr>
         <td><%= user.id %></td>
+        <td><%= user.role %></td>
         <td><%= user.username %></td>
         <td>First name</td>
         <td>Last name</td>
