@@ -21,7 +21,11 @@
         </div>
         <div class="navbar-collapse collapse">
           <% if user_signed_in? %>
-            <%= link_to('Logout', destroy_user_session_path, :method => :delete, :class => "navbar-form navbar-right") %> 
+            <div class="navbar-form navbar-right">
+              <%= link_to destroy_user_session_path, :method => :delete do %>
+                <span class="glyphicon glyphicon-log-out"></span>
+              <% end %> 
+            </div>
           <% else %>
             <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "navbar-form navbar-right", :role => "form"}) do |f| %>
               <div class="form-group">
