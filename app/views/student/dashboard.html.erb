@@ -1,3 +1,45 @@
 <div class="container">
-  <h1>This is student dashboard</h1>
+  <h2>Create new patient</h2>
+  <div class="container">
+    <%= form_for(:patient, url: student_new_patient_path, :validate => true, :class => "form-horizontal") do |f| %>
+      <div class="form-group row col-md-8">
+        <div class="col-md-5">
+          <%= f.label :first_name %>
+        </div>
+        <div class="col-md-7">
+          <%= f.text_field :first_name, :class => "form-control", :placeholder => "First Name" %>
+        </div>
+      </div>
+      <div class="form-group row col-md-8">
+        <div class="col-md-5">
+          <%= f.label :last_name %>
+        </div>
+        <div class="col-md-7">
+          <%= f.text_field :last_name, :class => "form-control", :placeholder => "Last Name" %>
+        </div>
+      </div>
+      <div class="form-group row col-md-8">
+        <div class="col-md-5">
+          <%= f.label :gender %>
+        </div>
+        <div class="col-md-7">
+          <%= f.select :gender, options_for_select(["Male", "Female"]) %>
+        </div>
+      </div>
+      <div class="form-group row col-md-8">
+        <div class="col-md-5">
+          <%= f.label(:dob, "DOB") %>
+        </div>
+        <div class="col-md-7">
+          <%= f.date_select :dob, :start_year => 1900, :end_year => Date.today.year %>
+        </div>
+      </div>
+      <div class="form-group row col-md-8">
+        <div class="col-md-12"> 
+          <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
 </div>

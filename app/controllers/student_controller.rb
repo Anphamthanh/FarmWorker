@@ -4,6 +4,10 @@ class StudentController < ApplicationController
   def dashboard
   end
 
+  def new_patient
+    puts params
+  end
+
   private
 
   def authenticate_student

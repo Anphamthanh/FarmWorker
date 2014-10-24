@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141017143629) do
+ActiveRecord::Schema.define(version: 20141022155526) do
+
+  create_table "patients", force: true do |t|
+    t.string   "first_name",  default: "", null: false
+    t.string   "last_name",   default: "", null: false
+    t.string   "gender",                   null: false
+    t.date     "dob",                      null: false
+    t.text     "patient_log"
+    t.integer  "created_by",               null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",               default: "", null: false
