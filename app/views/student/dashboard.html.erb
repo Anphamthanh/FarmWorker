@@ -1,4 +1,31 @@
 <div class="container">
+  <h1>Student-BSN Dashboard</h1>
+  <div class="container">
+    <div class="panel panel-default">
+      <div class="panel-heading">All Patients</div>
+      <div class="panel-body">
+        <p>We need a search box in here to search for patient</p>
+      </div>
+      <table class="table">
+      <tr>
+        <th>Patient ID</th>
+        <th>Firstname</th>
+        <th>Lastname</th>        
+        <th>Gender</th>
+        <th>DOB</th>
+      </tr>
+      <% @all_patients.each do |patient| %>
+        <tr>
+          <td><%= patient.id %></td>
+          <td><%= patient.first_name %></td>
+          <td><%= patient.last_name %></td>
+          <td><%= patient.gender %></td>
+          <td><%= patient.dob %></td>
+        </tr>
+      <% end %>
+      </table>
+    </div>
+  </div>
   <h2>Create new patient</h2>
   <div class="container">
     <%= form_for(:patient, url: student_new_patient_path, :validate => true, :class => "form-horizontal") do |f| %>
