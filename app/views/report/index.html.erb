@@ -1,0 +1,84 @@
+<div class="container">
+    <div class="panel panel-default">
+      <div class="panel-heading">Clinic Summary Report</div>
+      <div class="panel-body">
+        <p>Summary of the patients seen at the clinic</p>
+      </div>
+      <table class="table">
+      <tr>
+        <th>Date</th>
+        <th>Total Parents</th>
+        <th>Total Children</th>
+        <th>Total Patients</th>
+      </tr>
+        <% (1..5).each do |row| %>
+        <tr>
+          <td>test date <%= row %></td>
+          <% (1..3).each do |i| %>
+           <td>50</td>
+          <% end %>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+
+
+
+
+<div class="container">
+    <div class="panel panel-default">
+      <div class="panel-heading">Patient Summary Report</div>
+      <div class="panel-body">
+        <p>Summary report of a patients vitals</p>
+      </div>
+      <table class="table">
+      <tr>
+        <th>Name</th>
+        <th>Blood Pressure</th>
+        <th>Vision</th>
+        <th>Hearing</th>
+        <th>Taste</th>
+        <th>Smell</th>
+        <th>Touch</th>
+      </tr>
+        <% (1..5).each do |row| %>
+        <tr>
+          <td>test name <%= row %></td>
+          <% (1..6).each do |i| %>
+           <td> 50</td>
+          <% end %>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+
+
+<div class="container">
+    <div class="panel panel-default">
+      <div class="panel-heading">Blood Pressure Alert Report</div>
+      <div class="panel-body">
+        <p>Blood pressure report on all patients</p>
+      </div>
+      <table class="table">
+      <tr>
+        <th>Patient Name</th>
+        <% (1..4).each do |row| %>
+        <th>Blood Vital <%= row %></th>
+        <% end %>
+      </tr>
+        <% (1..4).each do |row| %>
+        <tr>
+          <td>test name <%= row %></td>
+          <% (1..4).each do |i| %>
+           <td>good</td>
+          <% end %>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+</div>
+
+<%= link_to("Back To Home", root_path, class: "btn btn-default btn-lg active") %>
+<br>
