@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141030144143) do
+ActiveRecord::Schema.define(version: 20141030171438) do
+
+  create_table "patient_assessments", force: true do |t|
+    t.integer  "patient_record_id"
+    t.text     "general_assessment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "patient_assessments", ["patient_record_id"], name: "index_patient_assessments_on_patient_record_id"
 
   create_table "patient_demographics", force: true do |t|
     t.integer  "patient_record_id"
@@ -33,11 +42,79 @@ ActiveRecord::Schema.define(version: 20141030144143) do
     t.datetime "updated_at"
   end
 
+  create_table "patient_hearings", force: true do |t|
+    t.integer  "patient_record_id"
+    t.integer  "al"
+    t.integer  "ad"
+    t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "patient_hearings", ["patient_record_id"], name: "index_patient_hearings_on_patient_record_id"
+
+  create_table "patient_physicals", force: true do |t|
+    t.integer  "patient_record_id"
+    t.string   "general_appearance"
+    t.string   "head_hair"
+    t.string   "skin"
+    t.string   "eyes"
+    t.string   "ears"
+    t.string   "nose"
+    t.string   "mouth"
+    t.string   "throat"
+    t.string   "thyroid"
+    t.string   "lymph_pre_auricular"
+    t.string   "lymph_post_auricular"
+    t.string   "lymph_anterior_cervical"
+    t.string   "lymph_occipital"
+    t.string   "lymph_axillary"
+    t.string   "vascular"
+    t.string   "heart"
+    t.string   "lungs"
+    t.string   "abdomen"
+    t.string   "musculoskeletal"
+    t.string   "scoliosis_screening"
+    t.string   "neuro"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "patient_physicals", ["patient_record_id"], name: "index_patient_physicals_on_patient_record_id"
+
   create_table "patient_records", force: true do |t|
     t.integer  "patient_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "patient_visions", force: true do |t|
+    t.integer  "patient_record_id"
+    t.integer  "ol"
+    t.integer  "od"
+    t.integer  "ou"
+    t.boolean  "color_blindness",   default: false
+    t.boolean  "corrective_lenses", default: false
+    t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "patient_visions", ["patient_record_id"], name: "index_patient_visions_on_patient_record_id"
+
+  create_table "patient_vitals", force: true do |t|
+    t.integer  "patient_record_id"
+    t.integer  "height",            null: false
+    t.float    "weight",            null: false
+    t.float    "bmi",               null: false
+    t.string   "blood_pressure",    null: false
+    t.float    "hemoglobin"
+    t.float    "blood_glucose"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "patient_vitals", ["patient_record_id"], name: "index_patient_vitals_on_patient_record_id"
 
   create_table "patients", force: true do |t|
     t.string   "first_name",  default: "", null: false
