@@ -1,7 +1,10 @@
 class PatientRecord < ActiveRecord::Base
   belongs_to :patient
   has_one :patient_demographics
-  # , :patient_vital, :patient_hearing, 
-  #         :patient_vision, :patient_physical, :patient_assessment
+  has_one :patient_vital
+  has_one :patient_hearing
+  has_one :patient_vision
+  has_one :patient_physical
+  has_one :patient_assessment
   validates :patient_id, presence: true
 end

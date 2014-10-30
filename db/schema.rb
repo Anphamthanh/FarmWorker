@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 20141030171438) do
     t.datetime "updated_at"
   end
 
+  add_index "patient_demographics", ["patient_record_id"], name: "index_patient_demographics_on_patient_record_id"
+
   create_table "patient_hearings", force: true do |t|
     t.integer  "patient_record_id"
     t.integer  "al"
@@ -87,6 +89,8 @@ ActiveRecord::Schema.define(version: 20141030171438) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "patient_records", ["patient_id"], name: "index_patient_records_on_patient_id"
 
   create_table "patient_visions", force: true do |t|
     t.integer  "patient_record_id"
