@@ -11,7 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141022155526) do
+ActiveRecord::Schema.define(version: 20141030144143) do
+
+  create_table "patient_demographics", force: true do |t|
+    t.integer  "patient_record_id"
+    t.string   "site_location",            default: "",    null: false
+    t.boolean  "parental_permission",      default: false, null: false
+    t.text     "allergies"
+    t.text     "reaction_type"
+    t.boolean  "utd",                      default: false, null: false
+    t.boolean  "dtap",                     default: false, null: false
+    t.boolean  "hib",                      default: false, null: false
+    t.boolean  "pneumovax",                default: false, null: false
+    t.boolean  "hepA",                     default: false, null: false
+    t.boolean  "hepB",                     default: false, null: false
+    t.boolean  "influenza",                default: false, null: false
+    t.boolean  "mmr",                      default: false, null: false
+    t.text     "additional_immunizations"
+    t.text     "relevant_info"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "patient_records", force: true do |t|
+    t.integer  "patient_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "patients", force: true do |t|
     t.string   "first_name",  default: "", null: false
