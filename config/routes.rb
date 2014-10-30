@@ -9,7 +9,7 @@ FarmWorker::Application.routes.draw do
   get 'faculty/dashboard' => 'faculty#dashboard'
   get 'student/dashboard' => 'student#dashboard'
   post 'admin/register' => 'admin#register'
-  post 'student/new_patient' => 'student#new_patient'
+  post 'patient/new' => 'patient#new'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
