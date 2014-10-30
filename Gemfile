@@ -47,7 +47,6 @@ end
 # Custom gems
 
 group :production do
-  gem 'rails_12factor'
   gem 'pg'
 end
 
@@ -57,3 +56,4 @@ end
 
 gem 'devise'
 gem 'therubyracer'
+gem 'rails_12factor', group: :production
