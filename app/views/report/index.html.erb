@@ -1,4 +1,14 @@
-<div class="container">
+<br>
+<div class="btn-group">
+  <%= link_to("Clinic Summary Report", "/report/index/0" , class: "btn btn-default") %>
+  <%= link_to("Patient Summary Report", "/report/index/1" , class: "btn btn-default") %>
+  <%= link_to("Vitals Alert Report", "/report/index/2" , class: "btn btn-default") %>
+</div>
+<br>
+<br>
+
+
+<div class="container" style="display:<%= 'none' if @type != '0' %>">
     <div class="panel panel-default">
       <div class="panel-heading">Clinic Summary Report</div>
       <div class="panel-body">
@@ -26,7 +36,7 @@
 
 
 
-<div class="container">
+<div class="container" style="display:<%= 'none' if @type != '1' %>">
     <div class="panel panel-default">
       <div class="panel-heading">Patient Summary Report</div>
       <div class="panel-body">
@@ -55,7 +65,7 @@
   </div>
 
 
-<div class="container">
+<div class="container" style="display:<%= 'none' if @type != '2' %>">
     <div class="panel panel-default">
       <div class="panel-heading">Blood Pressure Alert Report</div>
       <div class="panel-body">

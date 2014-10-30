@@ -10,3 +10,29 @@ Patient Info
 <br>
 ...
 ...
+
+
+<div class="container">
+    <div class="panel panel-default">
+      <div class="panel-heading">Clinic Summary Report</div>
+      <div class="panel-body">
+        <p>Summary of the patients seen at the clinic</p>
+      </div>
+      <table class="table">
+      <tr>
+        <th></th>
+        <th>First</th>
+        <th>Last</th>
+        <th>Gender</th>
+      </tr>
+        <% @patients.each do |p| %>
+        <tr>
+          <td>[Edit button]</td>
+          <td><%= p.first_name %></td>
+          <td><%= p.last_name %></td>
+          <td><%= p.gender %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
