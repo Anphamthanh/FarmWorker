@@ -11,6 +11,7 @@ FarmWorker::Application.routes.draw do
   post 'admin/register' => 'admin#register'
   post 'patient' => 'patient#new'
   get 'patient/:id/demographics' => 'patient#demographics'
+  get 'patient/:id' => 'patient#view'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
