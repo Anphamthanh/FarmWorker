@@ -9,8 +9,8 @@
       <table class="table">
       <tr>
         <th>Patient ID</th>
-        <th>Firstname</th>
-        <th>Lastname</th>        
+        <th>First name</th>
+        <th>Last name</th>        
         <th>Gender</th>
         <th>DOB</th>
       </tr>
@@ -28,7 +28,7 @@
   </div>
   <h2>New Patient</h2>
   <div class="container">
-    <%= form_for(:patient, url: patient_new_path, :validate => true, :class => "form-horizontal") do |f| %>
+    <%= form_for(:patient, url: patient_path, :validate => true, :class => "form-horizontal") do |f| %>
       <div class="form-group row col-md-8">
         <div class="col-md-5">
           <%= f.label :first_name %>

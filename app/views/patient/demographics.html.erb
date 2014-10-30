@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>Update Demographics</h1> 
+  <div class="panel panel-default">
+    <div class="panel-heading"><%= "#{@patient.first_name} #{@patient.last_name}" %></div>
+    <div class="panel-body">
+    </div>
+    <table class="table">
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>        
+      <th>Gender</th>
+      <th>DOB</th>
+    </tr>
+      <tr>
+      <td><%= @patient.first_name %></td>
+      <td><%= @patient.last_name %></td>
+      <td><%= @patient.gender %></td>
+      <td><%= @patient.dob %></td>
+      </tr>
+    </table>
+  </div>
+</div>
