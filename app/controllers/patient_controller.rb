@@ -18,6 +18,13 @@ class PatientController < ApplicationController
 
   def view
     @patient = Patient.find(params[:id])
+    record = @patient.patient_record
+    @demographics = record.patient_demographics
+    @vitals = record.patient_vital
+    @hearing = record.patient_hearing
+    @vision = record.patient_vision
+    @physical = record.patient_physical
+    @assessment = record.patient_assessment
   end
 
   private
