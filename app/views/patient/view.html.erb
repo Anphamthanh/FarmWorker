@@ -114,6 +114,96 @@
           </li>
         </ul>
       </div>
+
+      <div class="physical-container hidden" style="margin-top:1rem;">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <strong class="col-md-3">General Appearance</strong>
+            <%= @physical.general_appearance.blank? ? 'No Information' : @physical.general_appearance %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Head/Hear</strong>
+            <%= @physical.head_hair.blank? ? 'No Information' : @physical.head_hair %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Skin</strong>
+            <%= @physical.skin.blank? ? 'No Information' : @physical.skin %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Eyes</strong>
+            <%= @physical.eyes.blank? ? 'No Information' : @physical.eyes %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Ears</strong>
+            <%= @physical.ears.blank? ? 'No Information' : @physical.ears %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Nose</strong>
+            <%= @physical.nose.blank? ? 'No Information' : @physical.nose %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Mouth</strong>
+            <%= @physical.mouth.blank? ? 'No Information' : @physical.mouth %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Throat</strong>
+            <%= @physical.throat.blank? ? 'No Information' : @physical.throat %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Thyroid</strong>
+            <%= @physical.thyroid.blank? ? 'No Information' : @physical.thyroid %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Lymph Pre-Auricular</strong>
+            <%= @physical.lymph_pre_auricular.blank? ? 'No Information' : @physical.lymph_pre_auricular %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Lymph Post-Auricular</strong>
+            <%= @physical.lymph_post_auricular.blank? ? 'No Information' : @physical.lymph_post_auricular %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Lymph Anterior Cervical</strong>
+            <%= @physical.lymph_anterior_cervical.blank? ? 'No Information' : @physical.lymph_anterior_cervical %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Lymph Occipital</strong>
+            <%= @physical.lymph_occipital.blank? ? 'No Information' : @physical.lymph_occipital %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Lymph Axillary</strong>
+            <%= @physical.lymph_axillary.blank? ? 'No Information' : @physical.lymph_axillary %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Vascular</strong>
+            <%= @physical.vascular.blank? ? 'No Information' : @physical.vascular %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Heart</strong>
+            <%= @physical.heart.blank? ? 'No Information' : @physical.heart %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Lungs</strong>
+            <%= @physical.lungs.blank? ? 'No Information' : @physical.lungs %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Abdomen</strong>
+            <%= @physical.abdomen.blank? ? 'No Information' : @physical.abdomen %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Musculoskeletal</strong>
+            <%= @physical.musculoskeletal.blank? ? 'None' : @physical.musculoskeletal %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Rscoliosis Screening</strong>
+            <%= @physical.scoliosis_screening.blank? ? 'None' : @physical.scoliosis_screening %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Neuro</strong>
+            <%= @physical.neuro.blank? ? 'None' : @physical.neuro %>
+          </li>
+        </ul>
+      </div>
+
     </div>
   </div>
 </div>
@@ -125,4 +215,17 @@
     $(".vitals-container").addClass("show");
     $(".vitals-container").removeClass("hidden");
   });
+  $(".demographics").click(function() {
+    $(".show").addClass("hidden");
+    $(".show").removeClass("show");
+    $(".demographics-container").addClass("show");
+    $(".demographics-container").removeClass("hidden");
+  });
+  $(".physical").click(function() {
+    $(".show").addClass("hidden");
+    $(".show").removeClass("show");
+    $(".physical-container").addClass("show");
+    $(".physical-container").removeClass("hidden");
+  });
+
 </script>
