@@ -1,11 +1,128 @@
 <div class="container">
   <h1><%= "#{@patient.first_name} #{@patient.last_name}" %></h1>
-  <div class="btn-group">
-    <button type="button" class="btn btn-default">Demographics</button>
-    <button type="button" class="btn btn-default">Vitals</button>
-    <button type="button" class="btn btn-default">Physical</button>
-    <button type="button" class="btn btn-default">Hearing</button>
-    <button type="button" class="btn btn-default">Vision</button>
-    <button type="button" class="btn btn-default">Assessment</button>
+  <div class="panel panel-default">
+    <div class="panel-heading">Patient Information</div>
+    <div class="panel-body">      
+      <div class="btn-group">
+        <button type="button" class="btn btn-default demographics">Demographics</button>
+        <button type="button" class="btn btn-default vitals">Vitals</button>
+        <button type="button" class="btn btn-default physical">Physical</button>
+        <button type="button" class="btn btn-default hearing">Hearing</button>
+        <button type="button" class="btn btn-default vision">Vision</button>
+        <button type="button" class="btn btn-default assessment">Assessment</button>
+      </div>
+      <div class="demographics-container show" style="margin-top:1rem;">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <strong class="col-md-3">Full Name</strong>
+            <%= "#{@patient.first_name} #{@patient.last_name}" %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Date of Birth</strong>
+            <%= @patient.dob.to_date %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Gender</strong>
+            <%= @patient.gender %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Site location</strong>
+            <%= @demographics.site_location.blank? ? 'No Information' : @demographics.site_location %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Parental permission</strong>
+            <%= @demographics.parental_permission.to_s.capitalize %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Allergies</strong>
+            <%= @demographics.allergies.blank? ? 'None' : @demographics.allergies %>
+          </li>
+          <% if @demographics.allergies %>
+            <li class="list-group-item">
+              <strong class="col-md-3">Reaction Type</strong>
+              <%= @demographics.reaction_type.blank? ? 'No Information' : @demographics.reaction_type %>
+            </li>
+          <% end %>
+          <li class="list-group-item">
+            <strong class="col-md-3">UTD</strong>
+            <%= @demographics.utd ? 'Yes' : 'No' %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">DTAP</strong>
+            <%= @demographics.dtap ? 'Yes' : 'No' %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">HIB</strong>
+            <%= @demographics.hib ? 'Yes' : 'No' %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Pneumovax</strong>
+            <%= @demographics.pneumovax ? 'Yes' : 'No' %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">HepA</strong>
+            <%= @demographics.hepA ? 'Yes' : 'No' %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">HepB</strong>
+            <%= @demographics.hepB ? 'Yes' : 'No' %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Influenza</strong>
+            <%= @demographics.influenza ? 'Yes' : 'No' %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">MMR</strong>
+            <%= @demographics.mmr ? 'Yes' : 'No' %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Additional immunization</strong>
+            <%= @demographics.additional_immunizations.blank? ? 'None' : @demographics.additional_immunizations %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Relevant information</strong>
+            <%= @demographics.relevant_info.blank? ? 'None' : @demographics.relevant_info %>
+          </li>
+        </ul>
+      </div>
+
+      <div class="vitals-container hidden" style="margin-top:1rem;">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <strong class="col-md-3">Height</strong>
+            <%= @vitals.height %> inches
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Weight</strong>
+            <%= @vitals.weight %> lbs
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">BMI</strong>
+            18
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Blood pressure</strong>
+            160/80 mmHg
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Hemoglobin</strong>
+            20 mgdL
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Bool glucose</strong>
+            45 mgdL
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
-</div>
+
+<script>
+  $(".vitals").click(function() {
+    $(".show").addClass("hidden");
+    $(".show").removeClass("show");
+    $(".vitals-container").addClass("show");
+    $(".vitals-container").removeClass("hidden");
+  });
+</script>
