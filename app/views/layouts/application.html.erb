@@ -9,6 +9,8 @@
 <body>
   <div class='container'>
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <a class="navbar-brand" style="margin: -10px;"><%= image_tag "/assets/FarmWorkerLogo.png" %></a>
+      <%= link_to("FarmWorker", root_path, class: "navbar-brand") %>
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
@@ -18,18 +20,20 @@
             <span class="icon-bar"></span>
           </button>
           <% if current_page?(root_path) %>
-          <%= link_to("Admin", admin_dashboard_path, class: "navbar-brand") %>
+            <% if user_signed_in? %>
+            <%= link_to("Admin", admin_dashboard_path, class: "btn btn-default navbar-btn") %>
+            <% end %>
           <% else %> 
-          <%= link_to("Home", root_path, class: "navbar-brand") %>
-          <%= link_to("Reports", "/report/index/0" , class: "navbar-brand") %>
-          <%= link_to("Patient Record", patient_index_path, class: "navbar-brand") %>
+          <%= link_to("Admin", admin_dashboard_path, class: "btn btn-default navbar-btn") %>
+            <%= link_to("Reports", "/report/index/0" , class: "btn btn-default navbar-btn") %>
+            <%= link_to("Patient Record", patient_index_path, class: "btn btn-default navbar-btn") %>
           <% end %>
         </div>
         <div class="navbar-collapse collapse">
           <% if user_signed_in? %>
             <div class="navbar-form navbar-right">
               <%= link_to destroy_user_session_path, :method => :delete do %>
-                <span class="glyphicon glyphicon-log-out"></span>
+              <button type="submit" class="btn btn-success">Sign Out</button>
               <% end %> 
             </div>
           <% else %>
