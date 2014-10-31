@@ -24,9 +24,15 @@
             <%= link_to("Admin", admin_dashboard_path, class: "btn btn-default navbar-btn") %>
             <% end %>
           <% else %> 
-          <%= link_to("Admin", admin_dashboard_path, class: "btn btn-default navbar-btn") %>
+            <% if current_user.role.downcase == "admin" %>
+              <%= link_to("Admin", admin_dashboard_path, class: "btn btn-default navbar-btn") %>
+            <% elsif current_user.role.downcase == "student-bsn" %>
+              <%= link_to("Student", student_dashboard_path, class: "btn btn-default navbar-btn") %>
+            <% end %>
             <%= link_to("Reports", "/report/index/0" , class: "btn btn-default navbar-btn") %>
-            <%= link_to("Patient Record", student_dashboard_path, class: "btn btn-default navbar-btn") %>
+            <% if current_user.role.downcase != "admin" %>              
+              <%= link_to("Patient", student_dashboard_path, class: "btn btn-default navbar-btn") %>
+            <% end %>
           <% end %>
         </div>
         <div class="navbar-collapse collapse">
