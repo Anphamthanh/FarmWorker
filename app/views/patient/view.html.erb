@@ -204,6 +204,61 @@
         </ul>
       </div>
 
+      <div class="hearing-container hidden" style="margin-top:1rem;">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <strong class="col-md-3">AL</strong>
+            <%= @hearing.al.blank? ? 'No Information' : @hearing.al %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">AD</strong>
+            <%= @hearing.ad.blank? ? 'No Information' : @hearing.ad %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Comment</strong>
+            <%= @hearing.comment.blank? ? 'None' : @hearing.comment %>
+          </li>
+        </ul>
+      </div>
+
+      <div class="vision-container hidden" style="margin-top:1rem;">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <strong class="col-md-3">OL</strong>
+            <%= @vision.ol.blank? ? 'No Information' : @vision.ol %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">OD</strong>
+            <%= @vision.od.blank? ? 'No Information' : @vision.od %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">OU</strong>
+            <%= @vision.ou.blank? ? 'No Information' : @vision.ou %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Color Blindness</strong>
+            <%= @vision.color_blindness.blank? ? 'None' : @vision.color_blindness %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Corrective Lenses</strong>
+            <%= @vision.corrective_lenses.blank? ? 'None' : @vision.corrective_lenses %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Comment</strong>
+            <%= @vision.comment.blank? ? 'No Information' : @vision.comment %>
+          </li>
+        </ul>
+      </div>
+
+      <div class="assessment-container hidden" style="margin-top:1rem;">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <strong class="col-md-3">General Assessment</strong>
+            <%= @assessment.general_assessment.blank? ? 'No Information' : @assessment.general_assessment %>
+          </li>
+        </ul>
+      </div>
+
     </div>
   </div>
 </div>
@@ -226,6 +281,24 @@
     $(".show").removeClass("show");
     $(".physical-container").addClass("show");
     $(".physical-container").removeClass("hidden");
+  });
+  $(".hearing").click(function() {
+    $(".show").addClass("hidden");
+    $(".show").removeClass("show");
+    $(".hearing-container").addClass("show");
+    $(".hearing-container").removeClass("hidden");
+  });
+  $(".vision").click(function() {
+    $(".show").addClass("hidden");
+    $(".show").removeClass("show");
+    $(".vision-container").addClass("show");
+    $(".vision-container").removeClass("hidden");
+  });
+  $(".assessment").click(function() {
+    $(".show").addClass("hidden");
+    $(".show").removeClass("show");
+    $(".assessment-container").addClass("show");
+    $(".assessment-container").removeClass("hidden");
   });
 
 </script>
