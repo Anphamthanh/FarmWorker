@@ -2,12 +2,6 @@ class PatientController < ApplicationController
 
   before_action :authenticate_practitioner
 
-  # Jackson's branch
-  def index
-    @patients = Patient.all
-  end
-  ###
-
   def new
     patient = Patient.new(patient_params)
     patient.created_by = current_user.id
@@ -64,4 +58,3 @@ class PatientController < ApplicationController
     end
   end
 end
->>>>>>> master

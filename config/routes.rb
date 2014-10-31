@@ -16,7 +16,6 @@ FarmWorker::Application.routes.draw do
   get 'patient/:id' => 'patient#view'
   # From Jackson's branch
   get 'report/index/:type' => 'report#index', as: :type
-  get 'patient/index' => 'patient#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
