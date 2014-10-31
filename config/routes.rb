@@ -11,7 +11,12 @@ FarmWorker::Application.routes.draw do
   post 'admin/register' => 'admin#register'
   post 'student/new_patient' => 'student#new_patient'
   get 'patient/index' => 'patient#index'
+  post 'patient' => 'patient#new'
+  get 'patient/:id/demographics' => 'patient#demographics'
+  get 'patient/:id' => 'patient#view'
+  # From Jackson's branch
   get 'report/index/:type' => 'report#index', as: :type
+  get 'patient/index' => 'patient#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

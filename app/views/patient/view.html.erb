@@ -1,0 +1,304 @@
+<div class="container">
+  <h1><%= "#{@patient.first_name} #{@patient.last_name}" %></h1>
+  <div class="panel panel-default">
+    <div class="panel-heading">Patient Information</div>
+    <div class="panel-body">      
+      <div class="btn-group">
+        <button type="button" class="btn btn-default demographics">Demographics</button>
+        <button type="button" class="btn btn-default vitals">Vitals</button>
+        <button type="button" class="btn btn-default physical">Physical</button>
+        <button type="button" class="btn btn-default hearing">Hearing</button>
+        <button type="button" class="btn btn-default vision">Vision</button>
+        <button type="button" class="btn btn-default assessment">Assessment</button>
+      </div>
+      <div class="demographics-container show" style="margin-top:1rem;">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <strong class="col-md-3">Full Name</strong>
+            <%= "#{@patient.first_name} #{@patient.last_name}" %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Date of Birth</strong>
+            <%= @patient.dob.to_date %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Gender</strong>
+            <%= @patient.gender %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Site location</strong>
+            <%= @demographics.site_location.blank? ? 'No Information' : @demographics.site_location %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Parental permission</strong>
+            <%= @demographics.parental_permission.to_s.capitalize %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Allergies</strong>
+            <%= @demographics.allergies.blank? ? 'None' : @demographics.allergies %>
+          </li>
+          <% if @demographics.allergies %>
+            <li class="list-group-item">
+              <strong class="col-md-3">Reaction Type</strong>
+              <%= @demographics.reaction_type.blank? ? 'No Information' : @demographics.reaction_type %>
+            </li>
+          <% end %>
+          <li class="list-group-item">
+            <strong class="col-md-3">UTD</strong>
+            <%= @demographics.utd ? 'Yes' : 'No' %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">DTAP</strong>
+            <%= @demographics.dtap ? 'Yes' : 'No' %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">HIB</strong>
+            <%= @demographics.hib ? 'Yes' : 'No' %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Pneumovax</strong>
+            <%= @demographics.pneumovax ? 'Yes' : 'No' %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">HepA</strong>
+            <%= @demographics.hepA ? 'Yes' : 'No' %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">HepB</strong>
+            <%= @demographics.hepB ? 'Yes' : 'No' %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Influenza</strong>
+            <%= @demographics.influenza ? 'Yes' : 'No' %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">MMR</strong>
+            <%= @demographics.mmr ? 'Yes' : 'No' %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Additional immunization</strong>
+            <%= @demographics.additional_immunizations.blank? ? 'None' : @demographics.additional_immunizations %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Relevant information</strong>
+            <%= @demographics.relevant_info.blank? ? 'None' : @demographics.relevant_info %>
+          </li>
+        </ul>
+      </div>
+
+      <div class="vitals-container hidden" style="margin-top:1rem;">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <strong class="col-md-3">Height</strong>
+            <%= @vitals.height %> inches
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Weight</strong>
+            <%= @vitals.weight %> lbs
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">BMI</strong>
+            18
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Blood pressure</strong>
+            160/80 mmHg
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Hemoglobin</strong>
+            20 mgdL
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Blood glucose</strong>
+            45 mgdL
+          </li>
+        </ul>
+      </div>
+
+      <div class="physical-container hidden" style="margin-top:1rem;">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <strong class="col-md-3">General Appearance</strong>
+            <%= @physical.general_appearance.blank? ? 'No Information' : @physical.general_appearance %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Head/Hear</strong>
+            <%= @physical.head_hair.blank? ? 'No Information' : @physical.head_hair %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Skin</strong>
+            <%= @physical.skin.blank? ? 'No Information' : @physical.skin %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Eyes</strong>
+            <%= @physical.eyes.blank? ? 'No Information' : @physical.eyes %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Ears</strong>
+            <%= @physical.ears.blank? ? 'No Information' : @physical.ears %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Nose</strong>
+            <%= @physical.nose.blank? ? 'No Information' : @physical.nose %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Mouth</strong>
+            <%= @physical.mouth.blank? ? 'No Information' : @physical.mouth %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Throat</strong>
+            <%= @physical.throat.blank? ? 'No Information' : @physical.throat %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Thyroid</strong>
+            <%= @physical.thyroid.blank? ? 'No Information' : @physical.thyroid %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Lymph Pre-Auricular</strong>
+            <%= @physical.lymph_pre_auricular.blank? ? 'No Information' : @physical.lymph_pre_auricular %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Lymph Post-Auricular</strong>
+            <%= @physical.lymph_post_auricular.blank? ? 'No Information' : @physical.lymph_post_auricular %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Lymph Anterior Cervical</strong>
+            <%= @physical.lymph_anterior_cervical.blank? ? 'No Information' : @physical.lymph_anterior_cervical %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Lymph Occipital</strong>
+            <%= @physical.lymph_occipital.blank? ? 'No Information' : @physical.lymph_occipital %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Lymph Axillary</strong>
+            <%= @physical.lymph_axillary.blank? ? 'No Information' : @physical.lymph_axillary %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Vascular</strong>
+            <%= @physical.vascular.blank? ? 'No Information' : @physical.vascular %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Heart</strong>
+            <%= @physical.heart.blank? ? 'No Information' : @physical.heart %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Lungs</strong>
+            <%= @physical.lungs.blank? ? 'No Information' : @physical.lungs %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Abdomen</strong>
+            <%= @physical.abdomen.blank? ? 'No Information' : @physical.abdomen %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Musculoskeletal</strong>
+            <%= @physical.musculoskeletal.blank? ? 'None' : @physical.musculoskeletal %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Rscoliosis Screening</strong>
+            <%= @physical.scoliosis_screening.blank? ? 'None' : @physical.scoliosis_screening %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Neuro</strong>
+            <%= @physical.neuro.blank? ? 'None' : @physical.neuro %>
+          </li>
+        </ul>
+      </div>
+
+      <div class="hearing-container hidden" style="margin-top:1rem;">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <strong class="col-md-3">AL</strong>
+            <%= @hearing.al.blank? ? 'No Information' : @hearing.al %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">AD</strong>
+            <%= @hearing.ad.blank? ? 'No Information' : @hearing.ad %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Comment</strong>
+            <%= @hearing.comment.blank? ? 'None' : @hearing.comment %>
+          </li>
+        </ul>
+      </div>
+
+      <div class="vision-container hidden" style="margin-top:1rem;">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <strong class="col-md-3">OL</strong>
+            <%= @vision.ol.blank? ? 'No Information' : @vision.ol %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">OD</strong>
+            <%= @vision.od.blank? ? 'No Information' : @vision.od %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">OU</strong>
+            <%= @vision.ou.blank? ? 'No Information' : @vision.ou %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Color Blindness</strong>
+            <%= @vision.color_blindness.blank? ? 'None' : @vision.color_blindness %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Corrective Lenses</strong>
+            <%= @vision.corrective_lenses.blank? ? 'None' : @vision.corrective_lenses %>
+          </li>
+          <li class="list-group-item">
+            <strong class="col-md-3">Comment</strong>
+            <%= @vision.comment.blank? ? 'No Information' : @vision.comment %>
+          </li>
+        </ul>
+      </div>
+
+      <div class="assessment-container hidden" style="margin-top:1rem;">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <strong class="col-md-3">General Assessment</strong>
+            <%= @assessment.general_assessment.blank? ? 'No Information' : @assessment.general_assessment %>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  $(".vitals").click(function() {
+    $(".show").addClass("hidden");
+    $(".show").removeClass("show");
+    $(".vitals-container").addClass("show");
+    $(".vitals-container").removeClass("hidden");
+  });
+  $(".demographics").click(function() {
+    $(".show").addClass("hidden");
+    $(".show").removeClass("show");
+    $(".demographics-container").addClass("show");
+    $(".demographics-container").removeClass("hidden");
+  });
+  $(".physical").click(function() {
+    $(".show").addClass("hidden");
+    $(".show").removeClass("show");
+    $(".physical-container").addClass("show");
+    $(".physical-container").removeClass("hidden");
+  });
+  $(".hearing").click(function() {
+    $(".show").addClass("hidden");
+    $(".show").removeClass("show");
+    $(".hearing-container").addClass("show");
+    $(".hearing-container").removeClass("hidden");
+  });
+  $(".vision").click(function() {
+    $(".show").addClass("hidden");
+    $(".show").removeClass("show");
+    $(".vision-container").addClass("show");
+    $(".vision-container").removeClass("hidden");
+  });
+  $(".assessment").click(function() {
+    $(".show").addClass("hidden");
+    $(".show").removeClass("show");
+    $(".assessment-container").addClass("show");
+    $(".assessment-container").removeClass("hidden");
+  });
+
+</script>
