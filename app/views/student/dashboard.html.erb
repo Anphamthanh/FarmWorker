@@ -15,7 +15,7 @@
         <th>DOB</th>
       </tr>
       <% @all_patients.each do |patient| %>
-        <tr>
+        <tr class='clickableRow' href='/patient/<%= "#{patient.id}" %>'/>
           <td><%= patient.id %></td>
           <td><%= patient.first_name %></td>
           <td><%= patient.last_name %></td>
@@ -70,3 +70,9 @@
     <% end %>
   </div>
 </div>
+
+<script>
+  $(".clickableRow").click(function() {
+    window.document.location = $(this).attr("href");
+  });
+</script>
