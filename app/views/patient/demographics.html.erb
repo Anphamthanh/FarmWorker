@@ -1,12 +1,85 @@
 <div class="container">
-  <h1>Demographics</h1> 
+  <h1><%= "#{@patient.first_name} #{@patient.last_name}" %></h1>
   <div class="panel panel-default">
-    <div class="panel-heading">Patient</div>
-    <div class="panel-body">
-      <h2><%= "#{@patient.first_name} #{@patient.last_name}" %></h2>
-    </div>
-    <div class="container">
-    Later
+    <div class="panel-heading">Patient Information</div>
+    <div class="panel-body">      
+      <div class="btn-group">
+        <button type="button" class="btn btn-default demographics">Demographics</button>
+        <button type="button" class="btn btn-default vitals">Vitals</button>
+        <button type="button" class="btn btn-default physical">Physical</button>
+        <button type="button" class="btn btn-default hearing">Hearing</button>
+        <button type="button" class="btn btn-default vision">Vision</button>
+        <button type="button" class="btn btn-default assessment">Assessment</button>
+      </div>
+      <div class="demographics-container show" style="margin-top:1rem;">
+        <div class="container">
+          <%= form_for(:user, url: admin_register_path, :validate => true, :class => 'form-horizontal') do |f| %>
+            <div class="form-group row col-md-8">
+              <div class="col-md-5">
+                <%= f.label :full_name %>
+              </div>
+              <div class="col-md-7">
+                <%= "#{@patient.first_name} #{@patient.last_name}" %>               
+              </div>
+            </div>
+            <div class="form-group row col-md-8">
+              <div class="col-md-5">
+                <%= f.label "Date of Birth" %>
+              </div>
+              <div class="col-md-7">
+                <%= @patient.dob.to_date %>
+              </div>
+            </div>
+            <div class="form-group row col-md-8">
+              <div class="col-md-5">
+                <%= f.label :gender %>
+              </div>
+              <div class="col-md-7">
+                <%= @patient.gender %>
+              </div>
+            </div>
+            <div class="form-group row col-md-8">
+              <div class="col-md-5">
+                <%= f.label :site_location %>
+              </div>
+              <div class="col-md-7">
+                <%= f.select :role, options_for_select(["Location 1", "Location 2"]) %>
+              </div>
+            </div>
+            <div class="form-group row col-md-8">
+              <div class="col-md-5">
+                <%= f.label :parental_permission %>
+              </div>
+              <div class="col-md-7">
+                <%= f.select :parental_permission, options_for_select(["Yes", "No"]) %>
+              </div>
+            </div>
+            <div class="form-group row col-md-8">
+              <div class="col-md-5">
+                <%= f.label :allergies %>
+              </div>
+              <div class="col-md-7">
+                <%= f.text_field :allergies, :class => "form-control", :placeholder => "Allergies" %>
+              </div>
+            </div>
+            <div class="form-group row col-md-8">
+              <div class="col-md-5">
+                <%= f.label :reaction_type %>
+              </div>
+              <div class="col-md-7">
+                <%= f.text_field :reaction_type, :class => "form-control" %>
+              </div>
+            </div>
+            <div class="form-group row col-md-8">
+              <div class="col-md-12"> 
+                <button type="submit" class="btn btn-primary">Next</button>
+              </div>
+            </div>
+
+          <% end %>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
