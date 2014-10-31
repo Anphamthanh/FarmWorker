@@ -2,7 +2,7 @@
 <div class="btn-group">
   <%= link_to("Clinic Summary", "/report/index/0" , class: "btn btn-default") %>
   <%= link_to("Patient Summary", "/report/index/1" , class: "btn btn-default") %>
-  <%= link_to("Vitals Alert", "/report/index/2" , class: "btn btn-default") %>
+  <%= link_to("Vitals Summary", "/report/index/2" , class: "btn btn-default") %>
 </div>
 <br>
 <br>
@@ -61,12 +61,12 @@
       <table class="table">
       <tr>
         <th>Name</th>
-        <th>Height</th>
-        <th>Weight</th>
-        <th>BMI</th>
-        <th>Blood Pressure</th>
-        <th>Hemoglobin</th>
-        <th>Glucose</th>
+        <th>Demographics</th>
+        <th>Vitals</th>
+        <th>Physical</th>
+        <th>Hearing</th>
+        <th>Vision</th>
+        <th>Assessment</th>
       </tr>
       <tr>
         <td>Teddy Bear</td>
@@ -87,7 +87,7 @@
         <td>50</td>
       </tr>
       <tr>
-        <td>Teddy Bear</td>
+        <td>Briam Fachisthers</td>
         <td>50</td>
         <td>50</td>
         <td>50</td>
@@ -96,7 +96,7 @@
         <td>50</td>
       </tr>
       <tr>
-        <td>Teddy Bear</td>
+        <td>An Pham</td>
         <td>50</td>
         <td>50</td>
         <td>50</td>
@@ -105,7 +105,7 @@
         <td>50</td>
       </tr>
       <tr>
-        <td>Teddy Bear</td>
+        <td>Jackson Chan</td>
         <td>50</td>
         <td>50</td>
         <td>50</td>
@@ -120,25 +120,66 @@
 
 <div class="container" style="display:<%= 'none' if @type != '2' %>">
     <div class="panel panel-default">
-      <div class="panel-heading">Vital Alert Report</div>
+      <div class="panel-heading">Vital Summary Report</div>
       <table class="table">
       <tr>
         <th>Name</th>
-        <% (1..4).each do |row| %>
-        <th>Blood Vital <%= row %></th>
-        <% end %>
+        <th>Height</th>
+        <th>Weight</th>
+        <th>BMI</th>
+        <th>Blood Pressure</th>
+        <th>Hemoglobin</th>
+        <th>Blood Glucose</th>
       </tr>
-        <% (1..4).each do |row| %>
-        <tr>
-          <td>test name <%= row %></td>
-          <% (1..4).each do |i| %>
-           <td>good</td>
-          <% end %>
-        </tr>
-        <% end %>
+      <tr>
+        <td>Teddy Bear</td>
+        <td>5 ft 0 in</td>
+        <td>150 lbs</td>
+        <td>18 %</td>
+        <td>160 / 80 mmHg</td>
+        <td>20 mg/dL</td>
+        <td>45 mg/dL</td>
+      </tr>
+      <tr>
+        <td>George Burdell</td>
+        <td>5 ft 11 in</td>
+        <td>163 lbs</td>
+        <td>19 %</td>
+        <td>120 / 85 mmHg</td>
+        <td>23 mg/dL</td>
+        <td>49 mg/dL</td>
+      </tr>
+      <tr>
+        <td>Briam Fachisthers</td>
+        <td>5 ft 8 in</td>
+        <td>185 lbs</td>
+        <td>16 %</td>
+        <td>100 / 60 mmHg</td>
+        <td>57 mg/dL</td>
+        <td>82 mg/dL</td>
+      </tr>
+      <tr>
+        <td>An Pham</td>
+        <td>5 ft 3 in</td>
+        <td>125 lbs</td>
+        <td>17 %</td>
+        <td>112 / 70 mmHg</td>
+        <td>44 mg/dL</td>
+        <td>62 mg/dL</td>
+      </tr>
+      <tr>
+        <td>Jackson Chan</td>
+        <td>5 ft 10 in</td>
+        <td>140 lbs</td>
+        <td>15 %</td>
+        <td>115 / 75 mmHg</td>
+        <td>36 mg/dL</td>
+        <td>50 mg/dL</td>
+      </tr>
       </table>
     </div>
 </div>
 
 <%= link_to("Back To Home", root_path, class: "btn btn-default btn-lg active") %>
+<button class="btn btn-default btn-lg active">Print</button>
 <br>
