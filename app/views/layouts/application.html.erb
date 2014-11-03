@@ -23,7 +23,7 @@
           <% if user_signed_in? %>
             <div class="navbar-form navbar-right">
               <%= link_to destroy_user_session_path, :method => :delete do %>
-                <span class="glyphicon glyphicon-log-out"></span>
+                <i class="fa fa-sign-out fa-2x"></i>
               <% end %> 
             </div>
           <% else %>

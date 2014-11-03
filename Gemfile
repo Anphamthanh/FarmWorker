@@ -57,3 +57,4 @@ end
 gem 'devise'
 gem 'therubyracer'
 gem 'rails_12factor', group: :production
+gem 'font-awesome-rails'
