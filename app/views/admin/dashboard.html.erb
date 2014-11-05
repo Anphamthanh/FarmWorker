@@ -4,7 +4,13 @@
     <div class="panel panel-default">
       <div class="panel-heading">All Users</div>
       <div class="panel-body">
-        <p>We need a search box in here to search for user</p>
+        <p>Click on user to edit user's information</p>
+        <%= form_tag admin_dashboard_path, :method => 'get' do %>
+          <p>
+            <%= text_field_tag :search, params[:search] %>
+            <%= submit_tag "Search", :name => nil %>
+          </p>
+        <% end %>
       </div>
       <table class="table">
         <tr>

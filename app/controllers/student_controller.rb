@@ -2,7 +2,7 @@ class StudentController < ApplicationController
   before_action :authenticate_student
 
   def dashboard
-    @all_patients = Patient.page(params[:page]).per_page(5)
+    @all_patients = Patient.search(params[:search]).page(params[:page]).per_page(5)
   end
 
   private

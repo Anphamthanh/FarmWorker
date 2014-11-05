@@ -6,4 +6,11 @@ class User < ActiveRecord::Base
 
   validates_presence_of :username, :email, :password, 
                         :role, :first_name, :last_name
+  def self.search(search)
+    if search
+      where ['first_name LIKE :s OR last_name LIKE :s OR username LIKE :s', :s => "%#{search}"]
+    else
+      User.all
+    end
+  end
 end

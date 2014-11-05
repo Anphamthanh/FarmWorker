@@ -4,7 +4,13 @@
     <div class="panel panel-default">
       <div class="panel-heading">Patient Data</div>
       <div class="panel-body">
-        <p>We need a search box in here to search for patient</p>
+        <p>All patient's data is confidential.</p>
+        <%= form_tag student_dashboard_path, :method => 'get' do %>
+          <p>
+            <%= text_field_tag :search, params[:search] %>
+            <%= submit_tag "Search", :name => nil %>
+          </p>
+        <% end %>
       </div>
       <table class="table">
       <tr>

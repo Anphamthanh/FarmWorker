@@ -3,7 +3,7 @@ class AdminController < ApplicationController
   before_action :authenticate_admin
 
   def dashboard
-    @all_users = User.page(params[:page]).per_page(5)
+    @all_users = User.search(params[:search]).page(params[:page]).per_page(5)
   end
 
   def register
