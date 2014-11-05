@@ -20,6 +20,15 @@ class PatientController < ApplicationController
     @type = params[:type]
   end
 
+  def update
+    @patient = Patient.find_by_id(params[:id])
+    type = params[:type]
+    print params
+    if type == "demographics"
+      redirect_to :controller => "patient", :action => "input", :id => @patient.id, :type => "vitals"
+    end 
+  end
+
   def view
     @patient = Patient.find_by_id(params[:id])
     if @patient.nil?
