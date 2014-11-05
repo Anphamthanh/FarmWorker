@@ -58,3 +58,5 @@ gem 'devise'
 gem 'therubyracer'
 gem 'rails_12factor', group: :production
 gem 'font-awesome-rails'
+gem 'will_paginate', '~> 3.0.5'
+gem 'will_paginate-bootstrap'

@@ -7,26 +7,27 @@
         <p>We need a search box in here to search for user</p>
       </div>
       <table class="table">
-      <tr>
-        <th>User ID</th>
-        <th>Role</th>
-        <th>Username</th>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
-      </tr>
-      <% @all_users.each do |user| %>
         <tr>
-          <td><%= user.id %></td>
-          <td><%= user.role %></td>
-          <td><%= user.username %></td>
-          <td><%= user.first_name %></td>
-          <td><%= user.last_name %></td>
-          <td><%= user.email %></td>
+          <th>User ID</th>
+          <th>Role</th>
+          <th>Username</th>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Email</th>
         </tr>
-      <% end %>
+        <% @all_users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= user.role %></td>
+            <td><%= user.username %></td>
+            <td><%= user.first_name %></td>
+            <td><%= user.last_name %></td>
+            <td><%= user.email %></td>
+          </tr>
+        <% end %>
       </table>
     </div>
+    <%= will_paginate @all_users, renderer: BootstrapPagination::Rails %>
   </div>
 
   <h2>Create new user</h2>
