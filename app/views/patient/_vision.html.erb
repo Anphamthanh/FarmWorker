@@ -1,0 +1,181 @@
+<div class="vision-container show" style="margin-top:1rem;">
+  <div class="container">
+    <%= form_for(:user, url: admin_register_path, :validate => true, :class => 'form-horizontal') do |f| %>
+      <table class="table table-bordered">
+    <tbody>
+      <tr>
+        <td class="vision_title" colspan="3">
+          <p>Test 1</p>
+        </td>
+      </tr>
+      
+      <tr>
+        <td class="td_three">
+          <p>Left Eye</p>
+          <p>
+            20 / 
+            <%= f.text_field :vision_acuity_left_1, :class => "number_field" %>
+             result
+          </p>
+        </td>
+        <td class="td_three">
+          <p>Right Eye</p>
+          <p>
+            20 / 
+            <%= f.text_field :vision_acuity_right_1, :class => "number_field" %>
+             result
+          </p>
+        </td>
+        <td class="td_three">
+          <p>Both Eyes</p>
+          <p>
+            20 / 
+            <%= f.text_field :vision_acuity_both_1, :class => "number_field" %>
+             result
+          </p>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="vision_title" colspan="3">
+          <p>Test 2</p>
+        </td>
+      </tr>
+      
+      <tr>
+        <td class="td_three">
+          <p>Left Eye</p>
+          <p>
+            20 / 
+            <%= f.text_field :vision_acuity_left_2, :class => "number_field" %>
+             result
+          </p>
+        </td>
+        <td class="td_three">
+          <p>Right Eye</p>
+          <p>
+            20 / 
+            <%= f.text_field :vision_acuity_right_2, :class => "number_field" %>
+             result
+          </p>
+        </td>
+        <td class="td_three">
+          <p>Both Eyes</p>
+          <p>
+            20 / 
+            <%= f.text_field :vision_acuity_both_2, :class => "number_field" %>
+             result
+          </p>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="vision_title" colspan="3">
+          <p>Test 3</p>
+        </td>
+      </tr>
+      
+      <tr>
+        <td class="td_three">
+          <p>Left Eye</p>
+          <p>
+            20 / 
+            <%= f.text_field :vision_acuity_left_3, :class => "number_field" %>
+             result
+          </p>
+        </td>
+        <td class="td_three">
+          <p>Right Eye</p>
+          <p>
+            20 / 
+            <%= f.text_field :vision_acuity_right_3, :class => "number_field" %>
+             result
+          </p>
+        </td>
+        <td class="td_three">
+          <p>Both Eyes</p>
+          <p>
+            20 / 
+            <%= f.text_field :vision_acuity_both_3, :class => "number_field" %>
+             result
+          </p>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class=".label.vision_checkbox_label" colspan="">
+          <%= f.label :vision_color_blindness, "Color Blindness", :class=>"checkbox_label_field" %>
+        </td>
+        <td colspan="2">
+          <%= f.check_box :vision_color_blindness, :class=>"checkbox_field" %>
+        </td>
+      </tr>
+
+      <tr>
+        <td class=".label.vision_checkbox_label" colspan="">
+          <%= f.label :cover_test_left, "Cover Test Left", :class=>"checkbox_label_field" %>
+        </td>
+        <td colspan="2">
+          <%= f.check_box :cover_test_left, :class=>"checkbox_field" %>
+          
+        </td>
+      </tr>
+
+      <tr>
+        <td class=".label.vision_checkbox_label" colspan="">
+          <%= f.label :cover_test_right, "Cover Test Right", :class=>"checkbox_label_field" %>
+        </td>
+        <td colspan="2">
+          <%= f.check_box :cover_test_right, :class=>"checkbox_field" %>
+          
+        </td>
+      </tr>
+
+      <tr>
+        <td class=".label.vision_checkbox_label" colspan="">
+          <%= f.label :cover_test_both, "Cover Test Both", :class=>"checkbox_label_field" %>
+        </td>
+        <td colspan="2">
+          <%= f.check_box :cover_test_both, :class=>"checkbox_field" %>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="vision_title" colspan="">
+          <%= f.label :wears_corrective_lenses, "Wears corrective lenses?" %>
+        </td>
+        <td colspan="2">
+          
+          <%= f.select :wears_corrective_lenses,  options_for_select(%w[Yes No N/A]), {}, html_options={:class =>"select_field"} %>
+        </td>
+      </tr>
+      
+      <tr>
+        <td class="vision_title" colspan="">
+          <%= f.label :vision_comments %>
+        </td>
+        <td .class="vision_text_field" colspan="2">
+          
+          <%= f.text_field :vision_comments %>
+        </td>
+      </tr>
+
+      
+    </tbody>
+  </table> 
+      <div class="form-group row col-md-12">
+        <div class="col-md-12"> 
+          <button type="submit" class="btn btn-success">Save</button>
+          <button type="submit" class="btn btn-success">Save &amp; Next</button>
+          <button type="button" class="btn btn-danger pull-right">Exit</button>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+</div>
+
+<script>
+  $(".vision").addClass("active");
+</script> 
