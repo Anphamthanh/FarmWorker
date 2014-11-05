@@ -26,6 +26,14 @@ class PatientController < ApplicationController
     print params
     if type == "demographics"
       redirect_to :controller => "patient", :action => "input", :id => @patient.id, :type => "vitals"
+    elsif type == "vitals"
+      redirect_to :controller => "patient", :action => "input", :id => @patient.id, :type => "physical"
+    elsif type == "physical"
+      redirect_to :controller => "patient", :action => "input", :id => @patient.id, :type => "hearing"
+    elsif type == "hearing"
+      redirect_to :controller => "patient", :action => "input", :id => @patient.id, :type => "vision"
+    elsif type == "vision"
+      redirect_to :controller => "patient", :action => "input", :id => @patient.id, :type => "assessment"
     end 
   end
 
