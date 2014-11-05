@@ -1,0 +1,52 @@
+<div class="hearing-container show" style="margin-top:1rem;">
+  <div class="container">
+    <%= form_for(:user, url: admin_register_path, :validate => true, :class => 'form-horizontal') do |f| %>
+      <div class="form-group row col-md-8">
+        <div class="col-md-3">
+          <%= f.label :al, "al" %>
+        </div>
+        <div class="col-md-3">
+          <%= f.text_field :al, :class => "form-control", :placeholder => "test 1" %>            
+        </div>
+        <div class="col-md-2">
+          <%= f.label :result %>
+        </div>
+        <div class="col-md-4">
+          Auto-calculated Pass/Fail           
+        </div>
+      </div>
+      <div class="form-group row col-md-8">        
+        <div class="col-md-3">
+          <%= f.label :ad, "ad" %>
+        </div>
+        <div class="col-md-3">
+          <%= f.text_field :ad, :class => "form-control", :placeholder => "test 1" %>            
+        </div>
+        <div class="col-md-2">
+          <%= f.label :result %>
+        </div>
+        <div class="col-md-4">
+          Auto-calculated Pass/Fail           
+        </div>
+      </div>
+      <div class="form-group row col-md-8">        
+        
+      There will be three tests for each ear. Important Questions:
+      - Do we need to save the record for each test?
+      - Can we auto generate pass or fail based on test result or should we leave a pass/fail dropdown for each test?
+      </div>
+      <div class="form-group row col-md-12">
+        <div class="col-md-12"> 
+          <button type="submit" class="btn btn-success">Save</button>
+          <button type="submit" class="btn btn-success">Save &amp; Next</button>
+          <button type="button" class="btn btn-danger pull-right">Exit</button>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+</div>
+
+<script>
+  $(".hearing").addClass("active");
+</script>
