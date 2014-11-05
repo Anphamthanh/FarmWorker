@@ -15,6 +15,14 @@
         <%= render :partial => 'patient/demographics' %>
       <% elsif @type == "vitals" %>
         <%= render :partial => 'patient/vitals' %>
+      <% elsif @type == "physical" %>
+        <%= render :partial => 'patient/physical' %>
+      <% elsif @type == "hearing" %>
+        <%= render :partial => 'patient/hearing' %>
+      <% elsif @type == "vision" %>
+        <%= render :partial => 'patient/vision' %>
+      <% elsif @type == "assessment" %>
+        <%= render :partial => 'patient/assessment' %>
       <% end %>
 
     </div>
