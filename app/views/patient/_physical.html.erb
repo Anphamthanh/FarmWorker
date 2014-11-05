@@ -1,6 +1,6 @@
 <div class="physical-container show" style="margin-top:1rem;">
   <div class="container">
-    <%= form_for(:user, url: admin_register_path, :validate => true, :class => 'form-horizontal') do |f| %>
+    <%= form_for(:patient_record, url: patient_update_path, type: "physical", :validate => true, :class => 'form-horizontal') do |f| %>
       <div class="form-group row col-md-12">
         <div class="col-md-7">
           <%= f.label :appearance, "General Appearance (Well nourished, hygienge, appears ill, etc)" %>

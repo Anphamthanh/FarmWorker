@@ -1,6 +1,6 @@
 <div class="vitals-container show" style="margin-top:1rem;">
   <div class="container">
-    <%= form_for(:user, url: admin_register_path, :validate => true, :class => 'form-horizontal') do |f| %>
+    <%= form_for(:patient_record, url: patient_update_path, type: "vitals", :validate => true, :class => 'form-horizontal') do |f| %>
       <div class="form-group row col-md-8">
         <div class="col-md-5">
           <%= f.label :height %>
