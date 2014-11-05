@@ -1,6 +1,6 @@
 <div class="container">
   <h1><%= "#{@patient.first_name} #{@patient.last_name}" %></h1>
-  <div class="panel panel-default">
+  <div class="panel panel-info">
     <div class="panel-heading">Patient Information</div>
     <div class="panel-body">      
       <div class="btn-group">
@@ -51,7 +51,7 @@
                 <%= f.label :parental_permission %>
               </div>
               <div class="col-md-7">
-                <%= f.select :parental_permission, options_for_select(["Yes", "No"]) %>
+                <input type="checkbox" name="parental-permission">
               </div>
             </div>
             <div class="form-group row col-md-8">
@@ -59,7 +59,7 @@
                 <%= f.label :allergies %>
               </div>
               <div class="col-md-7">
-                <%= f.text_field :allergies, :class => "form-control", :placeholder => "Allergies" %>
+                <textarea placeholder="Allergies" id="user_allergies" class="form-control" rows="3"></textarea>
               </div>
             </div>
             <div class="form-group row col-md-8">
@@ -67,7 +67,7 @@
                 <%= f.label :reaction_type %>
               </div>
               <div class="col-md-7">
-                <%= f.text_field :reaction_type, :class => "form-control" %>
+                <textarea placeholder="Reactions" id="reaction_type" class="form-control" rows="3"></textarea>
               </div>
             </div>
             <div class="form-group row col-md-8">
@@ -83,3 +83,7 @@
     </div>
   </div>
 </div>
+
+<script>
+  $(".demographics").addClass("active");
+</script>
