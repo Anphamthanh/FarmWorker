@@ -5,11 +5,13 @@
       <div class="panel-heading">Patient Data</div>
       <div class="panel-body">
         <p>All patient's data is confidential.</p>
-        <%= form_tag student_dashboard_path, :method => 'get' do %>
-          <p>
-            <%= text_field_tag :search, params[:search] %>
-            <%= submit_tag "Search", :name => nil %>
-          </p>
+        <%= form_tag student_dashboard_path, :method => 'get', :class => "navbar-form", :role => "search" do %>
+          <div class="input-group">
+            <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Enter patient" %>
+            <div class="input-group-btn">
+              <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+            </div>
+          </div>
         <% end %>
       </div>
       <table class="table">
