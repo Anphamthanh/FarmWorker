@@ -10,8 +10,8 @@ FarmWorker::Application.routes.draw do
   get 'student/dashboard' => 'student#dashboard'
   post 'admin/register' => 'admin#register'
   post 'patient' => 'patient#new'
-  get 'patient/:id/input/:type' => 'patient#input'
-  get 'patient/:id' => 'patient#view'
+  get 'patient/:id/input/:type' => 'patient#input', as: 'patient_input'
+  get 'patient/:id' => 'patient#view', as: 'patient_view'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -13,9 +13,33 @@
       </div>
       <% if @type == "demographics" %>
         <%= render :partial => 'patient/demographics' %>
+      <% elsif @type == "vitals" %>
+        <%= render :partial => 'patient/vitals' %>
       <% end %>
 
     </div>
   </div>
 </div>
+
+<script>
+  $(".vitals").click(function() {
+    window.document.location = 'vitals'
+  });
+  $(".demographics").click(function() {
+    window.document.location = 'demographics'
+  });
+  $(".physical").click(function() {
+    window.document.location = 'physical'
+  });
+  $(".hearing").click(function() {
+    window.document.location = 'hearing'
+  });
+  $(".vision").click(function() {
+    window.document.location = 'vision'
+  });
+  $(".assessment").click(function() {
+    window.document.location = 'assessment'
+  });
+
+</script>
 
