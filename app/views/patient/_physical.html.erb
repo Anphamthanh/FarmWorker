@@ -1,0 +1,57 @@
+<div class="physical-container show" style="margin-top:1rem;">
+  <div class="container">
+    <%= form_for(:user, url: admin_register_path, :validate => true, :class => 'form-horizontal') do |f| %>
+      <div class="form-group row col-md-12">
+        <div class="col-md-7">
+          <%= f.label :appearance, "General Appearance (Well nourished, hygienge, appears ill, etc)" %>
+        </div>
+        <div class="col-md-5">
+          <label class="radio-inline">
+            <input name="appearance" id="radio1" value="option1" type="radio"> WNL
+          </label>
+          <label class="radio-inline">
+            <input name="appearance" id="radio2" value="option2" type="radio"> AB
+          </label>
+          <label class="radio-inline">
+            <input name="appearance" id="radio3" value="option3" type="radio"> Not Evaluated 
+          </label>
+          <label class="radio-inline">
+            <input name="appearance" id="radio2" value="option2" type="radio"> Unable To Cooperate
+          </label>
+        </div>
+      </div>
+      <div class="form-group row col-md-12">
+        <div class="col-md-7">
+          <%= f.label :skin, "Skin (Rashes, etc) " %>
+        </div>
+        <div class="col-md-5">
+          <label class="radio-inline">
+            <input name="skin" id="radio1" value="option1" type="radio"> WNL
+          </label>
+          <label class="radio-inline">
+            <input name="skin" id="radio2" value="option2" type="radio"> AB
+          </label>
+          <label class="radio-inline">
+            <input name="skin" id="radio3" value="option3" type="radio"> Not Evaluated 
+          </label>
+          <label class="radio-inline">
+            <input name="skin" id="radio2" value="option2" type="radio"> Unable To Cooperate
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group row col-md-12">
+        <div class="col-md-12"> 
+          <button type="submit" class="btn btn-success">Save</button>
+          <button type="submit" class="btn btn-success">Save &amp; Next</button>
+          <button type="button" class="btn btn-danger pull-right">Exit</button>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+</div>
+
+<script>
+  $(".physical").addClass("active");
+</script>
