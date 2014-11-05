@@ -15,12 +15,14 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="<%= root_path %>">Home</a></li>
+            <% if user_signed_in? %>
+              <li><a href="<%= root_path %>">Home</a></li>
+            <% end %>
           </ul>
           <% if user_signed_in? %>
             <ul class="nav navbar-nav navbar-right">
               <%= link_to destroy_user_session_path, :method => :delete do %>
-                <li><i class="fa fa-sign-out fa-2x" style="color:#777;"></i></li>
+                <li><i class="fa fa-sign-out fa-2x" style="color:#777;line-height:1.4"></i></li>
               <% end %> 
             </ul>
           <% else %>
