@@ -26,12 +26,16 @@ class PatientController < ApplicationController
       redirect_to dashboard
     else 
       record = @patient.patient_record
-      @demographics = record.patient_demographics
-      @vitals = record.patient_vital
-      @hearing = record.patient_hearing
-      @vision = record.patient_vision
-      @physical = record.patient_physical
-      @assessment = record.patient_assessment
+      if record
+        @demographics = record.patient_demographics
+        @vitals = record.patient_vital
+        @hearing = record.patient_hearing
+        @vision = record.patient_vision
+        @physical = record.patient_physical
+        @assessment = record.patient_assessment
+      else
+        render action: "demographics"
+      end
     end
   end
 
