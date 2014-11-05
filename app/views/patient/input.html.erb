@@ -11,8 +11,11 @@
         <button type="button" class="btn btn-default vision">Vision</button>
         <button type="button" class="btn btn-default assessment">Assessment</button>
       </div>
-      <%= render :partial => 'patient/demographics' %>
+      <% if @type == "demographics" %>
+        <%= render :partial => 'patient/demographics' %>
+      <% end %>
 
     </div>
   </div>
 </div>
+

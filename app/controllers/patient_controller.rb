@@ -8,15 +8,16 @@ class PatientController < ApplicationController
     patient.patient_log = "Created by #{current_user.first_name} #{current_user.last_name} at #{Time.now}"
     if patient.save
       flash[:notice] = "The patient #{patient.first_name} #{patient.last_name} was successfully created"
-      redirect_to :controller => "patient", :action => "demographics", :id => patient.id
+      redirect_to :controller => "patient", :action => "input", :id => patient.id, :type => "demographics"
     else
       flash[:alert] = "Failed to create patient: " + patient.errors.full_messages.join('. ')
       redirect_to student_dashboard
     end
   end
 
-  def demographics
+  def input
     @patient = Patient.find_by_id(params[:id])
+    @type = params[:type]
   end
 
   def view
@@ -34,7 +35,7 @@ class PatientController < ApplicationController
         @physical = record.patient_physical
         @assessment = record.patient_assessment
       else
-        render action: "demographics"
+        redirect_to :controller => "patient", :action => "input", :id => @patient.id, :type => "demographics"
       end
     end
   end
