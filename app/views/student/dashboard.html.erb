@@ -2,7 +2,7 @@
   <h1>Student-BSN Dashboard</h1>
   <div class="container">
     <div class="panel panel-default">
-      <div class="panel-heading">All Patients</div>
+      <div class="panel-heading">Patient Data</div>
       <div class="panel-body">
         <p>We need a search box in here to search for patient</p>
       </div>
@@ -25,6 +25,7 @@
       <% end %>
       </table>
     </div>
+    <%= will_paginate @all_patients, renderer: BootstrapPagination::Rails %>
   </div>
   <h2>New Patient</h2>
   <div class="container">
