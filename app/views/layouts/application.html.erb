@@ -28,10 +28,12 @@
           </ul>
           <% if user_signed_in? %>
             <ul class="nav navbar-nav navbar-right">
-              <b><%= current_user.username %></b>
-              <%= link_to destroy_user_session_path, :method => :delete do %>
-              <i class="fa fa-sign-out fa-2x" style="color:#777;line-height:1.4; width: 10px;"></i>
-              <% end %>
+              <li><a href=''><%= current_user.username %></a></li>
+              <li>
+                <%= link_to destroy_user_session_path, :method => :delete do %>
+                  <i class="fa fa-sign-out fa-lg" style="color:#777;font-size:19pt;"></i>
+                <% end %>
+              </li>
             </ul>
           <% else %>
             <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "navbar-form navbar-right", :role => "form"}) do |f| %>
