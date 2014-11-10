@@ -10,11 +10,16 @@ class PatientController < ApplicationController
       redirect_to :controller => "patient", :action => "input", :id => patient.id, :type => "demographics"
     else
       flash[:alert] = "Failed to create patient: " + patient.errors.full_messages.join('. ')
-      redirect_to student_dashboard
+      redirect_to dashboard
     end
   end
 
   def input
+    patient = Patient.find(params[:id])
+    if patient.parent_permission.downcase == "none"
+      flash[:alert] = "Error! Can't update patient information without parent permission"
+      redirect_to dashboard
+    end
     @patient = Patient.find_by_id(params[:id])
     @type = params[:type]
   end
@@ -58,7 +63,7 @@ class PatientController < ApplicationController
 
   private
   def patient_params
-    params.require(:patient).permit(:first_name, :last_name, :dob, :gender)
+    params.require(:patient).permit(:first_name, :last_name, :dob, :gender, :parent_permission, :parent_permission_desc)
   end
 
   def dashboard

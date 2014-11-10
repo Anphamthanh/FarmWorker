@@ -25,15 +25,14 @@ ActiveRecord::Schema.define(version: 20141030171438) do
   create_table "patient_demographics", force: true do |t|
     t.integer  "patient_record_id"
     t.string   "site_location",            default: "",    null: false
-    t.boolean  "parental_permission",      default: false, null: false
     t.text     "allergies"
     t.text     "reaction_type"
     t.boolean  "utd",                      default: false, null: false
     t.boolean  "dtap",                     default: false, null: false
     t.boolean  "hib",                      default: false, null: false
     t.boolean  "pneumovax",                default: false, null: false
-    t.boolean  "hepA",                     default: false, null: false
-    t.boolean  "hepB",                     default: false, null: false
+    t.boolean  "hepa",                     default: false, null: false
+    t.boolean  "hepb",                     default: false, null: false
     t.boolean  "influenza",                default: false, null: false
     t.boolean  "mmr",                      default: false, null: false
     t.text     "additional_immunizations"
@@ -121,12 +120,14 @@ ActiveRecord::Schema.define(version: 20141030171438) do
   add_index "patient_vitals", ["patient_record_id"], name: "index_patient_vitals_on_patient_record_id"
 
   create_table "patients", force: true do |t|
-    t.string   "first_name",  default: "", null: false
-    t.string   "last_name",   default: "", null: false
-    t.string   "gender",                   null: false
-    t.date     "dob",                      null: false
-    t.text     "patient_log"
-    t.integer  "created_by",               null: false
+    t.string   "first_name",             default: "", null: false
+    t.string   "last_name",              default: "", null: false
+    t.string   "middle_name"
+    t.string   "gender",                              null: false
+    t.date     "dob",                                 null: false
+    t.string   "parent_permission",                   null: false
+    t.string   "parent_permission_desc"
+    t.integer  "created_by",                          null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
