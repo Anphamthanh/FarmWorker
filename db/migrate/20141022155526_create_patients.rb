@@ -7,7 +7,8 @@ class CreatePatients < ActiveRecord::Migration
       t.string :gender,               :null => false
       t.date :dob,                    :null => false
       # parent_permission is saved in the form ["None", ""] or ["Complete", ""] or ["Limited", "<Explanation>"]
-      t.text :parent_permission,    :null => false
+      t.string :parent_permission,    :null => false
+      t.string :parent_permission_desc
       t.integer :created_by,          :null => false
       t.timestamps
     end
