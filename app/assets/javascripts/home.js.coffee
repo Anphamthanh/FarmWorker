@@ -3,5 +3,5 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready ->
-  $(".alert").slideUp 500
+  $(".alert").slideUp 1000
   return
