@@ -3,7 +3,6 @@ class CreatePatientDemographics < ActiveRecord::Migration
     create_table :patient_demographics do |t|
       t.references :patient_record,         index: true
       t.string :site_location,              :null => false, :default => ""
-      t.boolean :parental_permission,       :null => false, :default => false
       t.text :allergies
       t.text :reaction_type
       t.boolean :utd,                       :null => false, :default => false
