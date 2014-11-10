@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Student-BSN Dashboard</h1>
+  <h1><i class="fa fa-user-md fa-lg"></i> Student-BSN Dashboard</h1>
   <div class="container">
     <div class="panel panel-info">
       <div class="panel-heading">Patient Data</div>
@@ -10,6 +10,7 @@
             <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Enter patient" %>
             <div class="input-group-btn">
               <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+              <button class="btn btn-default" type='reset'><i class="fa fa-times"></i></button>
             </div>
           </div>
         <% end %>
@@ -23,7 +24,7 @@
         <th>DOB</th>
       </tr>
       <% @all_patients.each do |patient| %>
-        <tr class='clickableRow' href='/patient/<%= "#{patient.id}" %>'/>
+        <tr class='clickableRow' href='/patient/<%= "#{patient.id}" %>'>
           <td><%= patient.id %></td>
           <td><%= patient.first_name %></td>
           <td><%= patient.last_name %></td>
@@ -48,6 +49,14 @@
       </div>
       <div class="form-group row col-md-8">
         <div class="col-md-5">
+          <%= f.label :Middle_name %>
+        </div>
+        <div class="col-md-7">
+          <%= f.text_field :middle_name, :class => "form-control", :placeholder => "Middle Name" %>
+        </div>
+      </div>
+      <div class="form-group row col-md-8">
+        <div class="col-md-5">
           <%= f.label :last_name %>
         </div>
         <div class="col-md-7">
@@ -67,7 +76,7 @@
           <%= f.label(:dob, "DOB") %>
         </div>
         <div class="col-md-7">
-          <%= f.date_select :dob, :start_year => 1900, :end_year => Date.today.year %>
+          <%= f.date_select :dob, :start_year => 1950, :end_year => Date.today.year %>
         </div>
       </div>
       <div class="form-group row col-md-8">
