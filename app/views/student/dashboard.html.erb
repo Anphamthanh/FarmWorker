@@ -49,7 +49,7 @@
       </div>
       <div class="form-group row col-md-8">
         <div class="col-md-5">
-          <%= f.label :Middle_name %>
+          <%= f.label :middle_name %>
         </div>
         <div class="col-md-7">
           <%= f.text_field :middle_name, :class => "form-control", :placeholder => "Middle Name" %>
@@ -80,6 +80,17 @@
         </div>
       </div>
       <div class="form-group row col-md-8">
+        <div class="col-md-5">
+          <%= f.label :parent_permission %>
+        </div>
+        <div class="col-md-3">
+          <%= f.select :parent_permission, options_for_select(["None", "Complete", "Limited"]) %>
+        </div>
+        <div class="col-md-4">          
+          <%= f.text_field :parent_permission_desc, :class => "form-control", :disabled => "disabled", :placeholder => "If limited, explain here" %>
+        </div>
+      </div>
+      <div class="form-group row col-md-8">
         <div class="col-md-12"> 
           <button type="submit" class="btn btn-primary">Create</button>
         </div>
@@ -94,4 +105,12 @@
     window.document.location = $(this).attr("href");
   });
   $("#student-bsn").addClass("active");
+  $("#patient_parent_permission").change(function() {
+    if ($(this).find(":selected").text() == "Limited") {
+      $("#patient_parent_permission_desc").attr("disabled", false);
+    }
+    else {
+      $("#patient_parent_permission_desc").attr("disabled", true); 
+    }
+  });
 </script>
