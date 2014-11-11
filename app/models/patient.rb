@@ -21,6 +21,14 @@ class Patient < ActiveRecord::Base
     (Date.today - dob).to_i / 365 < 18
   end
 
+  def is_under_2?
+    (Date.today - dob).to_i / 365 < 2
+  end
+
+  def month_age
+    (Date.today - dob).to_i / 30
+  end
+
   def is_limited?
     parent_permission.downcase == "limited"
   end

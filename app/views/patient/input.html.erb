@@ -13,7 +13,13 @@
         <label class="col-md-5">
           Date of birth
         </label>
-        <%= @patient.dob.strftime("%B %d, %Y") %>
+        <% if @patient.is_under_2? %>
+          <%= "#{@patient.dob.strftime("%B %d, %Y")} (#{pluralize(@patient.month_age,'month')} old)" %>
+        <% else %>
+          <% year = (Date.today - @patient.dob).to_i / 365 %>
+          <% month = ((Date.today - @patient.dob).to_i / 30) % 12 %>
+          <%= "#{@patient.dob.strftime("%B %d, %Y")} (#{pluralize(year, 'year')} #{pluralize(month,'month')} old)" %>
+        <% end %>
       </li>
       <% if @patient.is_under_18? %>
         <li class="list-group-item"> 
