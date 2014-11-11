@@ -2,7 +2,7 @@ class Patient < ActiveRecord::Base
   validates_presence_of :first_name, :last_name, 
                         :dob, :gender
   validates_presence_of :parent_permission, if: :is_under_18?
-  validates_presence_of :parent_permission_desc, if: :is_limited?
+  validates_presence_of :parent_permission_desc, if: [:is_limited?, :is_under_18?]
   has_one :patient_record
   def self.search(search)
     if search
@@ -17,10 +17,6 @@ class Patient < ActiveRecord::Base
     (Date.today - dob).to_i / 365 < 18
   end
   def is_limited?
-    if is_under_18?
-      parent_permission.downcase == "limited"
-    else
-      false
-    end
+    parent_permission.downcase == "limited"
   end
 end
