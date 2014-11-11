@@ -6,7 +6,7 @@
           <%= f.label :site_location %>
         </div>
         <div class="col-md-7">
-          <%= f.select :site_location, options_for_select(["Location 1", "Location 2"]) %>
+          <%= f.text_field :site_location, :class => "form-control", :value => "Cox Elementary School" %>  
         </div>
       </div>
       <div class="form-group row col-md-8">
