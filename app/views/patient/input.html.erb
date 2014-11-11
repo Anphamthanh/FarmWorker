@@ -20,7 +20,11 @@
           <label class="col-md-5">
             Parent Permission
           </label>
-          <%= @patient.dob.strftime("%B %d, %Y") %>
+          <% if @patient.parent_permission.downcase == "limited" %>
+            <%= "#{@patient.parent_permission} - #{@patient.parent_permission_desc}" %>
+          <% else %>
+            <%= @patient.parent_permission %>
+          <% end %>
         </li>
       <% end %>
     </ul> 
