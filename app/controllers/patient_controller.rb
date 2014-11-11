@@ -17,7 +17,7 @@ class PatientController < ApplicationController
   def input
     patient = Patient.find(params[:id])
     if patient.parent_permission.downcase == "none"
-      flash[:alert] = "Error! Can't update patient information without parent permission"
+      flash[:alert] = "Error! Can't edit patient information without parent permission"
       redirect_to dashboard
     end
     @patient = Patient.find_by_id(params[:id])
@@ -28,7 +28,7 @@ class PatientController < ApplicationController
     @patient = Patient.find_by_id(params[:id])
     type = params[:type]
     if type == "demographics"
-      
+      if @patient.
     end
     redirect_to_next_tab(type) 
   end
