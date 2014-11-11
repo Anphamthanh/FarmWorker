@@ -10,7 +10,7 @@ class Patient < ActiveRecord::Base
       where(['id = :s', :s => "#{search}"])
     else
       if search
-        where(['first_name LIKE :s OR last_name LIKE :s', :s => "%#{search}%"]).order('last_name ASC')
+        where(['first_name LIKE :s OR last_name LIKE :s OR middle_name LIKE :s', :s => "%#{search}%"]).order('last_name ASC')
       else
         Patient.all.order('last_name ASC')
       end
