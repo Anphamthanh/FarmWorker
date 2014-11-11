@@ -26,11 +26,13 @@
           Date of birth
         </label>
         <% if @patient.is_under_2? %>
-          <%= "#{@patient.dob.strftime("%B %d, %Y")} (#{pluralize(@patient.month_age,'month')} old)" %>
+          <%= "#{@patient.dob.strftime('%B %d, %Y')}" %> 
+          <strong><%= "(#{pluralize(@patient.month_age,'month')} old)" %></strong>
         <% else %>
           <% year = (Date.today - @patient.dob).to_i / 365 %>
           <% month = ((Date.today - @patient.dob).to_i / 30) % 12 %>
-          <%= "#{@patient.dob.strftime("%B %d, %Y")} (#{pluralize(year, 'year')} #{pluralize(month,'month')} old)" %>
+          <%= "#{@patient.dob.strftime('%B %d, %Y')}" %>
+          <strong><%= "(#{pluralize(year, 'year')} #{pluralize(month,'month')} old)" %></strong>
         <% end %>
       </li>
       <% if @patient.is_under_18? %>
