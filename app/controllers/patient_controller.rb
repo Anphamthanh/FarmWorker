@@ -27,18 +27,10 @@ class PatientController < ApplicationController
   def update
     @patient = Patient.find_by_id(params[:id])
     type = params[:type]
-    puts params
     if type == "demographics"
-      redirect_to :controller => "patient", :action => "input", :id => @patient.id, :type => "vitals"
-    elsif type == "vitals"
-      redirect_to :controller => "patient", :action => "input", :id => @patient.id, :type => "physical"
-    elsif type == "physical"
-      redirect_to :controller => "patient", :action => "input", :id => @patient.id, :type => "hearing"
-    elsif type == "hearing"
-      redirect_to :controller => "patient", :action => "input", :id => @patient.id, :type => "vision"
-    elsif type == "vision"
-      redirect_to :controller => "patient", :action => "input", :id => @patient.id, :type => "assessment"
-    end 
+      
+    end
+    redirect_to_next_tab(type) 
   end
 
   def view
@@ -73,6 +65,20 @@ class PatientController < ApplicationController
       faculty_dashboard_path
     else
       root_path
+    end
+  end
+
+  def redirect_to_next_tab(type)
+    if type == "demographics"
+      redirect_to :controller => "patient", :action => "input", :id => @patient.id, :type => "vitals"
+    elsif type == "vitals"
+      redirect_to :controller => "patient", :action => "input", :id => @patient.id, :type => "physical"
+    elsif type == "physical"
+      redirect_to :controller => "patient", :action => "input", :id => @patient.id, :type => "hearing"
+    elsif type == "hearing"
+      redirect_to :controller => "patient", :action => "input", :id => @patient.id, :type => "vision"
+    elsif type == "vision"
+      redirect_to :controller => "patient", :action => "input", :id => @patient.id, :type => "assessment"
     end
   end
 
