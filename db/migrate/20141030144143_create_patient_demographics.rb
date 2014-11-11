@@ -12,6 +12,7 @@ class CreatePatientDemographics < ActiveRecord::Migration
       t.boolean :hepa,                       :null => false, :default => false
       t.boolean :hepb,                       :null => false, :default => false
       t.boolean :influenza,                       :null => false, :default => false
+      t.boolean :men,                       :null => false, :default => false
       t.boolean :mmr,                       :null => false, :default => false
       t.text :additional_immunizations
       t.text :relevant_info
