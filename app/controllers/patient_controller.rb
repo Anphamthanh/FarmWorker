@@ -63,7 +63,7 @@ class PatientController < ApplicationController
 
   private
   def patient_params
-    params.require(:patient).permit(:first_name, :last_name, :dob, :gender, :parent_permission, :parent_permission_desc)
+    params.require(:patient).permit(:first_name, :last_name, :middle_name, :dob, :gender, :parent_permission, :parent_permission_desc)
   end
 
   def dashboard

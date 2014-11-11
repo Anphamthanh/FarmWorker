@@ -19,6 +19,7 @@
       <tr>
         <th>Record ID</th>
         <th>First name</th>
+        <th>Middle name</th>
         <th>Last name</th>        
         <th>Gender</th>
         <th>DOB</th>
@@ -27,6 +28,7 @@
         <tr class='clickableRow' href='/patient/<%= "#{patient.id}" %>'>
           <td><%= patient.id %></td>
           <td><%= patient.first_name %></td>
+          <td><%= patient.middle_name %></td>
           <td><%= patient.last_name %></td>
           <td><%= patient.gender %></td>
           <td><%= patient.dob %></td>
