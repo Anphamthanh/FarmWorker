@@ -12,7 +12,6 @@ class Patient < ActiveRecord::Base
     end
   end
 
-  private
   def is_under_18?
     (Date.today - dob).to_i / 365 < 18
   end

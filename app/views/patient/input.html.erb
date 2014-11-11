@@ -2,7 +2,29 @@
   <h1><%= "#{@patient.first_name} #{@patient.last_name}" %></h1>
   <div class="panel panel-info">
     <div class="panel-heading">Patient Information</div>
-    <div class="panel-body">      
+    <ul class="list-group">
+      <li class="list-group-item"> 
+        <label class="col-md-5">
+          Full name
+        </label>
+        <%= "#{@patient.first_name} #{@patient.middle_name} #{@patient.last_name}" %> 
+      </li>
+      <li class="list-group-item"> 
+        <label class="col-md-5">
+          Date of birth
+        </label>
+        <%= @patient.dob.strftime("%B %d, %Y") %>
+      </li>
+      <% if @patient.is_under_18? %>
+        <li class="list-group-item"> 
+          <label class="col-md-5">
+            Parent Permission
+          </label>
+          <%= @patient.dob.strftime("%B %d, %Y") %>
+        </li>
+      <% end %>
+    </ul> 
+    <div class="panel-body">   
       <div class="btn-group">
         <button type="button" class="btn btn-default demographics">Demographics</button>
         <button type="button" class="btn btn-default vitals">Vitals</button>
