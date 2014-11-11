@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
                         :role, :first_name, :last_name
   def self.search(search)
     if search
-      where(['first_name LIKE :s OR last_name LIKE :s OR username LIKE :s OR id LIKE :s', :s => "%#{search}"]).order('last_name ASC')
+      where(['first_name LIKE :s OR last_name LIKE :s OR username LIKE :s OR id LIKE :s', :s => "%#{search}%"]).order('last_name ASC')
     else
       User.all.order('last_name ASC')
     end
