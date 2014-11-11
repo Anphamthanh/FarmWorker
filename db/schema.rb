@@ -125,7 +125,7 @@ ActiveRecord::Schema.define(version: 20141030171438) do
     t.string   "middle_name"
     t.string   "gender",                              null: false
     t.date     "dob",                                 null: false
-    t.string   "parent_permission",                   null: false
+    t.string   "parent_permission"
     t.string   "parent_permission_desc"
     t.integer  "created_by",                          null: false
     t.datetime "created_at"
