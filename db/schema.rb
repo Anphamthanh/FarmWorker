@@ -27,16 +27,17 @@ ActiveRecord::Schema.define(version: 20141030171438) do
     t.string   "site_location",            default: "",    null: false
     t.text     "allergies"
     t.text     "reaction_type"
-    t.boolean  "utd",                      default: false, null: false
     t.boolean  "dtap",                     default: false, null: false
     t.boolean  "hib",                      default: false, null: false
     t.boolean  "pneumovax",                default: false, null: false
     t.boolean  "hepa",                     default: false, null: false
     t.boolean  "hepb",                     default: false, null: false
     t.boolean  "influenza",                default: false, null: false
+    t.boolean  "men",                      default: false, null: false
     t.boolean  "mmr",                      default: false, null: false
     t.text     "additional_immunizations"
-    t.text     "relevant_info"
+    t.text     "additional_notes"
+    t.string   "practitioner",             default: "",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

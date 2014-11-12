@@ -27,8 +27,10 @@ class PatientController < ApplicationController
   def update
     @patient = Patient.find_by_id(params[:id])
     type = params[:type]
+    @patient.create_patient_record if @patient.patient_record.nil?
     if type == "demographics"
-      if @patient.
+      @patient.patient_record.create_patient_demographics if @patient.patient_record.patient_demographics.nil?
+      @patient.patient_record.patient_demographics.update_attributes(params[:patient_record])
     end
     redirect_to_next_tab(type) 
   end
