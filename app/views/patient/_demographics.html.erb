@@ -45,7 +45,7 @@
           <%= f.label :dtap, "DTaP" %>
         </div>
         <div class="col-md-7">
-          <% dtap = @patient.patient_record.patient_demographics.dtap %>          
+          <% dtap = @patient.dtap %>          
           <%= check_box 'patient_record', 'dtap', {:checked => dtap, :class => "imm" }, 'true' %>
         </div>
       </div>
@@ -54,7 +54,7 @@
           <%= f.label :hepa, "HepA" %>
         </div>
         <div class="col-md-7">
-          <% hepa = @patient.patient_record.patient_demographics.hepa %>          
+          <% hepa = @patient.hepa %>          
           <%= check_box 'patient_record', 'hepa', {:checked => hepa, :class => "imm" }, 'true' %>
         </div>
       </div>
@@ -63,7 +63,7 @@
           <%= f.label :hepb, "HepB" %>
         </div>
         <div class="col-md-7">
-          <% hepb = @patient.patient_record.patient_demographics.hepb %>          
+          <% hepb = @patient.hepb %>          
           <%= check_box 'patient_record', 'hepb', {:checked => hepb, :class => "imm" }, 'true' %>
         </div>
       </div>
@@ -72,7 +72,7 @@
           <%= f.label :hib, "HiB" %>
         </div>
         <div class="col-md-7">
-          <% hib = @patient.patient_record.patient_demographics.hib %>          
+          <% hib = @patient.hib %>          
           <%= check_box 'patient_record', 'hib', {:checked => hib, :class => "imm" }, 'true' %>
         </div>
       </div>
@@ -81,7 +81,7 @@
           <%= f.label :mmr, "MMR" %>
         </div>
         <div class="col-md-7">
-          <% mmr = @patient.patient_record.patient_demographics.mmr %>          
+          <% mmr = @patient.mmr %>          
           <%= check_box 'patient_record', 'mmr', {:checked => mmr, :class => "imm" }, 'true' %>
         </div>
       </div>
@@ -90,7 +90,7 @@
           <%= f.label :men, "MEN" %>
         </div>
         <div class="col-md-7">
-          <% men = @patient.patient_record.patient_demographics.men %>          
+          <% men = @patient.men %>          
           <%= check_box 'patient_record', 'men', {:checked => men, :class => "imm" }, 'true' %>
         </div>
       </div>
@@ -99,7 +99,7 @@
           <%= f.label :pneumovax, "Pneumovax" %>
         </div>
         <div class="col-md-7">
-          <% pneumovax = @patient.patient_record.patient_demographics.pneumovax %>          
+          <% pneumovax = @patient.pneumovax %>          
           <%= check_box 'patient_record', 'pneumovax', {:checked => pneumovax, :class => "imm" }, 'true' %>
         </div>
       </div>
@@ -108,7 +108,7 @@
           <%= f.label :influenza, "Influenza" %>
         </div>
         <div class="col-md-7">
-          <% influenza = @patient.patient_record.patient_demographics.influenza %>          
+          <% influenza = @patient.influenza %>          
           <%= check_box 'patient_record', 'influenza', {:checked => influenza, :class => "imm" }, 'true' %>
         </div>
       </div>

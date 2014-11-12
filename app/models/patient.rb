@@ -5,6 +5,62 @@ class Patient < ActiveRecord::Base
   validates_presence_of :parent_permission_desc, if: [:is_limited?, :is_under_18?]
   has_one :patient_record
   
+  def influenza
+    if patient_record.nil? or patient_record.patient_demographics.nil?
+      return false
+    end
+    patient_record.patient_demographics.influenza
+  end
+  
+  def pneumovax
+    if patient_record.nil? or patient_record.patient_demographics.nil?
+      return false
+    end
+    patient_record.patient_demographics.pneumovax
+  end
+  
+  def mmr
+    if patient_record.nil? or patient_record.patient_demographics.nil?
+      return false
+    end
+    patient_record.patient_demographics.mmr
+  end
+  
+  def hib
+    if patient_record.nil? or patient_record.patient_demographics.nil?
+      return false
+    end
+    patient_record.patient_demographics.hib
+  end
+  
+  def men
+    if patient_record.nil? or patient_record.patient_demographics.nil?
+      return false
+    end
+    patient_record.patient_demographics.men
+  end
+  
+  def hepb
+    if patient_record.nil? or patient_record.patient_demographics.nil?
+      return false
+    end
+    patient_record.patient_demographics.hepb
+  end
+  
+  def hepa
+    if patient_record.nil? or patient_record.patient_demographics.nil?
+      return false
+    end
+    patient_record.patient_demographics.hepa
+  end
+  
+  def dtap
+    if patient_record.nil? or patient_record.patient_demographics.nil?
+      return false
+    end
+    patient_record.patient_demographics.dtap
+  end
+  
   def additional_immunizations
     if patient_record.nil? or patient_record.patient_demographics.nil?
       return nil
@@ -21,7 +77,7 @@ class Patient < ActiveRecord::Base
 
   def practitioner
     if patient_record.nil? or patient_record.patient_demographics.nil?
-      return nil
+      return ""
     end
     patient_record.patient_demographics.practitioner
   end
