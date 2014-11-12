@@ -22,7 +22,7 @@
           <%= f.label :reaction_type %>
         </div>
         <div class="col-md-7">
-          <textarea placeholder="Reactions" id="reaction_type" class="form-control" rows="2"></textarea>
+          <textarea placeholder="Reactions" name="patient_record[reaction_type]" class="form-control" rows="2"></textarea>
         </div>
       </div>
       <div class="form-group row col-md-12">
@@ -34,7 +34,7 @@
           <%= f.label :utd, "UTD" %>
         </div>
         <div class="col-md-7">
-          <input type="checkbox" id="utd">
+          <input type="checkbox" name="patient_record[utd]" id="utd">
         </div>
       </div>
       <div class="form-group row col-md-8">
@@ -42,7 +42,7 @@
           <%= f.label :dtap, "DTaP" %>
         </div>
         <div class="col-md-7">
-          <input type="checkbox" name="dtap" class="imm">
+          <input type="checkbox" name="patient_record[dtap]" class="imm">
         </div>
       </div>
       <div class="form-group row col-md-8">
@@ -50,7 +50,7 @@
           <%= f.label :hib, "HiB" %>
         </div>
         <div class="col-md-7">
-          <input type="checkbox" name="hib" class="imm">
+          <input type="checkbox" name="patient_record[hib]" class="imm">
         </div>
       </div>
       <div class="form-group row col-md-8">
@@ -58,7 +58,7 @@
           <%= f.label "Pneumovax" %>
         </div>
         <div class="col-md-7">
-          <input type="checkbox" name="pneumovax" class="imm">
+          <input type="checkbox" name="patient_record[pneumovax]" class="imm">
         </div>
       </div>
       <div class="form-group row col-md-8">
@@ -66,7 +66,7 @@
           <%= f.label :hepa, "HepA" %>
         </div>
         <div class="col-md-7">
-          <input type="checkbox" name="hepA" class="imm">
+          <input type="checkbox" name="patient_record[hepa]" class="imm">
         </div>
       </div>
       <div class="form-group row col-md-8">
@@ -74,7 +74,7 @@
           <%= f.label :hepb, "HepB" %>
         </div>
         <div class="col-md-7">
-          <input type="checkbox" name="hepB" class="imm">
+          <input type="checkbox" name="patient_record[hepb]" class="imm">
         </div>
       </div>
       <div class="form-group row col-md-8">
@@ -82,7 +82,7 @@
           <%= f.label "Influenza" %>
         </div>
         <div class="col-md-7">
-          <input type="checkbox" name="influenza" class="imm">
+          <input type="checkbox" name="patient_record[influenza]" class="imm">
         </div>
       </div>
       <div class="form-group row col-md-8">
@@ -90,7 +90,7 @@
           <%= f.label :mmr, "MMR" %>
         </div>
         <div class="col-md-7">
-          <input type="checkbox" name="mmr" class="imm">
+          <input type="checkbox" name="patient_record[mmr]" class="imm">
         </div>
       </div>
       <div class="form-group row col-md-8">
@@ -98,7 +98,7 @@
           <%= f.label :men, "Men" %>
         </div>
         <div class="col-md-7">
-          <input type="checkbox" name="men" class="imm">
+          <input type="checkbox" name="patient_record[men]" class="imm">
         </div>
       </div>
       <div class="form-group row col-md-8">
@@ -106,7 +106,7 @@
           <%= f.label "Additional Immunizations" %>
         </div>
         <div class="col-md-7">
-          <textarea placeholder="Additional Immunizations" class="form-control" rows="2"></textarea>
+          <textarea placeholder="Additional Immunizations" name="patient_record[additional_immunizations]" class="form-control" rows="2"></textarea>
         </div>
       </div>
       <div class="form-group row col-md-8">
@@ -114,7 +114,7 @@
           <%= f.label "Additional Notes" %>
         </div>
         <div class="col-md-7">
-          <textarea placeholder="Additional Notes" class="form-control" rows="2"></textarea>
+          <textarea placeholder="Additional Notes" name="patient_record[additional_notes]" class="form-control" rows="2"></textarea>
         </div>
       </div>
       <div class="form-group row col-md-12">
