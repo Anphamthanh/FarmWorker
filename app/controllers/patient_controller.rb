@@ -30,7 +30,7 @@ class PatientController < ApplicationController
     @patient.create_patient_record if @patient.patient_record.nil?
     if type == "demographics"
       @patient.patient_record.create_patient_demographics if @patient.patient_record.patient_demographics.nil?
-      @patient.patient_record.patient_demographics.update_attributes(params[:patient_record])
+      @patient.patient_record.patient_demographics.update_attributes(demographics_params)
     end
     redirect_to_next_tab(type) 
   end
@@ -41,17 +41,7 @@ class PatientController < ApplicationController
       flash[:alert] = "Patient does not exist!" 
       redirect_to dashboard
     else 
-      record = @patient.patient_record
-      if record
-        @demographics = record.patient_demographics
-        @vitals = record.patient_vital
-        @hearing = record.patient_hearing
-        @vision = record.patient_vision
-        @physical = record.patient_physical
-        @assessment = record.patient_assessment
-      else
-        redirect_to :controller => "patient", :action => "input", :id => @patient.id, :type => "demographics"
-      end
+      redirect_to :controller => "patient", :action => "input", :id => @patient.id, :type => "demographics"
     end
   end
 
@@ -60,6 +50,12 @@ class PatientController < ApplicationController
     params.require(:patient).permit(:first_name, :last_name, :middle_name, :dob, :gender, :parent_permission, :parent_permission_desc)
   end
 
+  def demographics_params
+    params.require(:patient_record).permit(:site_location, :allergies, :reaction_type, 
+      :dtap, :hib, :pneumovax, :hepa, :hepb, :influenza, :men, :mmr, 
+      :additional_immunizations, :additional_notes, :practitioner)
+  end
+  
   def dashboard
     if current_user.role.downcase == "student-bsn"
       student_dashboard_path
