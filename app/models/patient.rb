@@ -4,6 +4,48 @@ class Patient < ActiveRecord::Base
   validates_presence_of :parent_permission, if: :is_under_18?
   validates_presence_of :parent_permission_desc, if: [:is_limited?, :is_under_18?]
   has_one :patient_record
+  
+  def additional_immunizations
+    if patient_record.nil? or patient_record.patient_demographics.nil?
+      return nil
+    end
+    patient_record.patient_demographics.additional_immunizations
+  end
+
+  def additional_notes
+    if patient_record.nil? or patient_record.patient_demographics.nil?
+      return nil
+    end
+    patient_record.patient_demographics.additional_notes
+  end
+
+  def practitioner
+    if patient_record.nil? or patient_record.patient_demographics.nil?
+      return nil
+    end
+    patient_record.patient_demographics.practitioner
+  end
+
+  def site_location
+    if patient_record.nil? or patient_record.patient_demographics.nil?
+      return nil
+    end
+    patient_record.patient_demographics.site_location
+  end
+
+  def allergies
+    if patient_record.nil? or patient_record.patient_demographics.nil?
+      return nil
+    end
+    patient_record.patient_demographics.allergies
+  end
+
+  def reaction_type
+    if patient_record.nil? or patient_record.patient_demographics.nil?
+      return nil
+    end
+    patient_record.patient_demographics.reaction_type
+  end
 
   def self.search(search)
     if !(search =~ /\A[-+]?\d*\.?\d+\z/).nil?

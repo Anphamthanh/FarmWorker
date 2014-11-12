@@ -31,6 +31,7 @@ class PatientController < ApplicationController
     if type == "demographics"
       @patient.patient_record.create_patient_demographics if @patient.patient_record.patient_demographics.nil?
       @patient.patient_record.patient_demographics.update_attributes(demographics_params)
+      @patient.save
     end
     redirect_to_next_tab(type) 
   end

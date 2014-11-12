@@ -6,7 +6,8 @@
           <%= f.label :site_location %>
         </div>
         <div class="col-md-7">
-          <%= f.text_field :site_location, :class => "form-control", :value => "Cox Elementary School" %>  
+          <% site_location = @patient.site_location.nil? ? "Cox Elementary School" : @patient.site_location %>
+          <%= f.text_field :site_location, :class => "form-control", :value => site_location %>  
         </div>
       </div>
       <div class="form-group row col-md-8">
@@ -14,7 +15,8 @@
           <%= f.label :allergies %>
         </div>
         <div class="col-md-7">
-          <textarea placeholder="Allergies" name="patient_record[allergies]" class="form-control" rows="2"></textarea>
+          <% allergies = @patient.allergies %>
+          <textarea placeholder="Allergies" name="patient_record[allergies]" class="form-control" rows="2"><%= allergies %></textarea>
         </div>
       </div>
       <div class="form-group row col-md-8">
@@ -22,7 +24,8 @@
           <%= f.label :reaction_type %>
         </div>
         <div class="col-md-7">
-          <textarea placeholder="Reactions" name="patient_record[reaction_type]" class="form-control" rows="2"></textarea>
+          <% reaction_type = @patient.reaction_type %>
+          <textarea placeholder="Reactions" name="patient_record[reaction_type]" class="form-control" rows="2"><%= reaction_type %></textarea>
         </div>
       </div>
       <div class="form-group row col-md-12">
@@ -42,23 +45,8 @@
           <%= f.label :dtap, "DTaP" %>
         </div>
         <div class="col-md-7">
-          <input type="checkbox" name="patient_record[dtap]" class="imm">
-        </div>
-      </div>
-      <div class="form-group row col-md-8">
-        <div class="col-md-5">
-          <%= f.label :hib, "HiB" %>
-        </div>
-        <div class="col-md-7">
-          <input type="checkbox" name="patient_record[hib]" class="imm">
-        </div>
-      </div>
-      <div class="form-group row col-md-8">
-        <div class="col-md-5">
-          <%= f.label "Pneumovax" %>
-        </div>
-        <div class="col-md-7">
-          <input type="checkbox" name="patient_record[pneumovax]" class="imm">
+          <% dtap = @patient.patient_record.patient_demographics.dtap %>          
+          <%= check_box 'patient_record', 'dtap', {:checked => dtap, :class => "imm" }, 'true' %>
         </div>
       </div>
       <div class="form-group row col-md-8">
@@ -66,7 +54,8 @@
           <%= f.label :hepa, "HepA" %>
         </div>
         <div class="col-md-7">
-          <input type="checkbox" name="patient_record[hepa]" class="imm">
+          <% hepa = @patient.patient_record.patient_demographics.hepa %>          
+          <%= check_box 'patient_record', 'hepa', {:checked => hepa, :class => "imm" }, 'true' %>
         </div>
       </div>
       <div class="form-group row col-md-8">
@@ -74,15 +63,17 @@
           <%= f.label :hepb, "HepB" %>
         </div>
         <div class="col-md-7">
-          <input type="checkbox" name="patient_record[hepb]" class="imm">
+          <% hepb = @patient.patient_record.patient_demographics.hepb %>          
+          <%= check_box 'patient_record', 'hepb', {:checked => hepb, :class => "imm" }, 'true' %>
         </div>
       </div>
       <div class="form-group row col-md-8">
         <div class="col-md-5">
-          <%= f.label "Influenza" %>
+          <%= f.label :hib, "HiB" %>
         </div>
         <div class="col-md-7">
-          <input type="checkbox" name="patient_record[influenza]" class="imm">
+          <% hib = @patient.patient_record.patient_demographics.hib %>          
+          <%= check_box 'patient_record', 'hib', {:checked => hib, :class => "imm" }, 'true' %>
         </div>
       </div>
       <div class="form-group row col-md-8">
@@ -90,15 +81,35 @@
           <%= f.label :mmr, "MMR" %>
         </div>
         <div class="col-md-7">
-          <input type="checkbox" name="patient_record[mmr]" class="imm">
+          <% mmr = @patient.patient_record.patient_demographics.mmr %>          
+          <%= check_box 'patient_record', 'mmr', {:checked => mmr, :class => "imm" }, 'true' %>
         </div>
       </div>
       <div class="form-group row col-md-8">
         <div class="col-md-5">
-          <%= f.label :men, "Men" %>
+          <%= f.label :men, "MEN" %>
         </div>
         <div class="col-md-7">
-          <input type="checkbox" name="patient_record[men]" class="imm">
+          <% men = @patient.patient_record.patient_demographics.men %>          
+          <%= check_box 'patient_record', 'men', {:checked => men, :class => "imm" }, 'true' %>
+        </div>
+      </div>
+      <div class="form-group row col-md-8">
+        <div class="col-md-5">
+          <%= f.label :pneumovax, "Pneumovax" %>
+        </div>
+        <div class="col-md-7">
+          <% pneumovax = @patient.patient_record.patient_demographics.pneumovax %>          
+          <%= check_box 'patient_record', 'pneumovax', {:checked => pneumovax, :class => "imm" }, 'true' %>
+        </div>
+      </div>
+      <div class="form-group row col-md-8">
+        <div class="col-md-5">
+          <%= f.label :influenza, "Influenza" %>
+        </div>
+        <div class="col-md-7">
+          <% influenza = @patient.patient_record.patient_demographics.influenza %>          
+          <%= check_box 'patient_record', 'influenza', {:checked => influenza, :class => "imm" }, 'true' %>
         </div>
       </div>
       <div class="form-group row col-md-8">
@@ -106,7 +117,8 @@
           <%= f.label "Additional Immunizations" %>
         </div>
         <div class="col-md-7">
-          <textarea placeholder="Additional Immunizations" name="patient_record[additional_immunizations]" class="form-control" rows="2"></textarea>
+          <% additional_immunizations = @patient.additional_immunizations %>
+          <textarea placeholder="Additional Immunizations" name="patient_record[additional_immunizations]" class="form-control" rows="2"><%= additional_immunizations %></textarea>
         </div>
       </div>
       <div class="form-group row col-md-8">
@@ -114,7 +126,8 @@
           <%= f.label "Additional Notes" %>
         </div>
         <div class="col-md-7">
-          <textarea placeholder="Additional Notes" name="patient_record[additional_notes]" class="form-control" rows="2"></textarea>
+          <% additional_notes = @patient.additional_notes %>
+          <textarea placeholder="Additional Notes" name="patient_record[additional_notes]" class="form-control" rows="2"><%= additional_notes %></textarea>
         </div>
       </div>
       <div class="form-group row col-md-12">
@@ -122,7 +135,8 @@
         <div class="container col-md-8">
           <label class="col-md-5">Working Practitioner(s)</label>
           <div class="col-md-7">
-            <%= f.text_field :practitioner, :class => "form-control", :value => "#{current_user.first_name} #{current_user.last_name}" %>
+            <% practitioner = @patient.practitioner.empty? ? "#{current_user.first_name} #{current_user.last_name}" : @patient.practitioner %>
+            <%= f.text_field :practitioner, :class => "form-control", :value => practitioner %>
           </div>  
         </div>
       </div>
