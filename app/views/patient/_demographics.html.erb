@@ -58,69 +58,111 @@
           </div>
         </div>
       <% end %>
-      <div class="form-group row col-md-8">
-        <div class="col-md-5">
-          <%= f.label :hepa, "HepA" %>
+      <% if @patient.get_hepa_count > 0 %>
+        <div class="form-group row col-md-8">
+          <div class="col-md-5">
+            <%= f.label :hepa, "HepA" %>
+          </div>
+          <div class="col-md-7">
+            <input type="checkbox" <%= @patient.hepa != 0 ? "" : "checked" %> name="patient_record[hepa]" value="0" /> None 
+            <% (1..@patient.get_hepa_count).each do |order| %> 
+              <input type="checkbox" <%= order <= @patient.hepa ? "checked" : "" %>
+              name="patient_record[hepa]" class="imm" value="<%= order %>" />
+              <strong><%= order.ordinalize() %></strong> Dose 
+            <% end %>
+          </div>
         </div>
-        <div class="col-md-7">
-          <% hepa = @patient.hepa %>          
-          <%= check_box 'patient_record', 'hepa', {:checked => hepa, :class => "imm" }, 'true' %>
+      <% end %>
+      <% if @patient.get_hepb_count > 0 %>
+        <div class="form-group row col-md-8">
+          <div class="col-md-5">
+            <%= f.label :hepb, "HepB" %>
+          </div>
+          <div class="col-md-7">
+            <input type="checkbox" <%= @patient.hepb != 0 ? "" : "checked" %> name="patient_record[hepb]" value="0" /> None 
+            <% (1..@patient.get_hepb_count).each do |order| %> 
+              <input type="checkbox" <%= order <= @patient.hepb ? "checked" : "" %>
+              name="patient_record[hepb]" class="imm" value="<%= order %>" />
+              <strong><%= order.ordinalize() %></strong> Dose 
+            <% end %>
+          </div>
         </div>
-      </div>
-      <div class="form-group row col-md-8">
-        <div class="col-md-5">
-          <%= f.label :hepb, "HepB" %>
+      <% end %>
+      <% if @patient.get_hib_count > 0 %>
+        <div class="form-group row col-md-8">
+          <div class="col-md-5">
+            <%= f.label :hib, "HiB" %>
+          </div>
+          <div class="col-md-7">
+            <input type="checkbox" <%= @patient.hib != 0 ? "" : "checked" %> name="patient_record[hib]" value="0" /> None 
+            <% (1..@patient.get_hib_count).each do |order| %> 
+              <input type="checkbox" <%= order <= @patient.hib ? "checked" : "" %>
+              name="patient_record[hib]" class="imm" value="<%= order %>" />
+              <strong><%= order.ordinalize() %></strong> Dose 
+            <% end %>
+          </div>
         </div>
-        <div class="col-md-7">
-          <% hepb = @patient.hepb %>          
-          <%= check_box 'patient_record', 'hepb', {:checked => hepb, :class => "imm" }, 'true' %>
+      <% end %>
+      <% if @patient.get_mmr_count > 0 %>
+        <div class="form-group row col-md-8">
+          <div class="col-md-5">
+            <%= f.label :mmr, "MMR" %>
+          </div>
+          <div class="col-md-7">
+            <input type="checkbox" <%= @patient.mmr != 0 ? "" : "checked" %> name="patient_record[mmr]" value="0" /> None 
+            <% (1..@patient.get_mmr_count).each do |order| %> 
+              <input type="checkbox" <%= order <= @patient.mmr ? "checked" : "" %>
+              name="patient_record[mmr]" class="imm" value="<%= order %>" />
+              <strong><%= order.ordinalize() %></strong> Dose 
+            <% end %>
+          </div>
         </div>
-      </div>
-      <div class="form-group row col-md-8">
-        <div class="col-md-5">
-          <%= f.label :hib, "HiB" %>
+      <% end %>
+      <% if @patient.get_men_count > 0 %>
+        <div class="form-group row col-md-8">
+          <div class="col-md-5">
+            <%= f.label :men, "Men" %>
+          </div>
+          <div class="col-md-7">
+            <input type="checkbox" <%= @patient.men != 0 ? "" : "checked" %> name="patient_record[men]" value="0" /> None 
+            <% (1..@patient.get_men_count).each do |order| %> 
+              <input type="checkbox" <%= order <= @patient.men ? "checked" : "" %>
+              name="patient_record[men]" class="imm" value="<%= order %>" />
+              <strong><%= order.ordinalize() %></strong> Dose 
+            <% end %>
+          </div>
         </div>
-        <div class="col-md-7">
-          <% hib = @patient.hib %>          
-          <%= check_box 'patient_record', 'hib', {:checked => hib, :class => "imm" }, 'true' %>
+      <% end %>
+      <% if @patient.get_pneumovax_count > 0 %>
+        <div class="form-group row col-md-8">
+          <div class="col-md-5">
+            <%= f.label :pneumovax, "Pneumovax" %>
+          </div>
+          <div class="col-md-7">
+            <input type="checkbox" <%= @patient.pneumovax != 0 ? "" : "checked" %> name="patient_record[pneumovax]" value="0" /> None 
+            <% (1..@patient.get_pneumovax_count).each do |order| %> 
+              <input type="checkbox" <%= order <= @patient.pneumovax ? "checked" : "" %>
+              name="patient_record[pneumovax]" class="imm" value="<%= order %>" />
+              <strong><%= order.ordinalize() %></strong> Dose 
+            <% end %>
+          </div>
         </div>
-      </div>
-      <div class="form-group row col-md-8">
-        <div class="col-md-5">
-          <%= f.label :mmr, "MMR" %>
+      <% end %>
+      <% if @patient.get_influenza_count > 0 %>
+        <div class="form-group row col-md-8">
+          <div class="col-md-5">
+            <%= f.label :influenza, "Influenza" %>
+          </div>
+          <div class="col-md-7">
+            <input type="checkbox" <%= @patient.influenza != 0 ? "" : "checked" %> name="patient_record[influenza]" value="0" /> None 
+            <% (1..@patient.get_influenza_count).each do |order| %> 
+              <input type="checkbox" <%= order <= @patient.influenza ? "checked" : "" %>
+              name="patient_record[influenza]" class="imm" value="<%= order %>" />
+              <strong><%= order.ordinalize() %></strong> Dose 
+            <% end %>
+          </div>
         </div>
-        <div class="col-md-7">
-          <% mmr = @patient.mmr %>          
-          <%= check_box 'patient_record', 'mmr', {:checked => mmr, :class => "imm" }, 'true' %>
-        </div>
-      </div>
-      <div class="form-group row col-md-8">
-        <div class="col-md-5">
-          <%= f.label :men, "MEN" %>
-        </div>
-        <div class="col-md-7">
-          <% men = @patient.men %>          
-          <%= check_box 'patient_record', 'men', {:checked => men, :class => "imm" }, 'true' %>
-        </div>
-      </div>
-      <div class="form-group row col-md-8">
-        <div class="col-md-5">
-          <%= f.label :pneumovax, "Pneumovax" %>
-        </div>
-        <div class="col-md-7">
-          <% pneumovax = @patient.pneumovax %>          
-          <%= check_box 'patient_record', 'pneumovax', {:checked => pneumovax, :class => "imm" }, 'true' %>
-        </div>
-      </div>
-      <div class="form-group row col-md-8">
-        <div class="col-md-5">
-          <%= f.label :influenza, "Influenza" %>
-        </div>
-        <div class="col-md-7">
-          <% influenza = @patient.influenza %>          
-          <%= check_box 'patient_record', 'influenza', {:checked => influenza, :class => "imm" }, 'true' %>
-        </div>
-      </div>
+      <% end %>
       <div class="form-group row col-md-8">
         <div class="col-md-5">
           <%= f.label "Additional Immunizations" %>

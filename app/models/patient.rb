@@ -45,6 +45,10 @@ class Patient < ActiveRecord::Base
     demographics.dtap
   end
   
+  def tdap
+    demographics.tdap
+  end
+  
   def additional_immunizations
     demographics.additional_immunizations
   end
@@ -101,6 +105,10 @@ class Patient < ActiveRecord::Base
     (Date.today - dob).to_i < 365 * 4
   end
 
+  def is_under_6?
+    (Date.today - dob).to_i < 365 * 6
+  end
+
   def is_under_7?
     (Date.today - dob).to_i < 365 * 7
   end
@@ -149,12 +157,16 @@ class Patient < ActiveRecord::Base
     (Date.today - dob).to_i < 30 * 19  
   end
 
+  def is_under_51_month?
+    (Date.today - dob).to_i < 30 * 51  
+  end
+
   def get_hepb_count
     if is_under_1_month?
       1
-    elsif !is_under_1_month? and is_under_4_month?
+    elsif !is_under_1_month? and is_under_6_month?
       2
-    elsif !is_under_6_month? and is_under_19_month?
+    elsif !is_under_6_month?
       3
     else
       0
@@ -166,9 +178,9 @@ class Patient < ActiveRecord::Base
       1
     elsif !is_under_4_month? and is_under_6_month?
       2
-    elsif !is_under_6_month? and is_under_9_month?
+    elsif !is_under_6_month? and is_under_15_month?
       3
-    elsif !is_under_15_month? and is_under_19_month?
+    elsif !is_under_15_month? and is_under_4?
       4
     elsif !is_under_4? and is_under_7?
       5
@@ -178,7 +190,7 @@ class Patient < ActiveRecord::Base
   end
 
   def get_tdap_count
-    if !is_under_11? and is_under_13?
+    if !is_under_7?
       1
     else
       0
@@ -190,10 +202,52 @@ class Patient < ActiveRecord::Base
       1
     elsif !is_under_4_month? and is_under_6_month?
       2
-    elsif !is_under_12_month? and is_under_18_month?
+    elsif !is_under_6_month? and is_under_4?
       4
     else
       0
+    end
+  end
+
+  def get_hepa_count
+    if !is_under_1?
+      2
+    else
+      0
+    end
+  end
+
+  def get_mmr_count
+    if !is_under_1? and is_under_4?
+      1
+    elsif !is_under_4?
+      2
+    else
+      0
+    end
+  end
+
+  def get_men_count
+    if !is_under_2_month?
+      1
+    else
+      0
+    end
+  end
+
+  def get_influenza_count
+    if !is_under_6_month?
+      1
+    else
+      0
+    end
+  end
+
+  def get_pneumovax_count
+    if is_under_51_month?
+      4
+    else
+      5
     end
   end
 
