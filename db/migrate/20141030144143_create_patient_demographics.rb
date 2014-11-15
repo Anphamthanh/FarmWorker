@@ -1,11 +1,12 @@
 class CreatePatientDemographics < ActiveRecord::Migration
   def change
     create_table :patient_demographics do |t|
-      t.references :patient_record,         index: true
+      t.references :patient,         index: true
       t.string :site_location,              :null => false, :default => ""
       t.text :allergies
       t.text :reaction_type
-      t.boolean :dtap,                      :null => false, :default => false
+      t.integer :dtap
+      t.boolean :tdap
       t.boolean :hib,                       :null => false, :default => false
       t.boolean :pneumovax,                 :null => false, :default => false
       t.boolean :hepa,                       :null => false, :default => false

@@ -1,106 +1,72 @@
 class Patient < ActiveRecord::Base
   validates_presence_of :first_name, :last_name, 
                         :dob, :gender
-  validates_presence_of :parent_permission, if: :is_under_18?
-  validates_presence_of :parent_permission_desc, if: [:is_limited?, :is_under_18?]
-  has_one :patient_record
+  validates_presence_of :parent_permission, if: :is_child?
+  validates_presence_of :parent_permission_desc, if: [:is_limited?, :is_child?]
+
+  has_one :patient_demographics,              dependent: :destroy
+  has_one :patient_vital,              dependent: :destroy
+  has_one :patient_hearing,              dependent: :destroy
+  has_one :patient_vision,              dependent: :destroy
+  has_one :patient_physical,              dependent: :destroy
+  has_one :patient_assessment,              dependent: :destroy
+
+  before_create :init
   
   def influenza
-    if patient_record.nil? or patient_record.patient_demographics.nil?
-      return false
-    end
-    patient_record.patient_demographics.influenza
+    patient_demographics.influenza
   end
   
   def pneumovax
-    if patient_record.nil? or patient_record.patient_demographics.nil?
-      return false
-    end
-    patient_record.patient_demographics.pneumovax
+    patient_demographics.pneumovax
   end
   
   def mmr
-    if patient_record.nil? or patient_record.patient_demographics.nil?
-      return false
-    end
-    patient_record.patient_demographics.mmr
+    patient_demographics.mmr
   end
   
   def hib
-    if patient_record.nil? or patient_record.patient_demographics.nil?
-      return false
-    end
-    patient_record.patient_demographics.hib
+    patient_demographics.hib
   end
   
   def men
-    if patient_record.nil? or patient_record.patient_demographics.nil?
-      return false
-    end
-    patient_record.patient_demographics.men
+    patient_demographics.men
   end
   
   def hepb
-    if patient_record.nil? or patient_record.patient_demographics.nil?
-      return false
-    end
-    patient_record.patient_demographics.hepb
+    patient_demographics.hepb
   end
   
   def hepa
-    if patient_record.nil? or patient_record.patient_demographics.nil?
-      return false
-    end
-    patient_record.patient_demographics.hepa
+    patient_demographics.hepa
   end
   
   def dtap
-    if patient_record.nil? or patient_record.patient_demographics.nil?
-      return false
-    end
-    patient_record.patient_demographics.dtap
+    patient_demographics.dtap
   end
   
   def additional_immunizations
-    if patient_record.nil? or patient_record.patient_demographics.nil?
-      return nil
-    end
-    patient_record.patient_demographics.additional_immunizations
+    patient_demographics.additional_immunizations
   end
 
   def additional_notes
-    if patient_record.nil? or patient_record.patient_demographics.nil?
-      return nil
-    end
-    patient_record.patient_demographics.additional_notes
+    patient_demographics.additional_notes
   end
 
   def practitioner
-    if patient_record.nil? or patient_record.patient_demographics.nil?
-      return ""
-    end
-    patient_record.patient_demographics.practitioner
+    patient_demographics.practitioner
   end
 
   def site_location
-    if patient_record.nil? or patient_record.patient_demographics.nil?
-      return nil
-    end
-    patient_record.patient_demographics.site_location
+    patient_demographics.site_location
   end
 
   def allergies
-    if patient_record.nil? or patient_record.patient_demographics.nil?
-      return nil
-    end
-    patient_record.patient_demographics.allergies
+    patient_demographics.allergies
   end
 
   def reaction_type
-    if patient_record.nil? or patient_record.patient_demographics.nil?
-      return nil
-    end
-    patient_record.patient_demographics.reaction_type
+    patient_demographics.reaction_type
   end
 
   def self.search(search)
@@ -115,8 +81,12 @@ class Patient < ActiveRecord::Base
     end
   end
 
-  def is_under_18?
+  def is_child?
     (Date.today - dob).to_i / 365 < 18
+  end
+
+  def is_adult?
+    !is_child?
   end
 
   def is_under_2?
@@ -142,4 +112,14 @@ class Patient < ActiveRecord::Base
   def middle_name=(s)
     write_attribute(:middle_name, s.to_s.capitalize)
   end
+
+  def init
+    create_patient_demographics
+    create_patient_assessment
+    create_patient_hearing
+    create_patient_physical
+    create_patient_vision
+    create_patient_vital
+  end
+
 end

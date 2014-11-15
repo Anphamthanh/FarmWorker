@@ -1,7 +1,7 @@
 class CreatePatientPhysicals < ActiveRecord::Migration
   def change
     create_table :patient_physicals do |t|
-      t.references :patient_record,         index: true
+      t.references :patient,         index: true
       t.string :general_appearance
       t.string :head_hair
       t.string :skin

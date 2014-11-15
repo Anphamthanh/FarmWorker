@@ -52,7 +52,7 @@ class PatientController < ApplicationController
   end
 
   def demographics_params
-    params.require(:patient_record).permit(:site_location, :allergies, :reaction_type, 
+    params.require(:patient).permit(:site_location, :allergies, :reaction_type, 
       :dtap, :hib, :pneumovax, :hepa, :hepb, :influenza, :men, :mmr, 
       :additional_immunizations, :additional_notes, :practitioner)
   end
