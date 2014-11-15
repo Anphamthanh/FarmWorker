@@ -117,6 +117,10 @@ class Patient < ActiveRecord::Base
     (Date.today - dob).to_i < 30    
   end
   
+  def is_under_2_month?
+    (Date.today - dob).to_i < 30 * 2   
+  end
+  
   def is_under_3_month?
     (Date.today - dob).to_i < 30 * 3   
   end
@@ -127,6 +131,10 @@ class Patient < ActiveRecord::Base
 
   def is_under_6_month?
     (Date.today - dob).to_i < 30 * 6  
+  end
+
+  def is_under_9_month?
+    (Date.today - dob).to_i < 30 * 9  
   end
 
   def is_under_15_month?
@@ -150,15 +158,15 @@ class Patient < ActiveRecord::Base
   end
 
   def get_dtap_count
-    if !is_under_1_month? and is_under_2_month?
+    if !is_under_2_month? and is_under_3_month?
       1
-    elsif !is_under_2_month? and is_under_4_month?
+    elsif !is_under_3_month? and is_under_5_month?
       2
-    elsif !is_under_4_month? and is_under_6_month?
+    elsif !is_under_6_month? and is_under_9_month?
       3
-    elsif !is_under_15_month? and is_under_18_month?
+    elsif !is_under_15_month? and is_under_19_month?
       4
-    elsif !is_under_4? and is_under_6?
+    elsif !is_under_4? and is_under_7?
       5
     else
       0
