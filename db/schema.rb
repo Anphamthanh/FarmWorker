@@ -24,21 +24,21 @@ ActiveRecord::Schema.define(version: 20141030171438) do
 
   create_table "demographics", force: true do |t|
     t.integer  "patient_id"
-    t.string   "site_location",            default: "",    null: false
+    t.string   "site_location",            default: "", null: false
     t.text     "allergies"
     t.text     "reaction_type"
-    t.integer  "dtap"
-    t.boolean  "tdap"
-    t.boolean  "hib",                      default: false, null: false
-    t.boolean  "pneumovax",                default: false, null: false
-    t.boolean  "hepa",                     default: false, null: false
-    t.boolean  "hepb",                     default: false, null: false
-    t.boolean  "influenza",                default: false, null: false
-    t.boolean  "men",                      default: false, null: false
-    t.boolean  "mmr",                      default: false, null: false
+    t.integer  "dtap",                     default: 0
+    t.integer  "tdap",                     default: 0
+    t.integer  "hib",                      default: 0
+    t.integer  "pneumovax",                default: 0
+    t.integer  "hepa",                     default: 0
+    t.integer  "hepb",                     default: 0
+    t.integer  "influenza",                default: 0
+    t.integer  "men",                      default: 0
+    t.integer  "mmr",                      default: 0
     t.text     "additional_immunizations"
     t.text     "additional_notes"
-    t.string   "practitioner",             default: "",    null: false
+    t.string   "practitioner",             default: "", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
