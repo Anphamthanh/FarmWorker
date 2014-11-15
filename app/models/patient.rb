@@ -121,8 +121,8 @@ class Patient < ActiveRecord::Base
     (Date.today - dob).to_i < 30 * 2   
   end
   
-  def is_under_3_month?
-    (Date.today - dob).to_i < 30 * 3   
+  def is_under_4_month?
+    (Date.today - dob).to_i < 30 * 4   
   end
   
   def is_under_5_month?
@@ -141,6 +141,10 @@ class Patient < ActiveRecord::Base
     (Date.today - dob).to_i < 30 * 15  
   end
 
+  def is_under_18_month?
+    (Date.today - dob).to_i < 30 * 18  
+  end
+
   def is_under_19_month?
     (Date.today - dob).to_i < 30 * 19  
   end
@@ -148,7 +152,7 @@ class Patient < ActiveRecord::Base
   def get_hepb_count
     if is_under_1_month?
       1
-    elsif !is_under_1_month? and is_under_3_month?
+    elsif !is_under_1_month? and is_under_4_month?
       2
     elsif !is_under_6_month? and is_under_19_month?
       3
@@ -158,9 +162,9 @@ class Patient < ActiveRecord::Base
   end
 
   def get_dtap_count
-    if !is_under_2_month? and is_under_3_month?
+    if !is_under_2_month? and is_under_4_month?
       1
-    elsif !is_under_3_month? and is_under_5_month?
+    elsif !is_under_4_month? and is_under_6_month?
       2
     elsif !is_under_6_month? and is_under_9_month?
       3
@@ -171,6 +175,26 @@ class Patient < ActiveRecord::Base
     else
       0
     end    
+  end
+
+  def get_tdap_count
+    if !is_under_11? and is_under_13?
+      1
+    else
+      0
+    end
+  end
+
+  def get_hib_count
+    if !is_under_2_month? and is_under_4_month?
+      1
+    elsif !is_under_4_month? and is_under_6_month?
+      2
+    elsif !is_under_12_month? and is_under_18_month?
+      4
+    else
+      0
+    end
   end
 
   def is_editable?

@@ -1,5 +1,7 @@
 class PatientController < ApplicationController
 
+  require 'active_support/core_ext/integer/inflections'
+  
   before_action :authenticate_practitioner
 
   def create

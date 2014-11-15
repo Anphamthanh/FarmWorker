@@ -40,15 +40,20 @@
           <input type="checkbox" name="patient_record[utd]" id="utd">
         </div>
       </div>
-      <div class="form-group row col-md-8">
-        <div class="col-md-5">
-          <%= f.label :dtap, "DTaP" %>
+      <% if @patient.get_dtap_count > 0 %>
+        <div class="form-group row col-md-8">
+          <div class="col-md-5">
+            <%= f.label :dtap, "DTaP" %>
+          </div>
+          <div class="col-md-7">
+            <input type="checkbox" <%= @patient.dtap != 0 ? "" : "checked" %> name="patient_record[dtap]" value="0" /> None 
+            <% (1..@patient.get_dtap_count).each do |order| %> 
+              <input type="checkbox" <%= order <= @patient.dtap ? "checked" : "" %>
+              name="patient_record[dtap]" class="imm" value="<%= order %>" /> <%= order.ordinalize() %> Dose 
+            <% end %>
+          </div>
         </div>
-        <div class="col-md-7">
-          <% dtap = @patient.dtap %>          
-          <%= check_box 'patient_record', 'dtap', {:checked => dtap, :class => "imm" }, 'true' %>
-        </div>
-      </div>
+      <% end %>
       <div class="form-group row col-md-8">
         <div class="col-md-5">
           <%= f.label :hepa, "HepA" %>
