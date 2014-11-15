@@ -17,7 +17,7 @@ class PatientController < ApplicationController
   def input
     patient = Patient.find(params[:id])
     if patient.parent_permission.downcase == "none"
-      flash[:alert] = "Error! Can't edit patient information without parent permission"
+      flash[:alert] = "Restriction: Can't enter patient information without parent permission!"
       redirect_to dashboard
     end
     @patient = Patient.find_by_id(params[:id])

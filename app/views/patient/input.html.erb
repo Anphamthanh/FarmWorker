@@ -35,7 +35,7 @@
           <strong><%= "(#{pluralize(year, 'year')} #{pluralize(month,'month')} old)" %></strong>
         <% end %>
       </li>
-      <% if @patient.is_under_18? %>
+      <% if @patient.is_child? %>
         <li class="list-group-item"> 
           <label class="col-md-5">
             Parent Permission
