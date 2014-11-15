@@ -1,12 +1,12 @@
 <div class="demographics-container show" style="margin-top:1rem;">
   <div class="container">
-    <%= form_for(:patient_record, url: patient_update_path, type: "demographics", :validate => true, :class => 'form-horizontal') do |f| %>
+    <%= form_for(:patient_record, url: patient_update_record_path, type: "demographics", :validate => true, :class => 'form-horizontal') do |f| %>
       <div class="form-group row col-md-8">
         <div class="col-md-5">
           <%= f.label :site_location %>
         </div>
         <div class="col-md-7">
-          <% site_location = @patient.site_location.nil? ? "Cox Elementary School" : @patient.site_location %>
+          <% site_location = @patient.site_location.empty? ? "Cox Elementary School" : @patient.site_location %>
           <%= f.text_field :site_location, :class => "form-control", :value => site_location %>  
         </div>
       </div>

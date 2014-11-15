@@ -32,10 +32,8 @@ class PatientController < ApplicationController
   def update_record
     @patient = Patient.find_by_id(params[:id])
     type = params[:type]
-    @patient.create_patient_record if @patient.patient_record.nil?
     if type == "demographics"
-      @patient.patient_record.create_patient_demographics if @patient.patient_record.patient_demographics.nil?
-      @patient.patient_record.patient_demographics.update_attributes(demographics_params)
+      @patient.demographics.update_attributes(demographics_params)
       @patient.save
     end
     redirect_to_next_tab(type) 
@@ -57,7 +55,7 @@ class PatientController < ApplicationController
   end
 
   def demographics_params
-    params.require(:patient).permit(:site_location, :allergies, :reaction_type, 
+    params.require(:patient_record).permit(:site_location, :allergies, :reaction_type, 
       :dtap, :hib, :pneumovax, :hepa, :hepb, :influenza, :men, :mmr, 
       :additional_immunizations, :additional_notes, :practitioner)
   end
