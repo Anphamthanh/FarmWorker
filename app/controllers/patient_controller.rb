@@ -2,7 +2,7 @@ class PatientController < ApplicationController
 
   before_action :authenticate_practitioner
 
-  def new
+  def create
     patient = Patient.new(patient_params)
     patient.created_by = current_user.id
     if patient.save
@@ -14,6 +14,13 @@ class PatientController < ApplicationController
     end
   end
 
+  def update
+    patient = Patient.find(params[:id])
+    patient.update_attributes(patient_params)
+    flash[:notice] = "The patient #{patient.first_name} #{patient.last_name} was successfully updated"
+    redirect_to :controller => "patient", :action => "input", :id => patient.id, :type => "demographics"
+  end
+
   def input
     @patient = Patient.find_by_id(params[:id])
     if !@patient.is_editable?
@@ -22,7 +29,7 @@ class PatientController < ApplicationController
     @type = params[:type]
   end
 
-  def update
+  def update_record
     @patient = Patient.find_by_id(params[:id])
     type = params[:type]
     @patient.create_patient_record if @patient.patient_record.nil?

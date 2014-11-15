@@ -65,7 +65,7 @@
         <% end %>
       <% else %>
         <div>
-          <%= form_for(:patient, url: patient_path, :validate => true, :class => "form-horizontal") do |f| %>
+          <%= form_for(:patient, url: patient_update_path, :validate => true, :class => "form-horizontal", :method => "put") do |f| %>
             <div class="form-group row col-md-8">
               <div class="col-md-5">
                 <%= f.label :update_parent_permission %>
@@ -111,6 +111,14 @@
   });
   $(".exit").click(function() {
     window.document.location = '<%= student_dashboard_path %>'
+  });
+  $("#patient_parent_permission").change(function() {
+    if ($(this).find(":selected").text() == "Limited") {
+      $("#patient_parent_permission_desc").attr("disabled", false);
+    }
+    else {
+      $("#patient_parent_permission_desc").attr("disabled", true); 
+    }
   });
 
 </script>
