@@ -1,6 +1,6 @@
-class CreatePatientPhysicals < ActiveRecord::Migration
+class CreatePhysicals < ActiveRecord::Migration
   def change
-    create_table :patient_physicals do |t|
+    create_table :physicals do |t|
       t.references :patient,         index: true
       t.string :general_appearance
       t.string :head_hair

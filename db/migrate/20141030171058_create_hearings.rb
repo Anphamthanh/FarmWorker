@@ -1,6 +1,6 @@
-class CreatePatientHearings < ActiveRecord::Migration
+class CreateHearings < ActiveRecord::Migration
   def change
-    create_table :patient_hearings do |t|
+    create_table :hearings do |t|
       t.references :patient,         index: true
       t.integer :al
       t.integer :ad

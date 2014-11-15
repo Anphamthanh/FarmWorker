@@ -1,6 +1,6 @@
-class CreatePatientDemographics < ActiveRecord::Migration
+class CreateDemographics < ActiveRecord::Migration
   def change
-    create_table :patient_demographics do |t|
+    create_table :demographics do |t|
       t.references :patient,         index: true
       t.string :site_location,              :null => false, :default => ""
       t.text :allergies

@@ -4,69 +4,69 @@ class Patient < ActiveRecord::Base
   validates_presence_of :parent_permission, if: :is_child?
   validates_presence_of :parent_permission_desc, if: [:is_limited?, :is_child?]
 
-  has_one :patient_demographics,              dependent: :destroy
-  has_one :patient_vital,              dependent: :destroy
-  has_one :patient_hearing,              dependent: :destroy
-  has_one :patient_vision,              dependent: :destroy
-  has_one :patient_physical,              dependent: :destroy
-  has_one :patient_assessment,              dependent: :destroy
+  has_one :demographics,              dependent: :destroy
+  has_one :vital,              dependent: :destroy
+  has_one :hearing,              dependent: :destroy
+  has_one :vision,              dependent: :destroy
+  has_one :physical,              dependent: :destroy
+  has_one :assessment,              dependent: :destroy
 
   before_create :init
   
   def influenza
-    patient_demographics.influenza
+    demographics.influenza
   end
   
   def pneumovax
-    patient_demographics.pneumovax
+    demographics.pneumovax
   end
   
   def mmr
-    patient_demographics.mmr
+    demographics.mmr
   end
   
   def hib
-    patient_demographics.hib
+    demographics.hib
   end
   
   def men
-    patient_demographics.men
+    demographics.men
   end
   
   def hepb
-    patient_demographics.hepb
+    demographics.hepb
   end
   
   def hepa
-    patient_demographics.hepa
+    demographics.hepa
   end
   
   def dtap
-    patient_demographics.dtap
+    demographics.dtap
   end
   
   def additional_immunizations
-    patient_demographics.additional_immunizations
+    demographics.additional_immunizations
   end
 
   def additional_notes
-    patient_demographics.additional_notes
+    demographics.additional_notes
   end
 
   def practitioner
-    patient_demographics.practitioner
+    demographics.practitioner
   end
 
   def site_location
-    patient_demographics.site_location
+    demographics.site_location
   end
 
   def allergies
-    patient_demographics.allergies
+    demographics.allergies
   end
 
   def reaction_type
-    patient_demographics.reaction_type
+    demographics.reaction_type
   end
 
   def self.search(search)
@@ -114,12 +114,12 @@ class Patient < ActiveRecord::Base
   end
 
   def init
-    create_patient_demographics
-    create_patient_assessment
-    create_patient_hearing
-    create_patient_physical
-    create_patient_vision
-    create_patient_vital
+    create_demographics
+    create_assessment
+    create_hearing
+    create_physical
+    create_vision
+    create_vital
   end
 
 end

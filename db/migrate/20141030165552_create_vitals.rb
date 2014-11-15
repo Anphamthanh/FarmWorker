@@ -1,6 +1,6 @@
-class CreatePatientVitals < ActiveRecord::Migration
+class CreateVitals < ActiveRecord::Migration
   def change
-    create_table :patient_vitals do |t|      
+    create_table :vitals do |t|      
       t.references :patient,         index: true
       t.integer :height
       t.float :weight

@@ -13,16 +13,16 @@
 
 ActiveRecord::Schema.define(version: 20141030171438) do
 
-  create_table "patient_assessments", force: true do |t|
+  create_table "assessments", force: true do |t|
     t.integer  "patient_id"
     t.text     "general_assessment"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "patient_assessments", ["patient_id"], name: "index_patient_assessments_on_patient_id"
+  add_index "assessments", ["patient_id"], name: "index_assessments_on_patient_id"
 
-  create_table "patient_demographics", force: true do |t|
+  create_table "demographics", force: true do |t|
     t.integer  "patient_id"
     t.string   "site_location",            default: "",    null: false
     t.text     "allergies"
@@ -43,9 +43,9 @@ ActiveRecord::Schema.define(version: 20141030171438) do
     t.datetime "updated_at"
   end
 
-  add_index "patient_demographics", ["patient_id"], name: "index_patient_demographics_on_patient_id"
+  add_index "demographics", ["patient_id"], name: "index_demographics_on_patient_id"
 
-  create_table "patient_hearings", force: true do |t|
+  create_table "hearings", force: true do |t|
     t.integer  "patient_id"
     t.integer  "al"
     t.integer  "ad"
@@ -54,9 +54,22 @@ ActiveRecord::Schema.define(version: 20141030171438) do
     t.datetime "updated_at"
   end
 
-  add_index "patient_hearings", ["patient_id"], name: "index_patient_hearings_on_patient_id"
+  add_index "hearings", ["patient_id"], name: "index_hearings_on_patient_id"
 
-  create_table "patient_physicals", force: true do |t|
+  create_table "patients", force: true do |t|
+    t.string   "first_name",             default: "", null: false
+    t.string   "last_name",              default: "", null: false
+    t.string   "middle_name"
+    t.string   "gender",                              null: false
+    t.date     "dob",                                 null: false
+    t.string   "parent_permission"
+    t.string   "parent_permission_desc"
+    t.integer  "created_by",                          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "physicals", force: true do |t|
     t.integer  "patient_id"
     t.string   "general_appearance"
     t.string   "head_hair"
@@ -83,48 +96,7 @@ ActiveRecord::Schema.define(version: 20141030171438) do
     t.datetime "updated_at"
   end
 
-  add_index "patient_physicals", ["patient_id"], name: "index_patient_physicals_on_patient_id"
-
-  create_table "patient_visions", force: true do |t|
-    t.integer  "patient_id"
-    t.integer  "ol"
-    t.integer  "od"
-    t.integer  "ou"
-    t.boolean  "color_blindness",   default: false
-    t.boolean  "corrective_lenses", default: false
-    t.text     "comment"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "patient_visions", ["patient_id"], name: "index_patient_visions_on_patient_id"
-
-  create_table "patient_vitals", force: true do |t|
-    t.integer  "patient_id"
-    t.integer  "height"
-    t.float    "weight"
-    t.float    "bmi"
-    t.string   "blood_pressure"
-    t.float    "hemoglobin"
-    t.float    "blood_glucose"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "patient_vitals", ["patient_id"], name: "index_patient_vitals_on_patient_id"
-
-  create_table "patients", force: true do |t|
-    t.string   "first_name",             default: "", null: false
-    t.string   "last_name",              default: "", null: false
-    t.string   "middle_name"
-    t.string   "gender",                              null: false
-    t.date     "dob",                                 null: false
-    t.string   "parent_permission"
-    t.string   "parent_permission_desc"
-    t.integer  "created_by",                          null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+  add_index "physicals", ["patient_id"], name: "index_physicals_on_patient_id"
 
   create_table "users", force: true do |t|
     t.string   "email",               default: "", null: false
@@ -145,5 +117,33 @@ ActiveRecord::Schema.define(version: 20141030171438) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["username"], name: "index_users_on_username", unique: true
+
+  create_table "visions", force: true do |t|
+    t.integer  "patient_id"
+    t.integer  "ol"
+    t.integer  "od"
+    t.integer  "ou"
+    t.boolean  "color_blindness",   default: false
+    t.boolean  "corrective_lenses", default: false
+    t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "visions", ["patient_id"], name: "index_visions_on_patient_id"
+
+  create_table "vitals", force: true do |t|
+    t.integer  "patient_id"
+    t.integer  "height"
+    t.float    "weight"
+    t.float    "bmi"
+    t.string   "blood_pressure"
+    t.float    "hemoglobin"
+    t.float    "blood_glucose"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "vitals", ["patient_id"], name: "index_vitals_on_patient_id"
 
 end

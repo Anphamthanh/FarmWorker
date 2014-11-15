@@ -1,6 +1,6 @@
-class CreatePatientVisions < ActiveRecord::Migration
+class CreateVisions < ActiveRecord::Migration
   def change
-    create_table :patient_visions do |t|
+    create_table :visions do |t|
       t.references :patient,         index: true
       t.integer :ol
       t.integer :od
