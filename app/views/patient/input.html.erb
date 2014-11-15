@@ -38,7 +38,7 @@
       <% if @patient.is_child? %>
         <li class="list-group-item"> 
           <label class="col-md-5">
-            Parent Permission
+            Parent permission
           </label>
           <% if @patient.parent_permission.downcase == "limited" %>
             <%= "#{@patient.parent_permission} - #{@patient.parent_permission_desc}" %>
@@ -49,20 +49,43 @@
       <% end %>
     </ul> 
     <div class="panel-body">
-      <% if @type == "demographics" %>
-        <%= render :partial => 'patient/demographics' %>
-      <% elsif @type == "vitals" %>
-        <%= render :partial => 'patient/vitals' %>
-      <% elsif @type == "physical" %>
-        <%= render :partial => 'patient/physical' %>
-      <% elsif @type == "hearing" %>
-        <%= render :partial => 'patient/hearing' %>
-      <% elsif @type == "vision" %>
-        <%= render :partial => 'patient/vision' %>
-      <% elsif @type == "assessment" %>
-        <%= render :partial => 'patient/assessment' %>
+      <% if @patient.is_editable? %>
+        <% if @type == "demographics" %>
+          <%= render :partial => 'patient/demographics' %>
+        <% elsif @type == "vitals" %>
+          <%= render :partial => 'patient/vitals' %>
+        <% elsif @type == "physical" %>
+          <%= render :partial => 'patient/physical' %>
+        <% elsif @type == "hearing" %>
+          <%= render :partial => 'patient/hearing' %>
+        <% elsif @type == "vision" %>
+          <%= render :partial => 'patient/vision' %>
+        <% elsif @type == "assessment" %>
+          <%= render :partial => 'patient/assessment' %>
+        <% end %>
+      <% else %>
+        <div>
+          <%= form_for(:patient, url: patient_path, :validate => true, :class => "form-horizontal") do |f| %>
+            <div class="form-group row col-md-8">
+              <div class="col-md-5">
+                <%= f.label :update_parent_permission %>
+              </div>
+              <div class="col-md-3">
+                <%= f.select :parent_permission, options_for_select(["None", "Complete", "Limited"]) %>
+              </div>
+              <div class="col-md-4">          
+                <%= f.text_field :parent_permission_desc, :class => "form-control", :disabled => "disabled", :placeholder => "If limited, explain here" %>
+              </div>
+            </div>
+            <div class="form-group row col-md-12">
+              <div class="col-md-12"> 
+                <button type="submit" class="btn btn-success">Update</button>
+                <button type="button" class="btn btn-danger pull-right exit">Exit</button>
+              </div>
+            </div>
+          <% end %>
+        </div>
       <% end %>
-
     </div>
   </div>
 </div>

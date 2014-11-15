@@ -15,12 +15,10 @@ class PatientController < ApplicationController
   end
 
   def input
-    patient = Patient.find(params[:id])
-    if patient.parent_permission.downcase == "none"
-      flash[:alert] = "Restriction: Can't enter patient information without parent permission!"
-      redirect_to dashboard
-    end
     @patient = Patient.find_by_id(params[:id])
+    if !@patient.is_editable?
+      flash[:notice] = "Restriction: Can't enter patient information without parent permission."
+    end
     @type = params[:type]
   end
 

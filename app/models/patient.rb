@@ -97,8 +97,16 @@ class Patient < ActiveRecord::Base
     (Date.today - dob).to_i / 30
   end
 
-  def is_limited?
-    parent_permission.downcase == "limited"
+  def is_editable?
+    if is_adult?
+      true
+    else
+      if parent_permission.downcase == "complete" or (parent_permission.downcase == "limited" and !parent_permission_desc.empty?)
+        true
+      else
+        false
+      end
+    end
   end
 
   def first_name=(s)
