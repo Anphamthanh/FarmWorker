@@ -6,7 +6,7 @@ class CreateDemographics < ActiveRecord::Migration
       t.text :allergies
       t.text :reaction_type
       t.integer :dtap
-      t.boolean :tdap
+      t.integer :tdap
       t.boolean :hib,                       :null => false, :default => false
       t.boolean :pneumovax,                 :null => false, :default => false
       t.boolean :hepa,                       :null => false, :default => false

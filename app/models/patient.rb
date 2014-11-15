@@ -82,7 +82,7 @@ class Patient < ActiveRecord::Base
   end
 
   def is_child?
-    (Date.today - dob).to_i / 365 < 18
+    (Date.today - dob).to_i < 365 * 18
   end
 
   def is_adult?
@@ -90,7 +90,19 @@ class Patient < ActiveRecord::Base
   end
 
   def is_under_2?
-    (Date.today - dob).to_i / 365 < 2
+    (Date.today - dob).to_i < 365 * 2
+  end
+
+  def is_under_1?
+    (Date.today - dob).to_i < 365
+  end
+
+  def is_under_4?
+    (Date.today - dob).to_i < 365 * 4
+  end
+
+  def is_under_7?
+    (Date.today - dob).to_i < 365 * 7
   end
 
   def month_age
@@ -99,6 +111,58 @@ class Patient < ActiveRecord::Base
 
   def is_limited?
     parent_permission.downcase == "limited"
+  end
+
+  def is_under_1_month?
+    (Date.today - dob).to_i < 30    
+  end
+  
+  def is_under_3_month?
+    (Date.today - dob).to_i < 30 * 3   
+  end
+  
+  def is_under_5_month?
+    (Date.today - dob).to_i < 30 * 5  
+  end
+
+  def is_under_6_month?
+    (Date.today - dob).to_i < 30 * 6  
+  end
+
+  def is_under_15_month?
+    (Date.today - dob).to_i < 30 * 15  
+  end
+
+  def is_under_19_month?
+    (Date.today - dob).to_i < 30 * 19  
+  end
+
+  def get_hepb_count
+    if is_under_1_month?
+      1
+    elsif !is_under_1_month? and is_under_3_month?
+      2
+    elsif !is_under_6_month? and is_under_19_month?
+      3
+    else
+      0
+    end
+  end
+
+  def get_dtap_count
+    if !is_under_1_month? and is_under_2_month?
+      1
+    elsif !is_under_2_month? and is_under_4_month?
+      2
+    elsif !is_under_4_month? and is_under_6_month?
+      3
+    elsif !is_under_15_month? and is_under_18_month?
+      4
+    elsif !is_under_4? and is_under_6?
+      5
+    else
+      0
+    end    
   end
 
   def is_editable?
