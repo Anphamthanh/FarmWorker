@@ -7,13 +7,13 @@ class CreateDemographics < ActiveRecord::Migration
       t.text :reaction_type
       t.integer :dtap
       t.integer :tdap
-      t.boolean :hib,                       :null => false, :default => false
-      t.boolean :pneumovax,                 :null => false, :default => false
-      t.boolean :hepa,                       :null => false, :default => false
-      t.boolean :hepb,                       :null => false, :default => false
-      t.boolean :influenza,                       :null => false, :default => false
-      t.boolean :men,                       :null => false, :default => false
-      t.boolean :mmr,                       :null => false, :default => false
+      t.integer :hib
+      t.integer :pneumovax
+      t.integer :hepa
+      t.integer :hepb
+      t.integer :influenza
+      t.integer :men
+      t.integer :mmr
       t.text :additional_immunizations
       t.text :additional_notes
       t.string :practitioner,               :null => false, :default => ""
