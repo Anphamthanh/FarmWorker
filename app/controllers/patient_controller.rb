@@ -1,7 +1,7 @@
 class PatientController < ApplicationController
 
   require 'active_support/core_ext/integer/inflections'
-  
+
   before_action :authenticate_practitioner
 
   def create
@@ -37,6 +37,9 @@ class PatientController < ApplicationController
     if type == "demographics"
       @patient.demographics.update_attributes(demographics_params)
       @patient.save
+    elsif type == "vitals"
+      @patient.vital.update_attributes(vitals_params)
+      @patient.save
     end
     redirect_to_next_tab(type) 
   end
@@ -53,13 +56,19 @@ class PatientController < ApplicationController
 
   private
   def patient_params
-    params.require(:patient).permit(:first_name, :last_name, :middle_name, :dob, :gender, :parent_permission, :parent_permission_desc)
+    params.require(:patient).permit(:first_name, :last_name, :middle_name, :dob, 
+      :gender, :parent_permission, :parent_permission_desc)
   end
 
   def demographics_params
     params.require(:patient_record).permit(:site_location, :allergies, :reaction_type, 
       :dtap, :hib, :pneumovax, :hepa, :hepb, :influenza, :men, :mmr, 
       :additional_immunizations, :additional_notes, :practitioner)
+  end
+
+  def vitals_params
+    params.require(:patient_record).permit(:in_feet, :in_inches,
+      :practitioner)
   end
   
   def dashboard

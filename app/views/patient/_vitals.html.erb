@@ -1,55 +1,19 @@
 <div class="vitals-container show" style="margin-top:1rem;">
   <div class="container">
-    <%= form_for(:patient_record, url: patient_update_path, type: "vitals", :validate => true, :class => 'form-horizontal') do |f| %>
-      <div class="form-group row col-md-8">
-        <div class="col-md-5">
+    <%= form_for(:patient_record, url: patient_update_record_path, type: "vitals", :validate => true, :class => 'form-horizontal') do |f| %>
+      <div class="form-group row form-inline">
+        <div class="col-md-3">
           <%= f.label :height %>
         </div>
-        <div class="col-md-7">
-          <%= f.text_field :height, :class => "form-control", :placeholder => "Height" %>            
-        </div>
-      </div>
-      <div class="form-group row col-md-8">
-        <div class="col-md-5">
-          <%= f.label :weight %>
-        </div>
-        <div class="col-md-7">
-          <%= f.text_field :weight, :class => "form-control", :placeholder => "Weight" %>            
-        </div>
-      </div>
-      <div class="form-group row col-md-8">
-        <div class="col-md-5">
-          <%= f.label :weight %>
-        </div>
-        <div class="col-md-7">
-          Auto calculated BMI            
-        </div>
-      </div>
-      <div class="form-group row col-md-8">
-        <div class="col-md-5">
-          <%= f.label :blood_pressure %>
-        </div>
-        <div class="col-md-7">
-          <%= f.text_field :blood_pressure, :class => "form-control", :placeholder => "Blood Pressure" %>      
-        </div>
-      </div>
-      <div class="form-group row col-md-8">
-        <div class="col-md-5">
-          <%= f.label :blood_glucose %>
-        </div>
-        <div class="col-md-7">
-          <%= f.text_field :blood_glucose, :class => "form-control", :placeholder => "Blood Glucose" %>      
-        </div>
-      </div>
-      <div class="form-group row col-md-8">
-        <div class="col-md-5">
-          <%= f.label :hemoglobin %>
-        </div>
-        <div class="col-md-7">
-          <%= f.text_field :hemoglobin, :class => "form-control", :placeholder => "Hemoglobin" %>      
-        </div>
-      </div>
-
+        <div class="input-group col-md-3">
+          <%= f.text_field :in_feet, :class => "form-control", 
+            :value => @patient.vital.height_in_feet, :placeholder => "In feet" %>  
+          <span class="input-group-addon">feet</span>
+          <%= f.text_field :in_inches, :class => "form-control", 
+          :value => @patient.vital.height_in_inches, :placeholder => "In inches" %>
+          <span class="input-group-addon">inches</span>
+        </div>  
+      </div>  
 
       <div class="form-group row col-md-12">
         <div class="col-md-12"> 
