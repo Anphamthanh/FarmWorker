@@ -1,95 +1,61 @@
 <div class="hearing-container show" style="margin-top:1rem;">
   <div class="container">
     <%= form_for(:patient_record, url: patient_update_path, type: "hearing", :validate => true, :class => 'form-horizontal') do |f| %>
-      <div class="form-group row col-md-8">
-        <div class="col-md-3">
-          <%= f.label :al, "al" %>
-        </div>
-        <div class="col-md-3">
-          <%= f.text_field :al, :class => "form-control", :placeholder => "test 1" %>            
-        </div>
-        <div class="col-md-2">
-          <%= f.label :result %>
-        </div>
-        <div class="col-md-4">
-          Auto-calculated Pass/Fail           
-        </div>
-      </div>
-      <div class="form-group row col-md-8">        
-        <div class="col-md-3">
-          <%= f.label :ad, "ad" %>
-        </div>
-        <div class="col-md-3">
-          <%= f.text_field :ad, :class => "form-control", :placeholder => "test 1" %>            
-        </div>
-        <div class="col-md-2">
-          <%= f.label :result %>
-        </div>
-        <div class="col-md-4">
-          Auto-calculated Pass/Fail           
-        </div>
-      </div>
-      <div class="form-group row col-md-8">        
-        
-      There will be three tests for each ear. Important Questions:
-      - Do we need to save the record for each test?
-      - Can we auto generate pass or fail based on test result or should we leave a pass/fail dropdown for each test?
-      </div>
-      <div class="form-group row col-md-8">
-        <div class="col-md-3">
-          <%= f.label :al, "al" %>
-        </div>
-        <div class="col-md-3">
-          <%= f.text_field :al, :class => "form-control", :placeholder => "test 2" %>            
-        </div>
-        <div class="col-md-2">
-          <%= f.label :result %>
-        </div>
-        <div class="col-md-4">
-          Auto-calculated Pass/Fail           
-        </div>
-      </div>
-      <div class="form-group row col-md-8">        
-        <div class="col-md-3">
-          <%= f.label :ad, "ad" %>
-        </div>
-        <div class="col-md-3">
-          <%= f.text_field :ad, :class => "form-control", :placeholder => "test 2" %>            
-        </div>
-        <div class="col-md-2">
-          <%= f.label :result %>
-        </div>
-        <div class="col-md-4">
-          Auto-calculated Pass/Fail           
-        </div>
-      </div>
-      <div class="form-group row col-md-8">  
-        <div class="col-md-3">
-          <%= f.label :al, "al" %>
-        </div>
-        <div class="col-md-3">
-          <%= f.text_field :al, :class => "form-control", :placeholder => "test 3" %>            
-        </div>
-        <div class="col-md-2">
-          <%= f.label :result %>
-        </div>
-        <div class="col-md-4">
-          Auto-calculated Pass/Fail           
-        </div>
-      </div>
-      <div class="form-group row col-md-8">        
-        <div class="col-md-3">
-          <%= f.label :ad, "ad" %>
-        </div>
-        <div class="col-md-3">
-          <%= f.text_field :ad, :class => "form-control", :placeholder => "test 3" %>            
-        </div>
-        <div class="col-md-2">
-          <%= f.label :result %>
-        </div>
-        <div class="col-md-4">
-          Auto-calculated Pass/Fail           
-        </div>
+    <div class="container col-md-11">
+      <ul class="list-group">
+         <li class="list-group-item">
+           <div class="row" style="text-align:center">
+             <label class="col-md-2 col-md-offset-3">500 Hz</label>
+             <label class="col-md-2">1000 Hz</label>
+             <label class="col-md-2">2000 Hz</label>
+             <label class="col-md-2">4000 Hz</label>
+           </div>
+         </li>
+          <li class="list-group-item">
+            <label>Al</label>
+         </li>
+         <li class="list-group-item">
+            <div class="row">
+            <label class="col-md-3">left</label>
+              <input type="checkbox" class="col-md-2">
+              <input type="checkbox" class="col-md-2">
+              <input type="checkbox" class="col-md-2">
+              <input type="checkbox" class="col-md-2">
+          </div>
+            <div class="row">
+            <label class="col-md-3">right</label>
+              <input type="checkbox" class="col-md-2">
+              <input type="checkbox" class="col-md-2">
+              <input type="checkbox" class="col-md-2">
+              <input type="checkbox" class="col-md-2">
+          </div>
+          </li>
+          <li class="list-group-item">
+            <label>Ad</label>
+         </li>
+         <li class="list-group-item">
+            <div class="row">
+            <label class="col-md-3">left</label>
+              <input type="checkbox" class="col-md-2">
+              <input type="checkbox" class="col-md-2">
+              <input type="checkbox" class="col-md-2">
+              <input type="checkbox" class="col-md-2">
+            </div>
+            <div class="row">
+            <label class="col-md-3">right</label>
+              <input type="checkbox" class="col-md-2">
+              <input type="checkbox" class="col-md-2">
+              <input type="checkbox" class="col-md-2">
+              <input type="checkbox" class="col-md-2">
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+            <label class="col-md-3">Comment</label>
+            (Textarea)
+            </div>
+          </li>
+        </ul>
       </div>
       <div class="form-group row col-md-8">  
       <div class="form-group row col-md-12">
