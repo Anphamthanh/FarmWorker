@@ -12,66 +12,6 @@ class Patient < ActiveRecord::Base
   has_one :assessment,              dependent: :destroy
 
   before_create :init
-  
-  def influenza
-    demographics.influenza
-  end
-  
-  def pneumovax
-    demographics.pneumovax
-  end
-  
-  def mmr
-    demographics.mmr
-  end
-  
-  def hib
-    demographics.hib
-  end
-  
-  def men
-    demographics.men
-  end
-  
-  def hepb
-    demographics.hepb
-  end
-  
-  def hepa
-    demographics.hepa
-  end
-  
-  def dtap
-    demographics.dtap
-  end
-  
-  def tdap
-    demographics.tdap
-  end
-  
-  def additional_immunizations
-    demographics.additional_immunizations
-  end
-
-  def additional_notes
-    demographics.additional_notes
-  end
-
-  def practitioner
-    demographics.practitioner
-  end
-
-  def site_location
-    demographics.site_location
-  end
-
-  def allergies
-    demographics.allergies
-  end
-
-  def reaction_type
-    demographics.reaction_type
-  end
 
   def self.search(search)
     if !(search =~ /\A[-+]?\d*\.?\d+\z/).nil?

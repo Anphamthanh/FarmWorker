@@ -2,7 +2,7 @@ class CreateDemographics < ActiveRecord::Migration
   def change
     create_table :demographics do |t|
       t.references :patient,         index: true
-      t.string :site_location,              :null => false, :default => ""
+      t.string :site_location,              :default => ""
       t.text :allergies
       t.text :reaction_type
       t.integer :dtap,                                       :default => "0"
