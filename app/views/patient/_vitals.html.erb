@@ -6,14 +6,38 @@
           <%= f.label :height %>
         </div>
         <div class="input-group col-md-3">
+          <% feet = @patient.vital.height_in_feet == 0 ? "" : @patient.vital.height_in_feet %>
           <%= f.text_field :in_feet, :class => "form-control", 
-            :value => @patient.vital.height_in_feet, :placeholder => "In feet" %>  
+            :value => feet, :placeholder => "In feet" %>  
           <span class="input-group-addon">feet</span>
+          <% inches = @patient.vital.height_in_inches == 0 ? "" : @patient.vital.height_in_inches %>
           <%= f.text_field :in_inches, :class => "form-control", 
-          :value => @patient.vital.height_in_inches, :placeholder => "In inches" %>
+          :value => inches, :placeholder => "In inches" %>
           <span class="input-group-addon">inches</span>
         </div>  
       </div>  
+      <div class="form-group row form-inline">
+        <div class="col-md-3">
+          <%= f.label :weight %>
+        </div>
+        <div class="input-group col-md-3">
+          <% weight = @patient.vital.weight == 0 ? "" : @patient.vital.weight %>
+          <%= f.text_field :weight, :class => "form-control", 
+            :value => weight, :placeholder => "Weight" %>  
+          <span class="input-group-addon">lbs</span>
+        </div>  
+      </div> 
+      <% if @patient.vital.bmi != 0.0 %>
+        <div class="form-group row form-inline">
+          <div class="col-md-3">
+            <%= f.label :bmi, "Body Mass Index (BMI)" %>
+          </div>
+          <div class="input-group col-md-3">
+            <%= @patient.vital.bmi %> 
+            <span>lbs/in&sup2</span>
+          </div>  
+        </div> 
+      <% end %>
 
       <div class="form-group row col-md-12">
         <div class="col-md-12"> 

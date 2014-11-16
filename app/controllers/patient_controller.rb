@@ -36,10 +36,14 @@ class PatientController < ApplicationController
     type = params[:type]
     if type == "demographics"
       @patient.demographics.update_attributes(demographics_params)
-      @patient.save
     elsif type == "vitals"
-      @patient.vital.update_attributes(vitals_params)
-      @patient.save
+      attrs = vitals_params
+      feet = attrs[:in_feet].gsub(/[^0-9 ]/i, '').to_i
+      inches = attrs[:in_inches].gsub(/[^0-9 ]/i, '').to_i
+      attrs[:height] = feet * 12 + inches
+      attrs[:bmi] = (attrs[:weight].gsub(/[^0-9 ]/i, '').to_f*703.0/(attrs[:height].to_f**2)).round(1)
+      puts attrs
+      @patient.vital.update_attributes(attrs)
     end
     redirect_to_next_tab(type) 
   end
@@ -68,7 +72,7 @@ class PatientController < ApplicationController
 
   def vitals_params
     params.require(:patient_record).permit(:in_feet, :in_inches,
-      :practitioner)
+      :weight, :bmi, :practitioner)
   end
   
   def dashboard

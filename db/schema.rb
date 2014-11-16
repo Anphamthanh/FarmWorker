@@ -134,12 +134,13 @@ ActiveRecord::Schema.define(version: 20141030171438) do
 
   create_table "vitals", force: true do |t|
     t.integer  "patient_id"
-    t.integer  "height"
-    t.float    "weight"
-    t.float    "bmi"
-    t.string   "blood_pressure"
-    t.float    "hemoglobin"
-    t.float    "blood_glucose"
+    t.integer  "height",         default: 0
+    t.integer  "weight",         default: 0
+    t.float    "bmi",            default: 0.0
+    t.string   "blood_pressure", default: "0"
+    t.float    "hemoglobin",     default: 0.0
+    t.float    "blood_glucose",  default: 0.0
+    t.string   "practitioner",   default: "",  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
