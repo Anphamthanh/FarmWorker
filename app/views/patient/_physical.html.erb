@@ -198,7 +198,7 @@
           <%= f.label "Additional Notes" %>
         </div>
         <div class="col-md-5">
-          <% additional_notes = @patient.demographics.additional_notes %>
+          <% additional_notes = @patient.physical.additional_notes %>
           <textarea placeholder="Additional Notes" name="patient_record[additional_notes]" class="form-control" rows="2"><%= additional_notes %></textarea>
         </div>
       </div>
