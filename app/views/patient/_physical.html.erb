@@ -1,13 +1,205 @@
 <div class="physical-container show" style="margin-top:1rem;">
   <div class="container">
     <%= form_for(:patient_record, url: patient_update_record_path, type: "physical", :validate => true, :class => 'form-horizontal') do |f| %>
+
+      <% options = ["Not Evaluated", "Normal", "Abnormal"] %>
+
       <div class="form-group row">
         <div class="col-md-7">
           <%= f.label :appearance, "General Appearance (Well nourished, hygienge, appears ill, etc)" %>
         </div>
         <div class="col-md-5">
-          <% selection = @patient.physical.general_appearance %>
-          <%= f.select :general_appearance, options_for_select(["Office", "Home", "Other"], selection), :class => 'form-control' %>
+          <%= f.select :general_appearance, options_for_select(options, @patient.physical.general_appearance), :class => 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-7">
+          <%= f.label :head, "Head/Hair" %>
+        </div>
+        <div class="col-md-5">
+          <%= f.select :head_hair, options_for_select(options, @patient.physical.head_hair), :class => 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-7">
+          <%= f.label :skin %>
+        </div>
+        <div class="col-md-5">
+          <%= f.select :skin, options_for_select(options, @patient.physical.skin), :class => 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-7">
+          <%= f.label :eyes %>
+        </div>
+        <div class="col-md-5">
+          <%= f.select :eyes, options_for_select(options, @patient.physical.eyes), :class => 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-7">
+          <%= f.label :ears %>
+        </div>
+        <div class="col-md-5">
+          <%= f.select :ears, options_for_select(options, @patient.physical.ears), :class => 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-7">
+          <%= f.label :nose %>
+        </div>
+        <div class="col-md-5">
+          <%= f.select :nose, options_for_select(options, @patient.physical.nose), :class => 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-7">
+          <%= f.label :mouth %>
+        </div>
+        <div class="col-md-5">
+          <%= f.select :mouth, options_for_select(options, @patient.physical.mouth), :class => 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-7">
+          <%= f.label :throat %>
+        </div>
+        <div class="col-md-5">
+          <%= f.select :throat, options_for_select(options, @patient.physical.throat), :class => 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-7">
+          <%= f.label :thyroid %>
+        </div>
+        <div class="col-md-5">
+          <%= f.select :thyroid, options_for_select(options, @patient.physical.thyroid), :class => 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-7">
+          <%= f.label :pre, "Lymph Pre-Auricular" %>
+        </div>
+        <div class="col-md-5">
+          <%= f.select :lymph_pre_auricular, options_for_select(options, @patient.physical.lymph_pre_auricular), :class => 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-7">
+          <%= f.label :pos, "Lymph Post-Auricular" %>
+        </div>
+        <div class="col-md-5">
+          <%= f.select :lymph_post_auricular, options_for_select(options, @patient.physical.lymph_post_auricular), :class => 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-7">
+          <%= f.label :ant, "Lymph Anterior Cervical" %>
+        </div>
+        <div class="col-md-5">
+          <%= f.select :lymph_anterior_cervical, options_for_select(options, @patient.physical.lymph_anterior_cervical), :class => 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-7">
+          <%= f.label :occ, "Lymph Occipital" %>
+        </div>
+        <div class="col-md-5">
+          <%= f.select :lymph_occipital, options_for_select(options, @patient.physical.lymph_occipital), :class => 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-7">
+          <%= f.label :axi, "Lymph Axillary" %>
+        </div>
+        <div class="col-md-5">
+          <%= f.select :lymph_axillary, options_for_select(options, @patient.physical.lymph_axillary), :class => 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-7">
+          <%= f.label :vascular %>
+        </div>
+        <div class="col-md-5">
+          <%= f.select :vascular, options_for_select(options, @patient.physical.vascular), :class => 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-7">
+          <%= f.label :heart %>
+        </div>
+        <div class="col-md-5">
+          <%= f.select :heart, options_for_select(options, @patient.physical.heart), :class => 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-7">
+          <%= f.label :lungs %>
+        </div>
+        <div class="col-md-5">
+          <%= f.select :lungs, options_for_select(options, @patient.physical.lungs), :class => 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-7">
+          <%= f.label :abdomen %>
+        </div>
+        <div class="col-md-5">
+          <%= f.select :abdomen, options_for_select(options, @patient.physical.abdomen), :class => 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-7">
+          <%= f.label :musculoskeletal %>
+        </div>
+        <div class="col-md-5">
+          <%= f.select :musculoskeletal, options_for_select(options, @patient.physical.musculoskeletal), :class => 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-7">
+          <%= f.label :sco, "Scoliosis Screening" %>
+        </div>
+        <div class="col-md-5">
+          <%= f.select :scoliosis_screening, options_for_select(options, @patient.physical.scoliosis_screening), :class => 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-7">
+          <%= f.label :neuro %>
+        </div>
+        <div class="col-md-5">
+          <%= f.select :neuro, options_for_select(options, @patient.physical.neuro), :class => 'form-control' %>
+        </div>
+      </div>      
+      <div class="form-group row">
+        <hr>
+        <div class="col-md-3">
+          <%= f.label "Additional Notes" %>
+        </div>
+        <div class="col-md-5">
+          <% additional_notes = @patient.demographics.additional_notes %>
+          <textarea placeholder="Additional Notes" name="patient_record[additional_notes]" class="form-control" rows="2"><%= additional_notes %></textarea>
         </div>
       </div>
 
