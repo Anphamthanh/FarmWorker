@@ -38,6 +38,54 @@
           </div>  
         </div> 
       <% end %>
+      <div class="form-group row form-inline">
+        <div class="col-md-3">
+          <%= f.label :blood_pressure, "Blood Pressure" %>
+        </div>
+        <div class="input-group col-md-3">
+          <span class="input-group-addon">SYS</span>
+          <% sys = @patient.vital.sys %>
+          <%= f.text_field :sys, :class => "form-control", 
+            :value => sys, :placeholder => "(BP)" %>  
+          <span class="input-group-addon">/ DIA</span>
+          <% dia = @patient.vital.dia %>
+          <%= f.text_field :dia, :class => "form-control", 
+          :value => dia, :placeholder => "(BP)" %>
+          <span class="input-group-addon">mmHg</span>
+        </div>  
+      </div> 
+      <div class="form-group row form-inline">
+        <div class="col-md-3">
+          <%= f.label :hemoglobin %>
+        </div>
+        <div class="input-group col-md-3">
+          <% hemoglobin = @patient.vital.hemoglobin == 0 ? "" : @patient.vital.hemoglobin %>
+          <%= f.text_field :hemoglobin, :class => "form-control", 
+            :value => hemoglobin, :placeholder => "(HgB)" %>  
+          <span class="input-group-addon">mg/dL</span>
+        </div>  
+      </div>  
+      <div class="form-group row form-inline">
+        <div class="col-md-3">
+          <%= f.label :blood_glucose %>
+        </div>
+        <div class="input-group col-md-3">
+          <% blood_glucose = @patient.vital.blood_glucose == 0 ? "" : @patient.vital.blood_glucose %>
+          <%= f.text_field :blood_glucose, :class => "form-control", 
+            :value => blood_glucose, :placeholder => "(Glucose)" %>  
+          <span class="input-group-addon">mg/dL</span>
+        </div>  
+      </div> 
+      <div class="form-group row col-md-12">
+        <hr>
+        <div class="container">
+          <label class="col-md-3">Working Practitioner(s)</label>
+          <div class="col-md-5">
+            <% practitioner = @patient.vital.practitioner.empty? ? "#{current_user.first_name} #{current_user.last_name}" : @patient.vital.practitioner %>
+            <%= f.text_field :practitioner, :class => "form-control", :value => practitioner, :placeholder => "Can't be blank" %>
+          </div>  
+        </div>
+      </div> 
 
       <div class="form-group row col-md-12">
         <div class="col-md-12"> 

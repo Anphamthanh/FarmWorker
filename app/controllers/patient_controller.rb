@@ -42,7 +42,8 @@ class PatientController < ApplicationController
       inches = attrs[:in_inches].gsub(/[^0-9 ]/i, '').to_i
       attrs[:height] = feet * 12 + inches
       attrs[:bmi] = (attrs[:weight].gsub(/[^0-9 ]/i, '').to_f*703.0/(attrs[:height].to_f**2)).round(1)
-      puts attrs
+      attrs[:blood_pressure] = [attrs[:sys], attrs[:dia]].join('/')
+      puts attrs 
       @patient.vital.update_attributes(attrs)
     end
     redirect_to_next_tab(type) 
@@ -71,8 +72,8 @@ class PatientController < ApplicationController
   end
 
   def vitals_params
-    params.require(:patient_record).permit(:in_feet, :in_inches,
-      :weight, :bmi, :practitioner)
+    params.require(:patient_record).permit(:in_feet, :in_inches, :blood_glucose,
+      :weight, :bmi, :sys, :dia, :hemoglobin, :practitioner)
   end
   
   def dashboard
