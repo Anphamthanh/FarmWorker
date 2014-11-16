@@ -24,6 +24,8 @@ class CreatePhysicals < ActiveRecord::Migration
       t.string :musculoskeletal
       t.string :scoliosis_screening
       t.string :neuro
+      t.text :additional_notes
+      t.string :practitioner,               :null => false, :default => ""
       t.timestamps
     end
   end

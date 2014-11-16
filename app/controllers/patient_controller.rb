@@ -45,6 +45,8 @@ class PatientController < ApplicationController
       attrs[:blood_pressure] = [attrs[:sys], attrs[:dia]].join('/')
       puts attrs 
       @patient.vital.update_attributes(attrs)
+    elsif type == "physical"
+      @patient.physical.update_attributes(physical_params)
     end
     redirect_to_next_tab(type) 
   end
@@ -74,6 +76,15 @@ class PatientController < ApplicationController
   def vitals_params
     params.require(:patient_record).permit(:in_feet, :in_inches, :blood_glucose,
       :weight, :bmi, :sys, :dia, :hemoglobin, :practitioner)
+  end
+
+  def physical_params
+    params.require(:patient_record).permit(:general_appearance, 
+        :head_hair, :skin, :eyes, :ears, :nose, :mouth, :throat, :thyroid,
+        :lymph_pre_auricular, :lymph_post_auricular, :lymph_anterior_cervical,
+        :lymph_anterior_cervical, :lymph_occipital, :lymph_axillary, :vascular,
+        :heart, :lungs, :abdomen, :musculoskeletal, :scoliosis_screening, :neuro,
+        :additional_notes, :practitioner)
   end
   
   def dashboard

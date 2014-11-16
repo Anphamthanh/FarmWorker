@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20141030171438) do
 
   create_table "demographics", force: true do |t|
     t.integer  "patient_id"
-    t.string   "site_location",            default: "", null: false
+    t.string   "site_location",            default: ""
     t.text     "allergies"
     t.text     "reaction_type"
     t.integer  "dtap",                     default: 0
@@ -92,6 +92,8 @@ ActiveRecord::Schema.define(version: 20141030171438) do
     t.string   "musculoskeletal"
     t.string   "scoliosis_screening"
     t.string   "neuro"
+    t.text     "additional_notes"
+    t.string   "practitioner",            default: "", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -137,7 +139,7 @@ ActiveRecord::Schema.define(version: 20141030171438) do
     t.integer  "height",         default: 0
     t.integer  "weight",         default: 0
     t.float    "bmi",            default: 0.0
-    t.string   "blood_pressure", default: "0"
+    t.string   "blood_pressure", default: ""
     t.float    "hemoglobin",     default: 0.0
     t.float    "blood_glucose",  default: 0.0
     t.string   "practitioner",   default: "",  null: false
