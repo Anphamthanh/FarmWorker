@@ -9,6 +9,7 @@
         <button type="button" class="btn btn-default physical">Physical</button>
         <button type="button" class="btn btn-default hearing">Hearing</button>
         <button type="button" class="btn btn-default vision">Vision</button>
+        <button type="button" class="btn btn-default anticipatory">Anticipatory Guidelines</button>
         <button type="button" class="btn btn-default assessment">Assessment</button>
       </div>
       <div class="demographics-container show" style="margin-top:1rem;">
@@ -293,6 +294,12 @@
     $(".show").removeClass("show");
     $(".vision-container").addClass("show");
     $(".vision-container").removeClass("hidden");
+  });
+  $(".assessment").click(function() {
+    $(".show").addClass("hidden");
+    $(".show").removeClass("show");
+    $(".assessment-container").addClass("show");
+    $(".assessment-container").removeClass("hidden");
   });
   $(".assessment").click(function() {
     $(".show").addClass("hidden");

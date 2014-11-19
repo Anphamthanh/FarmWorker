@@ -12,6 +12,7 @@
           <button type="button" class="btn btn-default physical">Physical</button>
           <button type="button" class="btn btn-default hearing">Hearing</button>
           <button type="button" class="btn btn-default vision">Vision</button>
+          <button type="button" class="btn btn-default anticipatory">Anticipatory Guidelines</button>
           <button type="button" class="btn btn-default assessment">Assessment</button>
         </div>
       </li>
@@ -62,6 +63,8 @@
           <%= render :partial => 'patient/vision' %>
         <% elsif @type == "assessment" %>
           <%= render :partial => 'patient/assessment' %>
+        <% elsif @type == "anticipatory" %>
+          <%= render :partial => 'patient/anticipatory' %>
         <% end %>
       <% else %>
         <div>
@@ -108,6 +111,9 @@
   });
   $(".assessment").click(function() {
     window.document.location = 'assessment'
+  });
+  $(".anticipatory").click(function() {
+    window.document.location = 'anticipatory'
   });
   $(".exit").click(function() {
     window.document.location = '<%= student_dashboard_path %>'
