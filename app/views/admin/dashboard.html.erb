@@ -9,7 +9,8 @@
           <div class="input-group">
             <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Enter user" %>
             <div class="input-group-btn">
-              <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+              <button class="btn btn-default" type="submit" onclick='$("#search").focus()'><i class="fa fa-search"></i></button>
+              <button class="btn btn-default" type='reset' onclick='$("#search").focus()'><i class="fa fa-times"></i></button>
             </div>
           </div>
         <% end %>

@@ -46,6 +46,7 @@
       <% if @patient.get_dtap_count > 0 %>
         <div class="form-group row">
           <div class="col-md-3">
+            <%= missing?(@patient.demographics.dtap) %>
             <%= f.label :dtap, "DTaP" %>
           </div>
           <div class="col-md-7">
@@ -61,6 +62,7 @@
       <% if @patient.get_hepa_count > 0 %>
         <div class="form-group row">
           <div class="col-md-3">
+            <%= missing?(@patient.demographics.hepa) %>
             <%= f.label :hepa, "HepA" %>
           </div>
           <div class="col-md-7">
@@ -76,12 +78,13 @@
       <% if @patient.get_hepb_count > 0 %>
         <div class="form-group row">
           <div class="col-md-3">
+            <%= missing?(@patient.demographics.hepb) %>
             <%= f.label :hepb, "HepB" %>
           </div>
           <div class="col-md-7">
             <input type="checkbox" <%= @patient.demographics.hepb != 0 ? "" : "checked" %> name="patient_record[hepb]" value="0" /> None 
             <% (1..@patient.get_hepb_count).each do |order| %> 
-              <input type="checkbox" <%= order <= @patient.demographics.hepb ? "checked" : "" %>
+            <input type="checkbox" <%= order <= @patient.demographics.hepb ? "checked" : "" %>
               name="patient_record[hepb]" class="imm" value="<%= order %>" />
               <strong><%= order.ordinalize() %></strong> Dose 
             <% end %>
@@ -91,6 +94,7 @@
       <% if @patient.get_hib_count > 0 %>
         <div class="form-group row">
           <div class="col-md-3">
+            <%= missing?(@patient.demographics.hib) %>
             <%= f.label :hib, "HiB" %>
           </div>
           <div class="col-md-7">
@@ -106,6 +110,7 @@
       <% if @patient.get_mmr_count > 0 %>
         <div class="form-group row ">
           <div class="col-md-3">
+            <%= missing?(@patient.demographics.mmr) %>
             <%= f.label :mmr, "MMR" %>
           </div>
           <div class="col-md-7">
@@ -121,6 +126,7 @@
       <% if @patient.get_men_count > 0 %>
         <div class="form-group row">
           <div class="col-md-3">
+            <%= missing?(@patient.demographics.men) %>
             <%= f.label :men, "Men" %>
           </div>
           <div class="col-md-7">
@@ -136,6 +142,7 @@
       <% if @patient.get_pneumovax_count > 0 %>
         <div class="form-group row">
           <div class="col-md-3">
+            <%= missing?(@patient.demographics.pneumovax) %>
             <%= f.label :pneumovax, "Pneumovax" %>
           </div>
           <div class="col-md-7">
@@ -151,6 +158,7 @@
       <% if @patient.get_influenza_count > 0 %>
         <div class="form-group row">
           <div class="col-md-3">
+            <%= missing?(@patient.demographics.influenza) %>
             <%= f.label :influenza, "Influenza" %>
           </div>
           <div class="col-md-7">

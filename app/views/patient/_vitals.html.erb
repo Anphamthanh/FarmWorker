@@ -3,6 +3,7 @@
     <%= form_for(:patient_record, url: patient_update_record_path, type: "vitals", :validate => true, :class => 'form-horizontal') do |f| %>
       <div class="form-group row form-inline">
         <div class="col-md-3">
+          <%= missing?(@patient.vital.height) %>
           <%= f.label :height %>
         </div>
         <div class="input-group col-md-3">
@@ -18,6 +19,7 @@
       </div>  
       <div class="form-group row form-inline">
         <div class="col-md-3">
+          <%= missing?(@patient.vital.weight) %>
           <%= f.label :weight %>
         </div>
         <div class="input-group col-md-3">
@@ -30,6 +32,7 @@
       <% if @patient.vital.bmi != 0.0 %>
         <div class="form-group row form-inline">
           <div class="col-md-3">
+            <%= BMIAlert(@patient.vital.bmi) %>
             <%= f.label :bmi, "Body Mass Index (BMI)" %>
           </div>
           <div class="input-group col-md-3">
@@ -40,6 +43,7 @@
       <% end %>
       <div class="form-group row form-inline">
         <div class="col-md-3">
+          <%= BPAlert(@patient.vital.sys, @patient.vital.dia) %>
           <%= f.label :blood_pressure, "Blood Pressure" %>
         </div>
         <div class="input-group col-md-3">
@@ -56,6 +60,7 @@
       </div> 
       <div class="form-group row form-inline">
         <div class="col-md-3">
+          <%= HGBAlert(@patient.vital.hemoglobin) %>
           <%= f.label :hemoglobin %>
         </div>
         <div class="input-group col-md-3">
@@ -67,6 +72,7 @@
       </div>  
       <div class="form-group row form-inline">
         <div class="col-md-3">
+          <%= GlucoseAlert(@patient.vital.blood_glucose) %>
           <%= f.label :blood_glucose %>
         </div>
         <div class="input-group col-md-3">
