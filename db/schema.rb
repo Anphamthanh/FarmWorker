@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20141030171438) do
     t.integer  "ad"
     t.boolean  "need_further_evaluation", default: false
     t.text     "comment"
+    t.string   "practitioner",            default: "",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

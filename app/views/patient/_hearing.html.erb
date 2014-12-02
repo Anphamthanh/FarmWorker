@@ -1,13 +1,21 @@
 <div class="hearing-container show" style="margin-top:1rem;">
   <div class="container">
     <%= form_for(:patient_record, url: patient_update_path, type: "hearing", :validate => true, :class => 'form-horizontal') do |f| %>
-    
+
+      <div class="form-group row">
+        <div class="col-md-3">
+          <%= f.label :utd, "Up To Date" %>
+        </div>
+        <div class="col-md-5">
+          <input type="checkbox" name="patient_record[utd]" id="utd">
+        </div>
+      </div>
       <div class="form-group row col-md-12">
         <hr>
         <div class="container">
           <label class="col-md-3">Working Practitioner(s)</label>
           <div class="col-md-5">
-            <% practitioner = @patient.physical.practitioner.empty? ? "#{current_user.first_name} #{current_user.last_name}" : @patient.physical.practitioner %>
+            <% practitioner = @patient.hearing.practitioner.empty? ? "#{current_user.first_name} #{current_user.last_name}" : @patient.hearing.practitioner %>
             <%= f.text_field :practitioner, :class => "form-control", :value => practitioner, :placeholder => "Can't be blank" %>
           </div>  
         </div>
