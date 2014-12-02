@@ -34,10 +34,40 @@
         </div>
         <div class="form-group row">
           <div class="col-md-3">
+            <%= f.label :under_professional_care, "Under Professional Care" %>
+          </div>
+          <div class="col-md-5">
+            <% under_professional_care = @patient.hearing.under_professional_care %>
+            <%= f.check_box :under_professional_care, :checked => under_professional_care %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-3">
             <%= f.label :audiometer %>
           </div>
           <div class="col-md-5">
             <%= f.select :audiometer, options_for_select(["20 dB","25 dB"], @patient.hearing.audiometer), :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-2"><%= f.label :frequency %></div>
+          <div class="col-md-2">500Hz</div>
+          <div class="col-md-2">750Hz</div>
+          <div class="col-md-2">1000Hz</div>
+          <div class="col-md-2">2000Hz</div>
+          <div class="col-md-2">4000Hz</div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-2"><%= f.label :result %></div>
+          <div class="col-md-2">            
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-sm <%= @patient.hearing.f500 ? 'active btn-success' : 'btn-default' %>">
+                <input type="radio" name="patient_record[f500]" value="true">Pass
+              </label>
+              <label class="btn btn-sm <%= @patient.hearing.f500 ? 'btn-default' : 'active btn-danger' %>">
+                <input type="radio" name="patient_record[f500]" value="false">Fail
+              </label>
+            </div>
           </div>
         </div>
         <div class="form-group row">
@@ -47,15 +77,6 @@
           <div class="col-md-5">
             <% need_further_evaluation = @patient.hearing.need_further_evaluation %>
             <%= f.check_box :need_further_evaluation, :checked => need_further_evaluation %>
-          </div>
-        </div>
-        <div class="form-group row">
-          <div class="col-md-3">
-            <%= f.label :under_professional_care, "Under Professional Care" %>
-          </div>
-          <div class="col-md-5">
-            <% under_professional_care = @patient.hearing.under_professional_care %>
-            <%= f.check_box :under_professional_care, :checked => under_professional_care %>
           </div>
         </div>
       </div>
@@ -96,5 +117,19 @@
   $(".hearing").addClass("active");
   $("#enableEntries").change(function() {
     $("#entries").toggle();
+  });
+  $(".btn").click(function() {
+    if ($(this).find("input").attr("value") == "true") {
+      $(this).removeClass("btn-default");
+      $(this).addClass("btn-success");
+      $(this).parent().find(".btn-danger").addClass("btn-default");
+      $(this).parent().find(".btn-danger").removeClass("btn-danger");
+    }
+    else {
+      $(this).removeClass("btn-default");
+      $(this).addClass("btn-danger");
+      $(this).parent().find(".btn-success").addClass("btn-default");
+      $(this).parent().find(".btn-success").removeClass("btn-success");
+    }
   });
 </script>
