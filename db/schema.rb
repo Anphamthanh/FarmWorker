@@ -47,8 +47,16 @@ ActiveRecord::Schema.define(version: 20141030171438) do
 
   create_table "hearings", force: true do |t|
     t.integer  "patient_id"
+    t.boolean  "unable_to_screen",        default: false
+    t.boolean  "use_assitive_device",     default: false
+    t.boolean  "f500"
+    t.boolean  "f1k"
+    t.boolean  "f2k"
+    t.boolean  "f4k"
+    t.integer  "audiometer"
     t.integer  "al"
     t.integer  "ad"
+    t.boolean  "need_further_evaluation", default: false
     t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
