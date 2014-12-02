@@ -48,6 +48,14 @@
           <% end %>
         </li>
       <% end %>
+      <% if @patient.vital.height_in_feet > 0 %>
+        <li class="list-group-item"> 
+          <label class="col-md-5">
+            Height
+          </label>
+          <%= "#{@patient.vital.height_in_feet} feet #{@patient.vital.height_in_inches} inches" %>
+        </li>
+      <% end %>
     </ul> 
     <div class="panel-body">
       <% if @patient.is_editable? %>
