@@ -58,54 +58,107 @@
           <div class="col-md-2"><strong>4000 Hz</strong></div>
         </div>
         <div class="form-group row">
-          <div class="col-md-2"><%= f.label :result %></div>
+          <div class="col-md-2"><%= f.label :al, "Left Ear (a.l., a.s.)" %></div>
           <div class="col-md-2">            
             <div class="btn-group" data-toggle="buttons">
-              <label class="btn btn-sm <%= @patient.hearing.f500 ? 'active btn-success' : 'btn-default' %>">
-                <input type="radio" name="patient_record[f500]" value="true">Pass
+              <label class="btn btn-sm <%= @patient.hearing.alf500 ? 'active btn-success' : 'btn-default' %>">
+                <input type="radio" name="patient_record[alf500]" value="true">Pass
               </label>
-              <label class="btn btn-sm <%= @patient.hearing.f500 ? 'btn-default' : 'active btn-danger' %>">
-                <input type="radio" name="patient_record[f500]" value="false">Fail
+              <label class="btn btn-sm <%= @patient.hearing.alf500 ? 'btn-default' : 'active btn-danger' %>">
+                <input type="radio" name="patient_record[alf500]" value="false">Fail
               </label>
             </div>
           </div>
           <div class="col-md-2">            
             <div class="btn-group" data-toggle="buttons">
-              <label class="btn btn-sm <%= @patient.hearing.f750 ? 'active btn-success' : 'btn-default' %>">
-                <input type="radio" name="patient_record[f750]" value="true">Pass
+              <label class="btn btn-sm <%= @patient.hearing.alf750 ? 'active btn-success' : 'btn-default' %>">
+                <input type="radio" name="patient_record[alf750]" value="true">Pass
               </label>
-              <label class="btn btn-sm <%= @patient.hearing.f750 ? 'btn-default' : 'active btn-danger' %>">
-                <input type="radio" name="patient_record[f750]" value="false">Fail
-              </label>
-            </div>
-          </div>
-          <div class="col-md-2">            
-            <div class="btn-group" data-toggle="buttons">
-              <label class="btn btn-sm <%= @patient.hearing.f1k ? 'active btn-success' : 'btn-default' %>">
-                <input type="radio" name="patient_record[f1k]" value="true">Pass
-              </label>
-              <label class="btn btn-sm <%= @patient.hearing.f1k ? 'btn-default' : 'active btn-danger' %>">
-                <input type="radio" name="patient_record[f1k]" value="false">Fail
+              <label class="btn btn-sm <%= @patient.hearing.alf750 ? 'btn-default' : 'active btn-danger' %>">
+                <input type="radio" name="patient_record[alf750]" value="false">Fail
               </label>
             </div>
           </div>
           <div class="col-md-2">            
             <div class="btn-group" data-toggle="buttons">
-              <label class="btn btn-sm <%= @patient.hearing.f2k ? 'active btn-success' : 'btn-default' %>">
-                <input type="radio" name="patient_record[f2k]" value="true">Pass
+              <label class="btn btn-sm <%= @patient.hearing.alf1k ? 'active btn-success' : 'btn-default' %>">
+                <input type="radio" name="patient_record[alf1k]" value="true">Pass
               </label>
-              <label class="btn btn-sm <%= @patient.hearing.f2k ? 'btn-default' : 'active btn-danger' %>">
-                <input type="radio" name="patient_record[f2k]" value="false">Fail
+              <label class="btn btn-sm <%= @patient.hearing.alf1k ? 'btn-default' : 'active btn-danger' %>">
+                <input type="radio" name="patient_record[alf1k]" value="false">Fail
               </label>
             </div>
           </div>
           <div class="col-md-2">            
             <div class="btn-group" data-toggle="buttons">
-              <label class="btn btn-sm <%= @patient.hearing.f4k ? 'active btn-success' : 'btn-default' %>">
-                <input type="radio" name="patient_record[f4k]" value="true">Pass
+              <label class="btn btn-sm <%= @patient.hearing.alf2k ? 'active btn-success' : 'btn-default' %>">
+                <input type="radio" name="patient_record[alf2k]" value="true">Pass
               </label>
-              <label class="btn btn-sm <%= @patient.hearing.f4k ? 'btn-default' : 'active btn-danger' %>">
-                <input type="radio" name="patient_record[f4k]" value="false">Fail
+              <label class="btn btn-sm <%= @patient.hearing.alf2k ? 'btn-default' : 'active btn-danger' %>">
+                <input type="radio" name="patient_record[alf2k]" value="false">Fail
+              </label>
+            </div>
+          </div>
+          <div class="col-md-2">            
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-sm <%= @patient.hearing.alf4k ? 'active btn-success' : 'btn-default' %>">
+                <input type="radio" name="patient_record[alf4k]" value="true">Pass
+              </label>
+              <label class="btn btn-sm <%= @patient.hearing.alf4k ? 'btn-default' : 'active btn-danger' %>">
+                <input type="radio" name="patient_record[alf4k]" value="false">Fail
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-2"><%= f.label :ad, "Right Ear (a.d.)" %></div>
+          <div class="col-md-2">            
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-sm <%= @patient.hearing.adf500 ? 'active btn-success' : 'btn-default' %>">
+                <input type="radio" name="patient_record[adf500]" value="true">Pass
+              </label>
+              <label class="btn btn-sm <%= @patient.hearing.adf500 ? 'btn-default' : 'active btn-danger' %>">
+                <input type="radio" name="patient_record[adf500]" value="false">Fail
+              </label>
+            </div>
+          </div>
+          <div class="col-md-2">            
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-sm <%= @patient.hearing.adf750 ? 'active btn-success' : 'btn-default' %>">
+                <input type="radio" name="patient_record[adf750]" value="true">Pass
+              </label>
+              <label class="btn btn-sm <%= @patient.hearing.adf750 ? 'btn-default' : 'active btn-danger' %>">
+                <input type="radio" name="patient_record[adf750]" value="false">Fail
+              </label>
+            </div>
+          </div>
+          <div class="col-md-2">            
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-sm <%= @patient.hearing.adf1k ? 'active btn-success' : 'btn-default' %>">
+                <input type="radio" name="patient_record[adf1k]" value="true">Pass
+              </label>
+              <label class="btn btn-sm <%= @patient.hearing.adf1k ? 'btn-default' : 'active btn-danger' %>">
+                <input type="radio" name="patient_record[adf1k]" value="false">Fail
+              </label>
+            </div>
+          </div>
+          <div class="col-md-2">            
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-sm <%= @patient.hearing.adf2k ? 'active btn-success' : 'btn-default' %>">
+                <input type="radio" name="patient_record[adf2k]" value="true">Pass
+              </label>
+              <label class="btn btn-sm <%= @patient.hearing.adf2k ? 'btn-default' : 'active btn-danger' %>">
+                <input type="radio" name="patient_record[adf2k]" value="false">Fail
+              </label>
+            </div>
+          </div>
+          <div class="col-md-2">            
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-sm <%= @patient.hearing.adf4k ? 'active btn-success' : 'btn-default' %>">
+                <input type="radio" name="patient_record[adf4k]" value="true">Pass
+              </label>
+              <label class="btn btn-sm <%= @patient.hearing.adf4k ? 'btn-default' : 'active btn-danger' %>">
+                <input type="radio" name="patient_record[adf4k]" value="false">Fail
               </label>
             </div>
           </div>

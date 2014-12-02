@@ -94,7 +94,7 @@ class PatientController < ApplicationController
 
   def hearing_params
     params.require(:patient_record).permit(:unable_to_screen, :use_assitive_device,
-      :f500, :f750, :f1k, :f2k, :f4k,
+      :alf500, :alf750, :alf1k, :alf2k, :alf4k, :adf500, :adf750, :adf1k, :adf2k, :adf4k,
       :under_professional_care, :need_further_evaluation, :comment, :practitioner)
   end
   
