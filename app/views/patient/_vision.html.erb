@@ -1,6 +1,6 @@
 <div class="vision-container show" style="margin-top:1rem;">
   <div class="container">
-    <%= form_for(:patient_record, url: patient_update_path, type: "vision", :validate => true, :class => 'form-horizontal') do |f| %>
+    <%= form_for(:patient_record, url: patient_update_record_path, type: "vision", :validate => true, :class => 'form-horizontal') do |f| %>
       <div class="form-group row col-md-11">
         <div class="pull-right">   
           <% if !@patient.vision.practitioner.empty? %>             

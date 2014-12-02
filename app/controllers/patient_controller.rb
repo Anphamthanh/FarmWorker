@@ -55,6 +55,11 @@ class PatientController < ApplicationController
         flash[:alert] = "Failed to update hearing: " + @patient.hearing.errors.full_messages.join('. ')
         type = "physical"
       end
+    elsif type == "vision"
+      if !@patient.vision.update_attributes(vision_params)
+        flash[:alert] = "Failed to update vision: " + @patient.vision.errors.full_messages.join('. ')
+        type = "hearing"
+      end
     end
     redirect_to_next_tab(type) 
   end
@@ -98,6 +103,11 @@ class PatientController < ApplicationController
   def hearing_params
     params.require(:patient_record).permit(:unable_to_screen, :use_assitive_device,
       :alf500, :alf750, :alf1k, :alf2k, :alf4k, :adf500, :adf750, :adf1k, :adf2k, :adf4k,
+      :under_professional_care, :need_further_evaluation, :comment, :practitioner)
+  end
+
+  def vision_params
+    params.require(:patient_record).permit(:unable_to_screen, :use_corrective_lenses,
       :under_professional_care, :need_further_evaluation, :comment, :practitioner)
   end
   
