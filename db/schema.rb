@@ -140,12 +140,18 @@ ActiveRecord::Schema.define(version: 20141030171438) do
 
   create_table "visions", force: true do |t|
     t.integer  "patient_id"
+    t.boolean  "unable_to_screen",        default: false
+    t.boolean  "use_corrective_lenses",   default: false
+    t.boolean  "need_further_evaluation", default: false
+    t.boolean  "under_professional_care", default: false
+    t.boolean  "worn_for_testing",        default: false
+    t.boolean  "color_blindness",         default: false
+    t.boolean  "corrective_lenses",       default: false
     t.integer  "ol"
     t.integer  "od"
     t.integer  "ou"
-    t.boolean  "color_blindness",   default: false
-    t.boolean  "corrective_lenses", default: false
     t.text     "comment"
+    t.string   "practitioner",            default: "",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
