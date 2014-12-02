@@ -47,6 +47,8 @@ class PatientController < ApplicationController
       @patient.vital.update_attributes(attrs)
     elsif type == "physical"
       @patient.physical.update_attributes(physical_params)
+    elsif type == "hearing"
+      @patient.hearing.update_attributes(hearing_params)
     end
     redirect_to_next_tab(type) 
   end
@@ -85,6 +87,11 @@ class PatientController < ApplicationController
         :lymph_anterior_cervical, :lymph_occipital, :lymph_axillary, :vascular,
         :heart, :lungs, :abdomen, :musculoskeletal, :scoliosis_screening, :neuro,
         :additional_notes, :practitioner)
+  end
+
+  def hearing_params
+    params.require(:patient_record).permit(:unable_to_screen,
+      :comment, :practitioner)
   end
   
   def dashboard
