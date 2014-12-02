@@ -1,63 +1,18 @@
 <div class="hearing-container show" style="margin-top:1rem;">
   <div class="container">
     <%= form_for(:patient_record, url: patient_update_path, type: "hearing", :validate => true, :class => 'form-horizontal') do |f| %>
-    <div class="container col-md-11">
-      <ul class="list-group">
-         <li class="list-group-item">
-           <div class="row" style="text-align:center">
-             <label class="col-md-2 col-md-offset-3">500 Hz</label>
-             <label class="col-md-2">1000 Hz</label>
-             <label class="col-md-2">2000 Hz</label>
-             <label class="col-md-2">4000 Hz</label>
-           </div>
-         </li>
-          <li class="list-group-item">
-            <label>Al</label>
-         </li>
-         <li class="list-group-item">
-            <div class="row">
-            <label class="col-md-3">left</label>
-              <input type="checkbox" class="col-md-2">
-              <input type="checkbox" class="col-md-2">
-              <input type="checkbox" class="col-md-2">
-              <input type="checkbox" class="col-md-2">
-          </div>
-            <div class="row">
-            <label class="col-md-3">right</label>
-              <input type="checkbox" class="col-md-2">
-              <input type="checkbox" class="col-md-2">
-              <input type="checkbox" class="col-md-2">
-              <input type="checkbox" class="col-md-2">
-          </div>
-          </li>
-          <li class="list-group-item">
-            <label>Ad</label>
-         </li>
-         <li class="list-group-item">
-            <div class="row">
-            <label class="col-md-3">left</label>
-              <input type="checkbox" class="col-md-2">
-              <input type="checkbox" class="col-md-2">
-              <input type="checkbox" class="col-md-2">
-              <input type="checkbox" class="col-md-2">
-            </div>
-            <div class="row">
-            <label class="col-md-3">right</label>
-              <input type="checkbox" class="col-md-2">
-              <input type="checkbox" class="col-md-2">
-              <input type="checkbox" class="col-md-2">
-              <input type="checkbox" class="col-md-2">
-            </div>
-          </li>
-          <li class="list-group-item">
-            <div class="row">
-            <label class="col-md-3">Comment</label>
-            (Textarea)
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="form-group row col-md-8">  
+    
+      <div class="form-group row col-md-12">
+        <hr>
+        <div class="container">
+          <label class="col-md-3">Working Practitioner(s)</label>
+          <div class="col-md-5">
+            <% practitioner = @patient.physical.practitioner.empty? ? "#{current_user.first_name} #{current_user.last_name}" : @patient.physical.practitioner %>
+            <%= f.text_field :practitioner, :class => "form-control", :value => practitioner, :placeholder => "Can't be blank" %>
+          </div>  
+        </div>
+      </div> 
+
       <div class="form-group row col-md-12">
         <div class="col-md-12"> 
           <button type="submit" class="btn btn-success">Save &amp; Next</button>
