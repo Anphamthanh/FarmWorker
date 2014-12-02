@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 20141030171438) do
 
   create_table "physicals", force: true do |t|
     t.integer  "patient_id"
+    t.boolean  "unable_to_screen",        default: false
     t.string   "general_appearance"
     t.string   "head_hair"
     t.string   "skin"
@@ -109,7 +110,8 @@ ActiveRecord::Schema.define(version: 20141030171438) do
     t.string   "scoliosis_screening"
     t.string   "neuro"
     t.text     "additional_notes"
-    t.string   "practitioner",            default: "", null: false
+    t.text     "comment"
+    t.string   "practitioner",            default: "",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

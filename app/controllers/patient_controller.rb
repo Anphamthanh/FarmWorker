@@ -46,7 +46,10 @@ class PatientController < ApplicationController
       puts attrs 
       @patient.vital.update_attributes(attrs)
     elsif type == "physical"
-      @patient.physical.update_attributes(physical_params)
+      if !@patient.physical.update_attributes(physical_params)
+        flash[:alert] = "Failed to update physical: " + @patient.physical.errors.full_messages.join('. ')
+        type = "vitals"
+      end
     elsif type == "hearing"
       if !@patient.hearing.update_attributes(hearing_params)
         flash[:alert] = "Failed to update hearing: " + @patient.hearing.errors.full_messages.join('. ')
@@ -84,12 +87,12 @@ class PatientController < ApplicationController
   end
 
   def physical_params
-    params.require(:patient_record).permit(:general_appearance, 
+    params.require(:patient_record).permit(:unable_to_screen, :general_appearance, 
         :head_hair, :skin, :eyes, :ears, :nose, :mouth, :throat, :thyroid,
         :lymph_pre_auricular, :lymph_post_auricular, :lymph_anterior_cervical,
         :lymph_anterior_cervical, :lymph_occipital, :lymph_axillary, :vascular,
         :heart, :lungs, :abdomen, :musculoskeletal, :scoliosis_screening, :neuro,
-        :additional_notes, :practitioner)
+        :additional_notes, :comment, :practitioner)
   end
 
   def hearing_params

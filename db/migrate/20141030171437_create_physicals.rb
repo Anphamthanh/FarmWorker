@@ -2,6 +2,7 @@ class CreatePhysicals < ActiveRecord::Migration
   def change
     create_table :physicals do |t|
       t.references :patient,         index: true
+      t.boolean :unable_to_screen,                    default: false
       t.string :general_appearance
       t.string :head_hair
       t.string :skin
@@ -25,6 +26,7 @@ class CreatePhysicals < ActiveRecord::Migration
       t.string :scoliosis_screening
       t.string :neuro
       t.text :additional_notes
+      t.text :comment
       t.string :practitioner,               :null => false, :default => ""
       t.timestamps
     end
