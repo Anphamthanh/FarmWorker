@@ -2,6 +2,14 @@
   <div class="container">
     <%= form_for(:patient_record, url: patient_update_record_path, type: "physical", :validate => true, :class => 'form-horizontal') do |f| %>
 
+      <div class="form-group row col-md-11">
+        <div class="pull-right">
+          <% if !@patient.physical.practitioner.empty? %>          
+          <i>Last updated by <strong><%= @patient.physical.practitioner %></strong> at <%= @patient.physical.updated_at.in_time_zone("Eastern Time (US & Canada)") %></i>
+          <% end %>
+        </div>
+      </div>
+
       <% options = ["Not Evaluated", "Normal", "Abnormal"] %>
 
       <div class="form-group row">
