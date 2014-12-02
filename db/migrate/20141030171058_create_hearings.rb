@@ -5,6 +5,7 @@ class CreateHearings < ActiveRecord::Migration
       t.boolean :unable_to_screen,                    default: false
       t.boolean :use_assitive_device,                 default: false
       t.boolean :f500
+      t.boolean :f750
       t.boolean :f1k
       t.boolean :f2k
       t.boolean :f4k

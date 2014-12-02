@@ -34,6 +34,14 @@
         </div>
         <div class="form-group row">
           <div class="col-md-3">
+            <%= f.label :audiometer %>
+          </div>
+          <div class="col-md-5">
+            <%= f.select :audiometer, options_for_select(["20 dB","25 dB"], @patient.hearing.audiometer), :class => 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-3">
             <%= f.label :need_further_evaluation, "Need Further Evaluation" %>
           </div>
           <div class="col-md-5">
