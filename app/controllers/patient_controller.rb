@@ -94,7 +94,7 @@ class PatientController < ApplicationController
 
   def hearing_params
     params.require(:patient_record).permit(:unable_to_screen, :use_assitive_device,
-      :comment, :practitioner)
+      :under_professional_care, :need_further_evaluation, :comment, :practitioner)
   end
   
   def dashboard
