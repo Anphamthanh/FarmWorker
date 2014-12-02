@@ -12,6 +12,7 @@ class CreateHearings < ActiveRecord::Migration
       t.integer :al
       t.integer :ad
       t.boolean :need_further_evaluation,             default: false
+      t.boolean :under_professional_care,             default: false
       t.text :comment
       t.string :practitioner,                         :null => false, default: ""
       t.timestamps

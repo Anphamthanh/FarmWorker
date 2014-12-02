@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20141030171438) do
     t.integer  "al"
     t.integer  "ad"
     t.boolean  "need_further_evaluation", default: false
+    t.boolean  "under_professional_care", default: false
     t.text     "comment"
     t.string   "practitioner",            default: "",    null: false
     t.datetime "created_at"

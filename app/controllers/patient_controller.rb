@@ -48,7 +48,10 @@ class PatientController < ApplicationController
     elsif type == "physical"
       @patient.physical.update_attributes(physical_params)
     elsif type == "hearing"
-      @patient.hearing.update_attributes(hearing_params)
+      if !@patient.hearing.update_attributes(hearing_params)
+        flash[:alert] = "Failed to update hearing: " + @patient.hearing.errors.full_messages.join('. ')
+        type = "physical"
+      end
     end
     redirect_to_next_tab(type) 
   end
@@ -90,7 +93,7 @@ class PatientController < ApplicationController
   end
 
   def hearing_params
-    params.require(:patient_record).permit(:unable_to_screen,
+    params.require(:patient_record).permit(:unable_to_screen, :use_assitive_device,
       :comment, :practitioner)
   end
   
