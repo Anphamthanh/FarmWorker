@@ -118,7 +118,8 @@ class PatientController < ApplicationController
   end
 
   def anticipatory_params
-    params.require(:patient_record).permit(:comment, :practitioner)
+    params.require(:patient_record).permit(:comment, :practitioner,
+      :health_promotion2, :health_promotion1)
   end
   
   def dashboard

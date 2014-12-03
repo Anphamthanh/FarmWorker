@@ -34,16 +34,24 @@ class Patient < ActiveRecord::Base
     !is_child?
   end
 
-  def is_under_2?
-    (Date.today - dob).to_i < 365 * 2
-  end
-
   def is_under_1?
     (Date.today - dob).to_i < 365
   end
 
+  def is_under_2?
+    (Date.today - dob).to_i < 365 * 2
+  end
+
+  def is_under_3?
+    (Date.today - dob).to_i < 365 * 3
+  end
+
   def is_under_4?
     (Date.today - dob).to_i < 365 * 4
+  end
+
+  def is_under_5?
+    (Date.today - dob).to_i < 365 * 5
   end
 
   def is_under_6?
@@ -52,6 +60,14 @@ class Patient < ActiveRecord::Base
 
   def is_under_7?
     (Date.today - dob).to_i < 365 * 7
+  end
+
+  def is_under_10?
+    (Date.today - dob).to_i < 365 * 10
+  end
+
+  def is_under_21?
+    (Date.today - dob).to_i < 365 * 21
   end
 
   def month_age
