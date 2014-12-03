@@ -36,7 +36,7 @@ class PatientController < ApplicationController
     type = params[:type]
     if type == "demographics"
       @patient.demographics.update_attributes(demographics_params)
-    elsif type == "vitals"
+    elsif type == "vital"
       attrs = vitals_params
       feet = attrs[:in_feet].gsub(/[^0-9 ]/i, '').to_i
       inches = attrs[:in_inches].gsub(/[^0-9 ]/i, '').to_i
@@ -48,7 +48,7 @@ class PatientController < ApplicationController
     elsif type == "physical"
       if !@patient.physical.update_attributes(physical_params)
         flash[:alert] = "Failed to update physical: " + @patient.physical.errors.full_messages.join('. ')
-        type = "vitals"
+        type = "vital"
       end
     elsif type == "hearing"
       if !@patient.hearing.update_attributes(hearing_params)
@@ -127,8 +127,8 @@ class PatientController < ApplicationController
 
   def redirect_to_next_tab(type)
     if type == "demographics"
-      redirect_to :controller => "patient", :action => "input", :id => @patient.id, :type => "vitals"
-    elsif type == "vitals"
+      redirect_to :controller => "patient", :action => "input", :id => @patient.id, :type => "vital"
+    elsif type == "vital"
       redirect_to :controller => "patient", :action => "input", :id => @patient.id, :type => "physical"
     elsif type == "physical"
       redirect_to :controller => "patient", :action => "input", :id => @patient.id, :type => "hearing"

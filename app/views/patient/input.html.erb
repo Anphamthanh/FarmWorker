@@ -61,7 +61,7 @@
       <% if @patient.is_editable? %>
         <% if @type == "demographics" %>
           <%= render :partial => 'patient/demographics' %>
-        <% elsif @type == "vitals" %>
+        <% elsif @type == "vital" %>
           <%= render :partial => 'patient/vitals' %>
         <% elsif @type == "physical" %>
           <%= render :partial => 'patient/physical' %>
@@ -99,11 +99,37 @@
       <% end %>
     </div>
   </div>
+  <div class="panel panel-danger">
+    <div class="panel-heading">Data Validation</div>  
+    <div class="container"> 
+    </div>
+    <div class="panel-body">
+    <% if @patient.demographics.can_I_validate?(current_user.role) %>
+      <%= form_for(:patient_record, url: patient_update_record_path, type: "demographics", :validate => true, :class => 'form-horizontal') do |f| %>
+        <div class="form-group row col-md-12">
+          <div class="container">
+            <label class="col-md-3">Validator(s)</label>
+            <div class="col-md-5">
+              <% validator = @patient.demographics.validator.empty? ? "#{current_user.first_name} #{current_user.last_name}" : @patient.demographics.validator %>
+              <%= f.text_field :validator, :class => "form-control", :value => validator, :placeholder => "Can't be blank" %>
+            </div>  
+            <div class="col-md-4"> 
+              <button type="submit" class="btn btn-success">Validate</button>
+            </div>
+          </div>
+        </div>
+
+        <%= f.hidden_field :validator_role, :value => current_user.role %>
+        <%= f.hidden_field :validated_at, :value => Time.now.to_s %>
+      <% end %>
+    <% end %>
+    </div>
+  </div>
 </div>
 
 <script>
   $(".vitals").click(function() {
-    window.document.location = 'vitals'
+    window.document.location = 'vital'
   });
   $(".demographics").click(function() {
     window.document.location = 'demographics'
