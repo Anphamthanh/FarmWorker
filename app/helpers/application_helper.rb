@@ -24,4 +24,29 @@ module ApplicationHelper
       root_path
     end
   end
+
+  def is_faculty?
+    if current_user
+      current_user.role.downcase == "faculty"
+    else
+      false
+    end
+  end
+
+  def is_admin?
+    if current_user
+      current_user.role.downcase == "admin"
+    else
+      false
+    end
+  end
+
+  def is_student?
+    if current_user
+      ["student-bsn", "student-msn"].include? current_user.role.downcase
+    else
+      false
+    end
+  end
+
 end
