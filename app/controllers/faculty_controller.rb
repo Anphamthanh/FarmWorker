@@ -3,6 +3,7 @@ class FacultyController < ApplicationController
   before_action :authenticate_faculty
 
   def dashboard
+    @all_patients = Patient.search(params[:search]).page(params[:page]).per_page(5)
   end
 
   private

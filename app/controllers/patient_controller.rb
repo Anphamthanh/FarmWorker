@@ -123,16 +123,6 @@ class PatientController < ApplicationController
       :socialization1, :socialization2, :nutrition1, :nutrition2,
       :health_promotion2, :health_promotion1)
   end
-  
-  def dashboard
-    if current_user.role.downcase == "student-bsn"
-      student_dashboard_path
-    elsif current_user.role.downcase == "faculty"
-      faculty_dashboard_path
-    else
-      root_path
-    end
-  end
 
   def redirect_to_next_tab(type)
     if type == "demographics"

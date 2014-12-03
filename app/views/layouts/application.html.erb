@@ -15,7 +15,7 @@
           <ul class="nav navbar-nav">
             <% if user_signed_in? %>
               <li id="home"><a href="<%= root_path %>">Home</a></li>
-              <li id="student-bsn"><a href="<%= dashboard %>"><%= current_user.role %></a></li>
+              <li id="<%= current_user.role.downcase %>"><a href="<%= dashboard %>"><%= current_user.role %></a></li>
             <% end %>
           </ul>
           <% if user_signed_in? %>
