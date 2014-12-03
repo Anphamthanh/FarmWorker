@@ -1,1 +1,48 @@
-I am here
+<div class="vision-container show" style="margin-top:1rem;">
+  <div class="container">
+    <%= form_for(:patient_record, url: patient_update_record_path, type: "anticipatory", :validate => true, :class => 'form-horizontal') do |f| %>
+      <div class="form-group row col-md-11">
+        <div class="pull-right">   
+          <% if !@patient.anticipatory.practitioner.empty? %>             
+          <i>Last updated by <strong><%= @patient.anticipatory.practitioner %></strong> at <%= @patient.anticipatory.updated_at.in_time_zone("Eastern Time (US & Canada)") %></i>
+          <% end %>
+        </div>
+      </div>
+
+
+      <div class="row col-md-12"><hr></div>
+      <div class="form-group row">
+        <div class="col-md-3">
+          <%= f.label "Comment" %>
+        </div>
+        <div class="col-md-5">
+          <% comment = @patient.anticipatory.comment %>
+          <textarea placeholder="Comment" name="patient_record[comment]" class="form-control" rows="2"><%= comment %></textarea>
+        </div>
+      </div>
+      
+      <div class="form-group row col-md-12">
+        <hr>
+        <div class="container">
+          <label class="col-md-3">Working Practitioner(s)</label>
+          <div class="col-md-5">
+            <% practitioner = @patient.anticipatory.practitioner.empty? ? "#{current_user.first_name} #{current_user.last_name}" : @patient.anticipatory.practitioner %>
+            <%= f.text_field :practitioner, :class => "form-control", :value => practitioner, :placeholder => "Can't be blank" %>
+          </div>  
+        </div>
+      </div> 
+
+      <div class="form-group row col-md-12">
+        <div class="col-md-12"> 
+          <button type="submit" class="btn btn-success">Save &amp; Next</button>
+          <button type="button" class="btn btn-danger pull-right exit">Exit</button>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+</div>
+
+<script>
+  $(".anticipatory").addClass("active");
+</script> 

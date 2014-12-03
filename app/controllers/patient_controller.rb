@@ -60,6 +60,11 @@ class PatientController < ApplicationController
         flash[:alert] = "Failed to update vision: " + @patient.vision.errors.full_messages.join('. ')
         type = "hearing"
       end
+    elsif type == "anticipatory"
+      if !@patient.anticipatory.update_attributes(anticipatory_params)
+        flash[:alert] = "Failed to update anticipatory: " + @patient.anticipatory.errors.full_messages.join('. ')
+        type = "vision"
+      end
     end
     redirect_to_next_tab(type) 
   end
@@ -111,6 +116,10 @@ class PatientController < ApplicationController
       :worn_for_testing,
       :under_professional_care, :need_further_evaluation, :comment, :practitioner)
   end
+
+  def anticipatory_params
+    params.require(:patient_record).permit(:comment, :practitioner)
+  end
   
   def dashboard
     if current_user.role.downcase == "student-bsn"
@@ -132,6 +141,8 @@ class PatientController < ApplicationController
     elsif type == "hearing"
       redirect_to :controller => "patient", :action => "input", :id => @patient.id, :type => "vision"
     elsif type == "vision"
+      redirect_to :controller => "patient", :action => "input", :id => @patient.id, :type => "anticipatory"
+    elsif type == "anticipatory"
       redirect_to :controller => "patient", :action => "input", :id => @patient.id, :type => "assessment"
     end
   end

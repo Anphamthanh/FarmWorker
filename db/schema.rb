@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141030171438) do
+ActiveRecord::Schema.define(version: 20141203030958) do
+
+  create_table "anticipatories", force: true do |t|
+    t.integer  "patient_id"
+    t.string   "health_promotion1"
+    t.string   "health_promotion2"
+    t.text     "comment"
+    t.string   "practitioner",      default: "", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "anticipatories", ["patient_id"], name: "index_anticipatories_on_patient_id"
 
   create_table "assessments", force: true do |t|
     t.integer  "patient_id"

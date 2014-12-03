@@ -10,6 +10,7 @@ class Patient < ActiveRecord::Base
   has_one :vision,              dependent: :destroy
   has_one :physical,              dependent: :destroy
   has_one :assessment,              dependent: :destroy
+  has_one :anticipatory,              dependent: :destroy
 
   before_create :init
 
@@ -222,6 +223,7 @@ class Patient < ActiveRecord::Base
     create_physical
     create_vision
     create_vital
+    create_anticipatory
   end
 
 end

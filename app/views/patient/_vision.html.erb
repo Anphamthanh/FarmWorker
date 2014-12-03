@@ -75,7 +75,7 @@
         <div class="container">
           <label class="col-md-3">Working Practitioner(s)</label>
           <div class="col-md-5">
-            <% practitioner = @patient.hearing.practitioner.empty? ? "#{current_user.first_name} #{current_user.last_name}" : @patient.hearing.practitioner %>
+            <% practitioner = @patient.vision.practitioner.empty? ? "#{current_user.first_name} #{current_user.last_name}" : @patient.vision.practitioner %>
             <%= f.text_field :practitioner, :class => "form-control", :value => practitioner, :placeholder => "Can't be blank" %>
           </div>  
         </div>
