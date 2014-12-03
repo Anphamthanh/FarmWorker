@@ -8,12 +8,17 @@ class Anticipatory < ActiveRecord::Base
     end
   end
 
+  def get_db_key(text)
+    KEY_LIST[text]
+  end
+
   def get_details(key)
     ANTICIPATORY[key]
   end
 
   ANTICIPATORY = {
     "Health Promotion/Safety" => [
+      "Please choose one",
       "Seat Belts – Place in back of vehicle/Airbag safety",
       "Teach to answer phone/get help",
       "Teach name, address, phone number",
@@ -28,7 +33,17 @@ class Anticipatory < ActiveRecord::Base
       "Out of home care",
       "Lead Education",
       "Important of up-to-date immunizations"
-      ]
+      ],
+    "Developemental Stimulation" => [
+      ],
+    "Socialization" => [
+      ],
+    "Nutrition" => [
+      ]  
+  }
+
+  KEY_LIST = {
+    "Health Promotion/Safety" => "health_promotion"
   }
 
   

@@ -8,8 +8,21 @@
           <% end %>
         </div>
       </div>
+      <% anticipatory_list = @patient.anticipatory.get_list %>
 
-      <%= @patient.anticipatory.get_details("Health Promotion/Safety") %>
+      <div class="form-group row">
+        <% key = @patient.anticipatory.get_db_key(anticipatory_list[0]) %>
+        <div class="col-md-3">
+          <%= f.label key.to_sym, anticipatory_list[0] %>
+        </div>
+        <div class="col-md-4">
+          <%= f.select (key+"1").to_sym, options_for_select(@patient.anticipatory.get_details(anticipatory_list[0]), @patient.anticipatory[(key+"1").to_sym]), :class => 'form-control' %>
+        </div>
+        <div class="col-md-4">
+          <%= f.select (key+"2").to_sym, options_for_select(@patient.anticipatory.get_details(anticipatory_list[0]), @patient.anticipatory[(key+"2").to_sym]), :class => 'form-control' %>
+        </div>
+      </div> 
+
       <div class="row col-md-12"><hr></div>
       <div class="form-group row">
         <div class="col-md-3">
