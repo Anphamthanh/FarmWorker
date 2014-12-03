@@ -3,7 +3,7 @@ class Anticipatory < ActiveRecord::Base
 
   def get_list
     patient = Patient.find(patient_id)
-    if !patient.is_under_3? and patient.is_under_6?
+    if !patient.is_under_2? and patient.is_under_6?
       {
         "Health Promotion/Safety" => [
           "Please choose one",
@@ -55,6 +55,58 @@ class Anticipatory < ActiveRecord::Base
           "WIC Topics: Prescribe food package",
           "WIC Topics: Using WIC foods"
           ]  
+      }  
+    elsif !patient.is_under_5? and patient.is_under_10?
+      {
+        "Health Promotion/Safety" => [
+          "Please choose one",
+          "Bike, street, swimming, assault, safety, seatbelts, sit in back of vehicle",
+          "Need for adult supervision",
+          "Limit TV to 2 hours per day",
+          "Encourage aerobic activities",
+          "Preparation for puberty",
+          "Hair, skin care",
+          "Substance abuse",
+          "Sex education, contraception",
+          "Beginning awareness for own health",
+          "Teach to avoid 'bad touch'",
+          "Lead Education",
+          "Important of up-to-date immunizations"
+        ],
+        "Developmental Stimulation" => [
+          "Please choose one",
+          "Promote listening skills through music",
+          "Encourage word games, puzzles",
+          "Provide new experiences",
+          "Encourage reading",
+          "Age appropriate responsibilities and limits",
+          "Variations of physical development",
+          "Encourage communication about feelings",
+          "Develop trust/honesty",
+          "Games with rules (6 yr. olds)"
+        ],
+        "Socialization" => [
+          "Please choose one",
+          "Telling time",
+          "Following directions",
+          "Homework",
+          "Promote self-esteem",
+          "Encourage peer interaction",
+          "Encourage special interests",
+          "Sharing/respect for other's rights",
+          "Respect for authority figures"
+        ],
+        "Nutrition" => [
+          "Please choose one",
+          "Stress balanced diet",
+          "Avoid fad diets",
+          "Weight control via exercise",
+          "Increased calories during growth spurt/activity",
+          "Adequate calcium intake",
+          "Nutritious snacks",
+          "Iron rich foods",
+          "Importance of Folic Acid for females"
+        ]
       }
     end
   end

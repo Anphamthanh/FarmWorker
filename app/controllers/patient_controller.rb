@@ -119,6 +119,8 @@ class PatientController < ApplicationController
 
   def anticipatory_params
     params.require(:patient_record).permit(:comment, :practitioner,
+      :development_stimulation1, :development_stimulation2,
+      :socialization1, :socialization2, :nutrition1, :nutrition2,
       :health_promotion2, :health_promotion1)
   end
   

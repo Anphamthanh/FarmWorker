@@ -14,11 +14,52 @@
         <div class="col-md-3">
           <%= f.label :health_promotion, "Health Promotion/Safety" %>
         </div>
-        <div class="col-md-4">
+      </div> 
+      <div class="form-group row">
+        <div class="col-md-5">
           <%= f.select :health_promotion1, options_for_select(data["Health Promotion/Safety"], @patient.anticipatory.health_promotion1), :class => 'form-control' %>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-5">
           <%= f.select :health_promotion2, options_for_select(data["Health Promotion/Safety"], @patient.anticipatory.health_promotion2), :class => 'form-control' %>
+        </div>
+      </div> 
+      <div class="form-group row">
+        <div class="col-md-3">
+          <%= f.label :development_stimulation, "Developmental Stimulation" %>
+        </div>
+      </div> 
+      <div class="form-group row">
+        <div class="col-md-5">
+          <%= f.select :development_stimulation1, options_for_select(data["Developmental Stimulation"], @patient.anticipatory.development_stimulation1), :class => 'form-control' %>
+        </div>
+        <div class="col-md-5">
+          <%= f.select :development_stimulation2, options_for_select(data["Developmental Stimulation"], @patient.anticipatory.development_stimulation2), :class => 'form-control' %>
+        </div>
+      </div> 
+      <div class="form-group row">
+        <div class="col-md-3">
+          <%= f.label :socialization, "Socialization" %>
+        </div>
+      </div> 
+      <div class="form-group row">
+        <div class="col-md-5">
+          <%= f.select :socialization1, options_for_select(data["Socialization"], @patient.anticipatory.socialization1), :class => 'form-control' %>
+        </div>
+        <div class="col-md-5">
+          <%= f.select :socialization2, options_for_select(data["Socialization"], @patient.anticipatory.socialization2), :class => 'form-control' %>
+        </div>
+      </div> 
+      <div class="form-group row">
+        <div class="col-md-3">
+          <%= f.label :nutrition, "Nutrition" %>
+        </div>
+      </div> 
+      <div class="form-group row">
+        <div class="col-md-5">
+          <%= f.select :nutrition1, options_for_select(data["Nutrition"], @patient.anticipatory.nutrition1), :class => 'form-control' %>
+        </div>
+        <div class="col-md-5">
+          <%= f.select :nutrition2, options_for_select(data["Nutrition"], @patient.anticipatory.nutrition2), :class => 'form-control' %>
         </div>
       </div> 
 

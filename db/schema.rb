@@ -17,8 +17,14 @@ ActiveRecord::Schema.define(version: 20141203030958) do
     t.integer  "patient_id"
     t.string   "health_promotion1"
     t.string   "health_promotion2"
+    t.string   "development_stimulation1"
+    t.string   "development_stimulation2"
+    t.string   "socialization1"
+    t.string   "socialization2"
+    t.string   "nutrition1"
+    t.string   "nutrition2"
     t.text     "comment"
-    t.string   "practitioner",      default: "", null: false
+    t.string   "practitioner",             default: "", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
