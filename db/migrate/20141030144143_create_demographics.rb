@@ -17,6 +17,10 @@ class CreateDemographics < ActiveRecord::Migration
       t.text :additional_immunizations
       t.text :additional_notes
       t.string :practitioner,               :null => false, :default => ""
+      t.string :practitioner_role,               :null => false, :default => ""
+      t.string :validator,                  :null => false, :default => ""
+      t.string :validator_role,             :null => false, :default => ""
+      t.datetime :validated_at
       t.timestamps
     end
   end

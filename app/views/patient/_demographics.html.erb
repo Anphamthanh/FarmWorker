@@ -5,10 +5,19 @@
       <div class="form-group row col-md-11">
         <div class="pull-right">
           <% if !@patient.demographics.practitioner.empty? %>          
-          <i>Last updated by <strong><%= @patient.demographics.practitioner %></strong> at <%= @patient.demographics.updated_at.in_time_zone("Eastern Time (US & Canada)") %></i>
+          <i>Last updated by <%= @patient.demographics.practitioner_role.downcase %> <strong><%= @patient.demographics.practitioner %></strong> at <%= @patient.demographics.updated_at.in_time_zone("Eastern Time (US & Canada)") %></i>
           <% end %>
         </div>
       </div>
+
+      <div class="form-group row col-md-11">
+        <div class="pull-right">
+          <% if !@patient.demographics.validator.empty? %>          
+          <i>Last validated by <%= @patient.demographics.validator_role.downcase %> <strong><%= @patient.demographics.validator %></strong> at <%= @patient.demographics.validated_at.in_time_zone("Eastern Time (US & Canada)") %></i>
+          <% end %>
+        </div>
+      </div>
+
       <div class="form-group row">
         <div class="col-md-3">
           <%= f.label :site_location %>
@@ -196,7 +205,8 @@
           <div class="col-md-5">
             <% practitioner = @patient.demographics.practitioner.empty? ? "#{current_user.first_name} #{current_user.last_name}" : @patient.demographics.practitioner %>
             <%= f.text_field :practitioner, :class => "form-control", :value => practitioner, :placeholder => "Can't be blank" %>
-          </div>  
+          </div> 
+          <%= f.hidden_field :practitioner_role, :value => current_user.role %>
         </div>
       </div>
       <div class="form-group row col-md-12">
@@ -205,10 +215,29 @@
           <button type="button" class="btn btn-danger pull-right exit">Exit</button>
         </div>
       </div>
-
     <% end %>
   </div>
 </div>
+    <% if @patient.demographics.can_I_validate?(current_user.role) %>
+      <%= form_for(:patient_record, url: patient_update_record_path, type: "demographics", :validate => true, :class => 'form-horizontal') do |f| %>
+        <div class="form-group row col-md-12">
+          <hr>
+          <div class="container">
+            <label class="col-md-3">Validator(s)</label>
+            <div class="col-md-5">
+              <% validator = @patient.demographics.validator.empty? ? "#{current_user.first_name} #{current_user.last_name}" : @patient.demographics.validator %>
+              <%= f.text_field :validator, :class => "form-control", :value => validator, :placeholder => "Can't be blank" %>
+            </div>  
+            <div class="col-md-4"> 
+              <button type="submit" class="btn btn-primary">Validate</button>
+            </div>
+          </div>
+        </div>
+
+        <%= f.hidden_field :validator_role, :value => current_user.role %>
+        <%= f.hidden_field :validated_at, :value => Time.now.to_s %>
+      <% end %>
+    <% end %>
 
 <script>
   $(".demographics").addClass("active");

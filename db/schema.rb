@@ -57,6 +57,10 @@ ActiveRecord::Schema.define(version: 20141203030958) do
     t.text     "additional_immunizations"
     t.text     "additional_notes"
     t.string   "practitioner",             default: "", null: false
+    t.string   "practitioner_role",        default: "", null: false
+    t.string   "validator",                default: "", null: false
+    t.string   "validator_role",           default: "", null: false
+    t.datetime "validated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

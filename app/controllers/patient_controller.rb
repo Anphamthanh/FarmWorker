@@ -88,7 +88,8 @@ class PatientController < ApplicationController
   def demographics_params
     params.require(:patient_record).permit(:site_location, :allergies, :reaction_type, 
       :dtap, :hib, :pneumovax, :hepa, :hepb, :influenza, :men, :mmr, 
-      :additional_immunizations, :additional_notes, :practitioner)
+      :additional_immunizations, :additional_notes, :practitioner,
+      :practitioner_role, :validator, :validator_role, :validated_at)
   end
 
   def vitals_params
