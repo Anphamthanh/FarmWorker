@@ -23,6 +23,33 @@
       <div style="display:<%= @patient.vision.unable_to_screen ? 'none' : 'default' %>" id="entries"> 
         <div class="form-group row">
           <div class="col-md-3">
+            <%= f.label :use_corrective_lenses, "Use Corrective Lenses" %>
+          </div>
+          <div class="col-md-5">
+            <% use_corrective_lenses = @patient.vision.use_corrective_lenses %>
+            <%= f.check_box :use_corrective_lenses, :checked => use_corrective_lenses %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-3">
+            <%= f.label :worn_for_testing, "Worn For Testing" %>
+          </div>
+          <div class="col-md-5">
+            <% worn_for_testing = @patient.vision.worn_for_testing %>
+            <%= f.check_box :worn_for_testing, :checked => worn_for_testing %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-3">
+            <%= f.label :under_professional_care, "Under Professional Care" %>
+          </div>
+          <div class="col-md-5">
+            <% under_professional_care = @patient.vision.under_professional_care %>
+            <%= f.check_box :under_professional_care, :checked => under_professional_care %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-3">
             <%= f.label :need_further_evaluation, "Need Further Evaluation" %>
           </div>
           <div class="col-md-5">
@@ -42,6 +69,17 @@
           <textarea placeholder="Comment" name="patient_record[comment]" class="form-control" rows="2"><%= comment %></textarea>
         </div>
       </div>
+      
+      <div class="form-group row col-md-12">
+        <hr>
+        <div class="container">
+          <label class="col-md-3">Working Practitioner(s)</label>
+          <div class="col-md-5">
+            <% practitioner = @patient.hearing.practitioner.empty? ? "#{current_user.first_name} #{current_user.last_name}" : @patient.hearing.practitioner %>
+            <%= f.text_field :practitioner, :class => "form-control", :value => practitioner, :placeholder => "Can't be blank" %>
+          </div>  
+        </div>
+      </div> 
 
       <div class="form-group row col-md-12">
         <div class="col-md-12"> 
