@@ -22,7 +22,7 @@ class Anticipatory < ActiveRecord::Base
           "Lead Education",
           "Important of up-to-date immunizations"
           ],
-        "Developemental Stimulation" => [
+        "Developmental Stimulation" => [
           "Please choose one",
           "Riding Toys",
           "Simple chores",

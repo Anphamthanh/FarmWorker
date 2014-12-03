@@ -2,22 +2,6 @@
   <div class="container">
     <%= form_for(:patient_record, url: patient_update_record_path, type: "demographics", :validate => true, :class => 'form-horizontal') do |f| %>
 
-      <div class="form-group row col-md-11">
-        <div class="pull-right">
-          <% if !@patient.demographics.practitioner.empty? %>          
-          <i>Last updated by <%= @patient.demographics.practitioner_role.downcase %> <strong><%= @patient.demographics.practitioner %></strong> at <%= @patient.demographics.updated_at.in_time_zone("Eastern Time (US & Canada)") %></i>
-          <% end %>
-        </div>
-      </div>
-
-      <div class="form-group row col-md-11">
-        <div class="pull-right">
-          <% if !@patient.demographics.validator.empty? %>          
-          <i>Last validated by <%= @patient.demographics.validator_role.downcase %> <strong><%= @patient.demographics.validator %></strong> at <%= @patient.demographics.validated_at.in_time_zone("Eastern Time (US & Canada)") %></i>
-          <% end %>
-        </div>
-      </div>
-
       <div class="form-group row">
         <div class="col-md-3">
           <%= f.label :site_location %>

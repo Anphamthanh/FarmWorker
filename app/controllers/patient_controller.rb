@@ -35,16 +35,20 @@ class PatientController < ApplicationController
     @patient = Patient.find_by_id(params[:id])
     type = params[:type]
     if type == "demographics"
-      @patient.demographics.update_attributes(demographics_params)
+      if !@patient.demographics.update_attributes(demographics_params)
+        flash[:alert] = "Failed to update demographics: " + @patient.demographics.errors.full_messages.join('. ')
+      end
     elsif type == "vital"
-      attrs = vitals_params
-      feet = attrs[:in_feet].gsub(/[^0-9 ]/i, '').to_i
-      inches = attrs[:in_inches].gsub(/[^0-9 ]/i, '').to_i
-      attrs[:height] = feet * 12 + inches
-      attrs[:bmi] = (attrs[:weight].gsub(/[^0-9 ]/i, '').to_f*703.0/(attrs[:height].to_f**2)).round(1)
-      attrs[:blood_pressure] = [attrs[:sys], attrs[:dia]].join('/')
-      puts attrs 
-      @patient.vital.update_attributes(attrs)
+      attrs = vital_params
+      feet = attrs[:in_feet].gsub(/[^0-9 ]/i, '').to_i if !attrs[:in_feet].nil?
+      inches = attrs[:in_inches].gsub(/[^0-9 ]/i, '').to_i if !attrs[:in_inches].nil?
+      attrs[:height] = feet * 12 + inches if !attrs[:height].nil?
+      attrs[:bmi] = (attrs[:weight].gsub(/[^0-9 ]/i, '').to_f*703.0/(attrs[:height].to_f**2)).round(1) if !attrs[:height].nil? and !attrs[:weight].nil?
+      attrs[:blood_pressure] = [attrs[:sys], attrs[:dia]].join('/') if !attrs[:sys].nil? and !attrs[:dia].nil?
+      if !@patient.vital.update_attributes(vital_params)
+        flash[:alert] = "Failed to update vital: " + @patient.vital.errors.full_messages.join('. ')
+        type = "demographics"
+      end
     elsif type == "physical"
       if !@patient.physical.update_attributes(physical_params)
         flash[:alert] = "Failed to update physical: " + @patient.physical.errors.full_messages.join('. ')
@@ -92,9 +96,10 @@ class PatientController < ApplicationController
       :practitioner_role, :validator, :validator_role, :validated_at)
   end
 
-  def vitals_params
+  def vital_params
     params.require(:patient_record).permit(:in_feet, :in_inches, :blood_glucose,
-      :weight, :bmi, :sys, :dia, :hemoglobin, :practitioner)
+      :weight, :bmi, :sys, :dia, :hemoglobin, :practitioner,
+      :practitioner_role, :validator, :validator_role, :validated_at)
   end
 
   def physical_params
@@ -103,30 +108,36 @@ class PatientController < ApplicationController
         :lymph_pre_auricular, :lymph_post_auricular, :lymph_anterior_cervical,
         :lymph_anterior_cervical, :lymph_occipital, :lymph_axillary, :vascular,
         :heart, :lungs, :abdomen, :musculoskeletal, :scoliosis_screening, :neuro,
-        :additional_notes, :comment, :practitioner)
+        :additional_notes, :comment, :practitioner,
+        :practitioner_role, :validator, :validator_role, :validated_at)
   end
 
   def hearing_params
     params.require(:patient_record).permit(:unable_to_screen, :use_assitive_device,
       :alf500, :alf750, :alf1k, :alf2k, :alf4k, :adf500, :adf750, :adf1k, :adf2k, :adf4k,
-      :under_professional_care, :need_further_evaluation, :comment, :practitioner)
+      :under_professional_care, :need_further_evaluation, :comment, :practitioner,
+      :practitioner_role, :validator, :validator_role, :validated_at)
   end
 
   def vision_params
     params.require(:patient_record).permit(:unable_to_screen, :use_corrective_lenses,
       :worn_for_testing,
-      :under_professional_care, :need_further_evaluation, :comment, :practitioner)
+      :under_professional_care, :need_further_evaluation, :comment, :practitioner,
+      :practitioner_role, :validator, :validator_role, :validated_at)
   end
 
   def anticipatory_params
     params.require(:patient_record).permit(:comment, :practitioner,
       :development_stimulation1, :development_stimulation2,
       :socialization1, :socialization2, :nutrition1, :nutrition2,
-      :health_promotion2, :health_promotion1)
+      :health_promotion2, :health_promotion1,
+      :practitioner_role, :validator, :validator_role, :validated_at)
   end
 
   def redirect_to_next_tab(type)
-    if type == "demographics"
+    if type.nil?
+      redirect_to :controller => "patient", :action => "input", :id => @patient.id, :type => "demographics"
+    elsif type == "demographics"
       redirect_to :controller => "patient", :action => "input", :id => @patient.id, :type => "vital"
     elsif type == "vital"
       redirect_to :controller => "patient", :action => "input", :id => @patient.id, :type => "physical"

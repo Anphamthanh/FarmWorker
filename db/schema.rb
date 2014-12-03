@@ -25,6 +25,10 @@ ActiveRecord::Schema.define(version: 20141203030958) do
     t.string   "nutrition2"
     t.text     "comment"
     t.string   "practitioner",             default: "", null: false
+    t.string   "practitioner_role",        default: "", null: false
+    t.string   "validator",                default: "", null: false
+    t.string   "validator_role",           default: "", null: false
+    t.datetime "validated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -34,6 +38,12 @@ ActiveRecord::Schema.define(version: 20141203030958) do
   create_table "assessments", force: true do |t|
     t.integer  "patient_id"
     t.text     "general_assessment"
+    t.text     "comment"
+    t.string   "practitioner",       default: "", null: false
+    t.string   "practitioner_role",  default: "", null: false
+    t.string   "validator",          default: "", null: false
+    t.string   "validator_role",     default: "", null: false
+    t.datetime "validated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -88,6 +98,10 @@ ActiveRecord::Schema.define(version: 20141203030958) do
     t.boolean  "under_professional_care", default: false
     t.text     "comment"
     t.string   "practitioner",            default: "",    null: false
+    t.string   "practitioner_role",       default: "",    null: false
+    t.string   "validator",               default: "",    null: false
+    t.string   "validator_role",          default: "",    null: false
+    t.datetime "validated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -134,6 +148,10 @@ ActiveRecord::Schema.define(version: 20141203030958) do
     t.text     "additional_notes"
     t.text     "comment"
     t.string   "practitioner",            default: "",    null: false
+    t.string   "practitioner_role",       default: "",    null: false
+    t.string   "validator",               default: "",    null: false
+    t.string   "validator_role",          default: "",    null: false
+    t.datetime "validated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -174,6 +192,10 @@ ActiveRecord::Schema.define(version: 20141203030958) do
     t.integer  "ou"
     t.text     "comment"
     t.string   "practitioner",            default: "",    null: false
+    t.string   "practitioner_role",       default: "",    null: false
+    t.string   "validator",               default: "",    null: false
+    t.string   "validator_role",          default: "",    null: false
+    t.datetime "validated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -182,13 +204,17 @@ ActiveRecord::Schema.define(version: 20141203030958) do
 
   create_table "vitals", force: true do |t|
     t.integer  "patient_id"
-    t.integer  "height",         default: 0
-    t.integer  "weight",         default: 0
-    t.float    "bmi",            default: 0.0
-    t.string   "blood_pressure", default: ""
-    t.float    "hemoglobin",     default: 0.0
-    t.float    "blood_glucose",  default: 0.0
-    t.string   "practitioner",   default: "",  null: false
+    t.integer  "height",            default: 0
+    t.integer  "weight",            default: 0
+    t.float    "bmi",               default: 0.0
+    t.string   "blood_pressure",    default: ""
+    t.float    "hemoglobin",        default: 0.0
+    t.float    "blood_glucose",     default: 0.0
+    t.string   "practitioner",      default: "",  null: false
+    t.string   "practitioner_role", default: "",  null: false
+    t.string   "validator",         default: "",  null: false
+    t.string   "validator_role",    default: "",  null: false
+    t.datetime "validated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

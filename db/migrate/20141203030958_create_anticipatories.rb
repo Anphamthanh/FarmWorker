@@ -12,6 +12,10 @@ class CreateAnticipatories < ActiveRecord::Migration
       t.string :nutrition2
       t.text :comment
       t.string :practitioner,                         :null => false, default: ""
+      t.string :practitioner_role,               :null => false, :default => ""
+      t.string :validator,                  :null => false, :default => ""
+      t.string :validator_role,             :null => false, :default => ""
+      t.datetime :validated_at
       t.timestamps
     end
   end

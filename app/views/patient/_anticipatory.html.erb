@@ -1,13 +1,6 @@
 <div class="vision-container show" style="margin-top:1rem;">
   <div class="container">
     <%= form_for(:patient_record, url: patient_update_record_path, type: "anticipatory", :validate => true, :class => 'form-horizontal') do |f| %>
-      <div class="form-group row col-md-11">
-        <div class="pull-right">   
-          <% if !@patient.anticipatory.practitioner.empty? %>             
-          <i>Last updated by <strong><%= @patient.anticipatory.practitioner %></strong> at <%= @patient.anticipatory.updated_at.in_time_zone("Eastern Time (US & Canada)") %></i>
-          <% end %>
-        </div>
-      </div>
 
       <% data = @patient.anticipatory.get_list %>
       <% if data %>

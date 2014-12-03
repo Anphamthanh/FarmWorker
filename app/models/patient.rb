@@ -232,6 +232,23 @@ class Patient < ActiveRecord::Base
     write_attribute(:middle_name, s.to_s.capitalize)
   end
 
+  def is_validated?(type_name)
+    !self.send(type_name).validator.nil? 
+  end
+
+  def can_I_validate?(type_name, role)
+    type = self.send(type_name)
+    if type.practitioner.empty?
+      false
+    else
+      if role.downcase == "faculty" or (role.downcase == "student-msn" and type.practitioner_role.downcase == "student-bsn")
+        true
+      else
+        false
+      end
+    end
+  end
+
   def init
     create_demographics
     create_assessment
