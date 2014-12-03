@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
       admin_dashboard_path
     elsif resource.role.downcase == "faculty"
       faculty_dashboard_path
-    elsif resource.role.downcase == "student-bsn"
+    elsif ["student-bsn","student-msn"].include? resource.role.downcase
       student_dashboard_path
     else
       root_path
