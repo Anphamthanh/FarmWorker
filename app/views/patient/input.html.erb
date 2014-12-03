@@ -124,20 +124,20 @@
   </div>
   <% if @patient.can_I_validate?(@type, current_user.role) %>
   <div class="panel panel-danger">
-    <div class="panel-heading">Data Validation</div>  
+    <div class="panel-heading">Data Approval</div>  
     <div class="container"> 
     </div>
     <div class="panel-body">
       <%= form_for(:patient_record, url: patient_update_record_path, type: @type, :validate => true, :class => 'form-horizontal') do |f| %>
         <div class="form-group row col-md-12">
           <div class="container">
-            <label class="col-md-3">Validator(s)</label>
+            <label class="col-md-3">Approved by </label>
             <div class="col-md-5">
               <% validator = @patient.send(@type).validator.empty? ? "#{current_user.first_name} #{current_user.last_name}" : @patient.send(@type).validator %>
               <%= f.text_field :validator, :class => "form-control", :value => validator, :placeholder => "Can't be blank" %>
             </div>  
             <div class="col-md-4"> 
-              <button type="submit" class="btn btn-success">Validate</button>
+              <button type="submit" class="btn btn-success">Approve</button>
             </div>
           </div>
         </div>
