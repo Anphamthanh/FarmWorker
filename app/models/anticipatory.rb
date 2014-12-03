@@ -108,6 +108,52 @@ class Anticipatory < ActiveRecord::Base
           "Importance of Folic Acid for females"
         ]
       }
+    elsif !patient.is_under_10? and patient.is_under_21?
+      {
+        "Health Promotion/Safety" => [
+          "Please choose one",
+          "Injury preventions: water, diving, bike, assault, firearms",
+          "Available responsible adult",
+          "First Aid, injuries, fire and emergency planning",
+          "Physical fitness/exercise/dental health",
+          "Substance abuse/risk of suicide",
+          "Contraception/STD",
+          "Tobacco use prevention",
+          "Responsible for own health behavior"
+          ],
+        "Developmental Stimulation" => [
+          "Please choose one",
+          "Opportunities for decision making",
+          "Acceptance of consequences of decisions and actions",
+          "Acceptance of others, ideas",
+          "Role identification",
+          "Development of self esteem",
+          "Need for acceptance and support of changing appearance",
+          "Encourage communication about feelings",
+          "Trustworthiness and honesty",
+          "Sexuality"
+          ],
+        "Socialization" => [
+          "Please choose one",
+          "Encourage to ask for information and help",
+          "Encourage to plan educational/vocational goals",
+          "Balancing freedom and responsibility",
+          "Guidance in development of skills/talents",
+          "Provide for recreation and wholesome activities with members of opposite sex",
+          "Opportunities to earn and save money",
+          "Allowance for Privacy"
+          ],
+        "Nutrition" => [
+          "Please choose one",
+          "Maintenance of weight via balanced diet and exercise",
+          "Avoid fad foods and diets",
+          "Limit sodium, sugar and fats",
+          "Encourage water; avoid alcohol and caffeine drinks",
+          "Increased calories and fluids during sports",
+          "Adequate iron, Calcium",
+          "Importance of Folic Acid"
+          ]
+      }
     end
   end
 
