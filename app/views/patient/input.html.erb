@@ -56,6 +56,14 @@
           <%= "#{@patient.vital.height_in_feet} feet #{@patient.vital.height_in_inches} inches" %>
         </li>
       <% end %>
+      <% if @patient.vital.weight > 0 %>
+        <li class="list-group-item"> 
+          <label class="col-md-5">
+            Weight
+          </label>
+          <%= "#{@patient.vital.weight} lbs" %>
+        </li>
+      <% end %>
     </ul> 
     <div class="panel-body">
       <div class="container col-md-12">

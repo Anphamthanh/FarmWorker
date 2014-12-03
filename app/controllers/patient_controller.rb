@@ -40,12 +40,14 @@ class PatientController < ApplicationController
       end
     elsif type == "vital"
       attrs = vital_params
-      feet = attrs[:in_feet].gsub(/[^0-9 ]/i, '').to_i if !attrs[:in_feet].nil?
-      inches = attrs[:in_inches].gsub(/[^0-9 ]/i, '').to_i if !attrs[:in_inches].nil?
-      attrs[:height] = feet * 12 + inches if !attrs[:height].nil?
-      attrs[:bmi] = (attrs[:weight].gsub(/[^0-9 ]/i, '').to_f*703.0/(attrs[:height].to_f**2)).round(1) if !attrs[:height].nil? and !attrs[:weight].nil?
-      attrs[:blood_pressure] = [attrs[:sys], attrs[:dia]].join('/') if !attrs[:sys].nil? and !attrs[:dia].nil?
-      if !@patient.vital.update_attributes(vital_params)
+      feet = attrs[:in_feet].nil? ? 0 : attrs[:in_feet].gsub(/[^0-9 ]/i, '').to_i  
+      inches = attrs[:in_inches].nil? ? 0 : attrs[:in_inches].gsub(/[^0-9 ]/i, '').to_i
+      weight = attrs[:weight].nil? ? 0 : attrs[:weight].gsub(/[^0-9 ]/i, '').to_f
+      puts feet, inches 
+      attrs[:height] = feet * 12 + inches
+      attrs[:bmi] = (attrs[:height] == 0) ? 0 : (weight*703.0/(attrs[:height].to_f**2)).round(1)
+      attrs[:blood_pressure] = [attrs[:sys], attrs[:dia]].join('/') 
+      if !@patient.vital.update_attributes(attrs)
         flash[:alert] = "Failed to update vital: " + @patient.vital.errors.full_messages.join('. ')
         type = "demographics"
       end
