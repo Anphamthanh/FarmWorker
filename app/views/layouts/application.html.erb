@@ -15,15 +15,7 @@
           <ul class="nav navbar-nav">
             <% if user_signed_in? %>
               <li id="home"><a href="<%= root_path %>">Home</a></li>
-              <% if current_user.role.downcase == "student-bsn" %>
-                <li id="student-bsn"><a href="<%= student_dashboard_path %>">Student BSN</a></li>
-              <% elsif current_user.role.downcase == "student-msn" %>
-                <li id="student-msn"><a href="<%= student_dashboard_path %>">Student MSN</a></li>
-              <% elsif current_user.role.downcase == "faculty" %>
-                <li id="faculty"><a href="<%= faculty_dashboard_path %>">Faculty</a></li>
-              <% elsif current_user.role.downcase == "admin" %>
-                <li id="admin"><a href="<%= admin_dashboard_path %>">Admin</a></li>
-              <% end %>
+              <li id="student-bsn"><a href="<%= dashboard %>"><%= current_user.role %></a></li>
             <% end %>
           </ul>
           <% if user_signed_in? %>
