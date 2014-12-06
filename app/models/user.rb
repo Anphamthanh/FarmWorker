@@ -4,8 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :rememberable, :trackable, :validatable, :timeoutable
 
-  validates_presence_of :username, :email, :password, 
-                        :role, :first_name, :last_name
+  validates_presence_of :username, :email, :role, :first_name, :last_name
 
 
   def self.search(search)

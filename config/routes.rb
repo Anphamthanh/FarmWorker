@@ -16,7 +16,7 @@ FarmWorker::Application.routes.draw do
   get 'patient/:id' => 'patient#view', as: 'patient_view'
   delete 'patient/:id' => 'patient#delete'
   get 'user/:id' => 'admin#edit'
-  put 'user/:id' => 'admin#update'
+  put 'user/:id' => 'admin#update', as: 'user_update'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

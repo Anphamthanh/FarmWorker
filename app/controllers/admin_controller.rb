@@ -7,7 +7,18 @@ class AdminController < ApplicationController
   end
 
   def edit
-    render text: "I am here"
+    @all_users = User.search(params[:search]).page(params[:page]).per_page(5)
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(update_params)
+      flash[:notice] = "The user #{@user.username} was successfully updated"
+    else       
+      flash[:alert] = "Failed to update user: " + @user.errors.full_messages.join('. ')
+    end
+    redirect_to :admin_dashboard
   end
 
   def register
@@ -21,6 +32,10 @@ class AdminController < ApplicationController
   end
 
   private
+
+  def update_params
+    params.require(:user).permit(:username, :email, :role, :first_name, :last_name)
+  end
 
   def admin_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation, :role, :first_name, :last_name)
