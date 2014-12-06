@@ -11,6 +11,17 @@ class AdminController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def delete
+    @user = User.find_by_id(params[:id])
+    msg = "The user #{@user.username} was successfully deleted"
+    if @user.destroy
+      flash[:notice] = msg
+    else       
+      flash[:alert] = "Failed to delete user: " + @user.errors.full_messages.join('. ')
+    end
+    redirect_to :admin_dashboard
+  end
+
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(update_params)
