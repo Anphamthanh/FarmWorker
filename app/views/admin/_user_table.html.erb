@@ -1,0 +1,39 @@
+<div class="container">
+  <h1><i class="fa fa-user-md fa-lg"></i> Admin Dashboard</h1>
+  <div class="container">
+    <div class="panel panel-info">
+      <div class="panel-heading">All Users</div>
+      <div class="panel-body">
+        <p>Click on user to edit user's information</p>
+        <%= form_tag admin_dashboard_path, :method => 'get', :class => "navbar-form", :role => "search" do %>
+          <div class="input-group">
+            <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Enter user" %>
+            <div class="input-group-btn">
+              <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <table class="table">
+        <tr>
+          <th>User ID</th>
+          <th>Role</th>
+          <th>Username</th>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Email</th>
+        </tr>
+        <% @all_users.each do |user| %>
+          <tr class='clickableRow' href='/user/<%= "#{user.id}" %>'>
+            <td><%= user.id %></td>
+            <td><%= user.role %></td>
+            <td><%= user.username %></td>
+            <td><%= user.first_name %></td>
+            <td><%= user.last_name %></td>
+            <td><%= user.email %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <%= will_paginate @all_users, renderer: BootstrapPagination::Rails %>
+  </div>

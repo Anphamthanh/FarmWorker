@@ -6,6 +6,10 @@ class AdminController < ApplicationController
     @all_users = User.search(params[:search]).page(params[:page]).per_page(5)
   end
 
+  def edit
+    render text: "I am here"
+  end
+
   def register
     @user = User.new(admin_params)
     if @user.save
