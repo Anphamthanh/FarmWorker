@@ -124,6 +124,7 @@ class PatientController < ApplicationController
   def vision_params
     params.require(:patient_record).permit(:unable_to_screen, :use_corrective_lenses,
       :worn_for_testing, :ol1, :ol2, :od1, :od2, :ou1, :ou2,
+      :ol_result, :od_result, :ou_result,
       :under_professional_care, :need_further_evaluation, :comment, :practitioner,
       :practitioner_role, :validator, :validator_role, :validated_at)
   end

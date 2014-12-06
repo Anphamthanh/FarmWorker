@@ -50,6 +50,17 @@
                 :value => ol2, :placeholder => "Result" %> 
             </div>
           </div>
+
+          <div class="col-md-2">            
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-switch btn-sm <%= @patient.vision.ol_result ? 'active btn-success' : 'btn-default' %>">
+                <input type="radio" name="patient_record[ol_result]" value="true">Pass
+              </label>
+              <label class="btn btn-switch btn-sm <%= @patient.vision.ol_result ? 'btn-default' : 'active btn-danger' %>">
+                <input type="radio" name="patient_record[ol_result]" value="false">Fail
+              </label>
+            </div>
+          </div>
         </div>
         <div class="form-group row">
           <div class="col-md-3">
@@ -68,6 +79,17 @@
                 :value => od2, :placeholder => "Result" %> 
             </div>
           </div>
+
+          <div class="col-md-2">            
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-switch btn-sm <%= @patient.vision.od_result ? 'active btn-success' : 'btn-default' %>">
+                <input type="radio" name="patient_record[od_result]" value="true">Pass
+              </label>
+              <label class="btn btn-switch btn-sm <%= @patient.vision.od_result ? 'btn-default' : 'active btn-danger' %>">
+                <input type="radio" name="patient_record[od_result]" value="false">Fail
+              </label>
+            </div>
+          </div>
         </div>
         <div class="form-group row">
           <div class="col-md-3">
@@ -84,6 +106,17 @@
             <% ou2 = @patient.vision.ou2 == 0 ? "" : @patient.vision.ou2 %>
               <%= f.text_field :ou2, :class => "form-control", 
                 :value => ou2, :placeholder => "Result" %> 
+            </div>
+          </div>
+
+          <div class="col-md-2">            
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-switch btn-sm <%= @patient.vision.ou_result ? 'active btn-success' : 'btn-default' %>">
+                <input type="radio" name="patient_record[ou_result]" value="true">Pass
+              </label>
+              <label class="btn btn-switch btn-sm <%= @patient.vision.ou_result ? 'btn-default' : 'active btn-danger' %>">
+                <input type="radio" name="patient_record[ou_result]" value="false">Fail
+              </label>
             </div>
           </div>
         </div>
@@ -145,5 +178,19 @@
   $(".vision").addClass("active");
   $("#enableEntries").change(function() {
     $("#entries").toggle();
+  });
+  $(".btn-switch").click(function() {
+    if ($(this).find("input").attr("value") == "true") {
+      $(this).removeClass("btn-default");
+      $(this).addClass("btn-success");
+      $(this).parent().find(".btn-danger").addClass("btn-default");
+      $(this).parent().find(".btn-danger").removeClass("btn-danger");
+    }
+    else {
+      $(this).removeClass("btn-default");
+      $(this).addClass("btn-danger");
+      $(this).parent().find(".btn-success").addClass("btn-default");
+      $(this).parent().find(".btn-success").removeClass("btn-success");
+    }
   });
 </script> 

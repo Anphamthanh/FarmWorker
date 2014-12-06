@@ -11,10 +11,13 @@ class CreateVisions < ActiveRecord::Migration
       t.boolean :corrective_lenses,                   default: false
       t.integer :ol1
       t.integer :ol2  
+      t.boolean :ol_result
       t.integer :od1
       t.integer :od2
+      t.boolean :od_result
       t.integer :ou1
       t.integer :ou2
+      t.boolean :ou_result
       t.text :comment
       t.string :practitioner,                         :null => false, default: ""
       t.string :practitioner_role,               :null => false, :default => ""

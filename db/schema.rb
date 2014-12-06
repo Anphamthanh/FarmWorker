@@ -189,10 +189,13 @@ ActiveRecord::Schema.define(version: 20141203030958) do
     t.boolean  "corrective_lenses",       default: false
     t.integer  "ol1"
     t.integer  "ol2"
+    t.boolean  "ol_result"
     t.integer  "od1"
     t.integer  "od2"
+    t.boolean  "od_result"
     t.integer  "ou1"
     t.integer  "ou2"
+    t.boolean  "ou_result"
     t.text     "comment"
     t.string   "practitioner",            default: "",    null: false
     t.string   "practitioner_role",       default: "",    null: false
