@@ -14,6 +14,7 @@ FarmWorker::Application.routes.draw do
   get 'patient/:id/input/:type' => 'patient#input', as: 'patient_input'
   post 'patient/:id/update/:type' => 'patient#update_record', as: 'patient_update_record'
   get 'patient/:id' => 'patient#view', as: 'patient_view'
+  delete 'patient/:id' => 'patient#delete'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -23,6 +23,15 @@ class PatientController < ApplicationController
     redirect_to :controller => "patient", :action => "input", :id => patient.id, :type => "demographics"
   end
 
+  def delete    
+    patient = Patient.find_by_id(params[:id])
+    msg = "The patient #{patient.first_name} #{patient.last_name} was successfully deleted."
+    if patient.destroy
+      flash[:notice] = msg
+      redirect_to dashboard
+    end
+  end
+
   def input
     @patient = Patient.find_by_id(params[:id])
     if !@patient.is_editable?
