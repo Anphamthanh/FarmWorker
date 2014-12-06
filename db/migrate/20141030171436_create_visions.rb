@@ -9,9 +9,12 @@ class CreateVisions < ActiveRecord::Migration
       t.boolean :worn_for_testing,                    default: false
       t.boolean :color_blindness,                     default: false
       t.boolean :corrective_lenses,                   default: false
-      t.integer :ol
-      t.integer :od
-      t.integer :ou
+      t.integer :ol1
+      t.integer :ol2  
+      t.integer :od1
+      t.integer :od2
+      t.integer :ou1
+      t.integer :ou2
       t.text :comment
       t.string :practitioner,                         :null => false, default: ""
       t.string :practitioner_role,               :null => false, :default => ""

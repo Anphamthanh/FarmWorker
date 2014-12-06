@@ -187,9 +187,12 @@ ActiveRecord::Schema.define(version: 20141203030958) do
     t.boolean  "worn_for_testing",        default: false
     t.boolean  "color_blindness",         default: false
     t.boolean  "corrective_lenses",       default: false
-    t.integer  "ol"
-    t.integer  "od"
-    t.integer  "ou"
+    t.integer  "ol1"
+    t.integer  "ol2"
+    t.integer  "od1"
+    t.integer  "od2"
+    t.integer  "ou1"
+    t.integer  "ou2"
     t.text     "comment"
     t.string   "practitioner",            default: "",    null: false
     t.string   "practitioner_role",       default: "",    null: false

@@ -32,6 +32,62 @@
             <%= f.check_box :worn_for_testing, :checked => worn_for_testing %>
           </div>
         </div>
+        <div class="row col-md-12"><hr></div>
+        <div class="form-group row">
+          <div class="col-md-3">
+            <%= f.label :ol, "Left eye (o.l., o.s.)" %>
+          </div>
+          <div class="col-md-3">
+            <div class="col-md-5">
+            <% ol1 = @patient.vision.ol1 == 0 ? "" : @patient.vision.ol1 %>
+              <%= f.text_field :ol1, :class => "form-control", 
+                :value => ol1, :placeholder => "Result" %>  
+            </div>
+            <div class="col-md-2">/</div>
+            <div class="col-md-5">
+            <% ol2 = @patient.vision.ol2 == 0 ? "" : @patient.vision.ol2 %>
+              <%= f.text_field :ol2, :class => "form-control", 
+                :value => ol2, :placeholder => "Result" %> 
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-3">
+            <%= f.label :od, "Right eye (o.d.)" %>
+          </div>
+          <div class="col-md-3">
+            <div class="col-md-5">
+            <% od1 = @patient.vision.od1 == 0 ? "" : @patient.vision.od1 %>
+              <%= f.text_field :od1, :class => "form-control", 
+                :value => od1, :placeholder => "Result" %>  
+            </div>
+            <div class="col-md-2">/</div>
+            <div class="col-md-5">
+            <% od2 = @patient.vision.od2 == 0 ? "" : @patient.vision.od2 %>
+              <%= f.text_field :od2, :class => "form-control", 
+                :value => od2, :placeholder => "Result" %> 
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-3">
+            <%= f.label :ou, "Both eyes (o.u.)" %>
+          </div>
+          <div class="col-md-3">
+            <div class="col-md-5">
+            <% ou1 = @patient.vision.ou1 == 0 ? "" : @patient.vision.ou1 %>
+              <%= f.text_field :ou1, :class => "form-control", 
+                :value => ou1, :placeholder => "Result" %>  
+            </div>
+            <div class="col-md-2">/</div>
+            <div class="col-md-5">
+            <% ou2 = @patient.vision.ou2 == 0 ? "" : @patient.vision.ou2 %>
+              <%= f.text_field :ou2, :class => "form-control", 
+                :value => ou2, :placeholder => "Result" %> 
+            </div>
+          </div>
+        </div>
+        <div class="row col-md-12"><hr></div>
         <div class="form-group row">
           <div class="col-md-3">
             <%= f.label :under_professional_care, "Under Professional Care" %>
