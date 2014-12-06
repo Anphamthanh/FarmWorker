@@ -45,7 +45,7 @@ class AdminController < ApplicationController
   private
 
   def update_params
-    params.require(:user).permit(:username, :email, :role, :first_name, :last_name)
+    params.require(:user).permit(:username, :email, :role, :first_name, :last_name, :password)
   end
 
   def admin_params
